@@ -61,9 +61,9 @@
   <div data-role="panel" data-display="overlay" id="menu-panel" class="left-panel" data-position="left" data-theme="b" style="width: 16em";>
     <div>  <a href="#main-page" ><img src="img/game.png" style=" width:100%;"></img></a> </div>
     <a href="#" class="btn-primary" data-role="button" id="profile-Button" data-icon="user" >Profile</a>
-    <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" >Notifications <div class="ui-li-count">0</div></a>
-    <a href="#join-game-page" class="btn-primary" data-role="button" id="SearchButton" data-icon="search" >Search</a>
-    <a href="#join-game-page2" class="btn-primary" data-role="button" data-icon="info" >About us</a>
+    <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" >Notifications <div class="ui-li-count"><span id="noti-span">0</span></div></a>
+    <a href="#" class="btn-primary" data-role="button" id="gamebutton-join-game-manu" data-icon="search" >Search</a>
+    <a href="#about-us" class="btn-primary" data-role="button" data-icon="info" >About us</a>
     <a href="#" data-role="button" class="btn-primary rate-btn" data-icon="gear" rel="external"  onclick="changeToRankPage()" >Settings</a>
     <a href="#category-page" class="btn-primary" data-role="button" data-icon="power" onclick="logoutLocalStorage()">Logout</a>
     <a href="#menu-panel" data-role="button" class="close" data-icon="minus">Close menu</a>
@@ -148,7 +148,7 @@
         <tr>
           <td>
             <!--Date-->
-            <label for="date">Date:</label>
+            <label for="date">Date</label>
           </td>
           <td>
             <input type="date" name="date-game-creat" id="date-game-creat" value=""  style="text-align:center;"/>
@@ -159,7 +159,7 @@
           <td>
             <!--Location-->
             <fieldset class="ui-field-contain">
-              <label for="city">Location</label>
+              <label for="city">Field</label>
             </td>
             <td>
               <select name="city-game-creat" id="city-game-creat">
@@ -1244,8 +1244,6 @@
 
                                           </center>
                                           <table id="tbl3"  bgcolor="#ffffff" align="center" width="70%">
-
-                                            
                                             <tr>
                                               <td align="right">Age:
                                               </td>
@@ -1564,29 +1562,15 @@
 
                                           <!--page 11- about-us page-->
 
-                                          <div data-role="page" id="join-game-page2" data-theme="b">
+                                          <div data-role="page" id="about-us" data-theme="b">
                                             <div data-role="header">
                                               <h1>About Us</h1>
                                             </div>
                                             <!-- /header -->
                                             <div data-role="content">
-                                              <div data-role="controlgroup">
-                                                <input type="text" id="txt" placeholder="Enter Your Name" />
-                                                <br>
-                                                <fieldset data-role="controlgroup" data-type="horizontal">
-                                                  <input type="radio" name="radio-view" id="radio-view-a" value="Camera" checked="checked" />
-                                                  <label for="radio-view-a">Camera</label>
-                                                  <input type="radio" name="radio-view" id="radio-view-b" value="Gallery" />
-                                                  <label for="radio-view-b">Gallery</label>
-                                                </fieldset>
-                                                <a href="#" id="getPic" data-role="button" onclick="workManager()">Take A Picture</a>
-                                              </div>
 
                                             </div>  <!-- /content -->
-                                            <div data-role="controlgroup" data-type="horizontal" style="text-align:center; width:100%">
-                                              <img id="mainImage" style="width:90%; border: 5px solid white" src="img/user.png" />
-                                            </div>
-
+                                            
                                           </div> <!-- /page -->
 
                                           <!--page 12- game-info page-->
@@ -1603,7 +1587,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Game's Creator-->
-                                                    <label for="game-creator-info">Game's Creator:</label>
+                                                    <label for="game-creator-info">Game's Creator</label>
                                                   </td>
                                                   <td>
                                                     <input name="game-creator-info" id="game-creator-info" value=""  readonly style="text-align:center;"/>
@@ -1613,7 +1597,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Game id-->
-                                                    <label for="game-id-info">Game id:</label>
+                                                    <label for="game-id-info">Game id</label>
                                                   </td>
                                                   <td>
                                                     <input name="game-id-info" id="game-id-info" value=""  readonly style="text-align:center;"/>
@@ -1623,7 +1607,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Date-->
-                                                    <label for="date-game-info">Date:</label>
+                                                    <label for="date-game-info">Date</label>
                                                   </td>
                                                   <td>
                                                     <input type="date" name="date-game-info" id="date-game-info" value=""  readonly style="text-align:center;"/>
@@ -1633,7 +1617,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Location-->
-                                                    <label for="locaition-info">Location</label>
+                                                    <label for="locaition-info">Field</label>
                                                   </td>
                                                   <td>
 
@@ -1769,7 +1753,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Game's Creator-->
-                                                    <label for="game-creator-info">Game's Creator:</label>
+                                                    <label for="game-creator-info">Game's Creator</label>
                                                   </td>
                                                   <td>
                                                     <input name="edit-game-creator-info" id="edit-game-creator-info" value=""  readonly style="text-align:center;"/>
@@ -1779,7 +1763,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Game id-->
-                                                    <label for="edit-game-id-info">Game id:</label>
+                                                    <label for="edit-game-id-info">Game id</label>
                                                   </td>
                                                   <td>
                                                     <input name="edit-game-id-info" id="edit-game-id-info" value=""  readonly style="text-align:center;"/>
@@ -1789,7 +1773,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Date-->
-                                                    <label for="edit-date-game-info">Date:</label>
+                                                    <label for="edit-date-game-info">Date</label>
                                                   </td>
                                                   <td>
                                                     <input type="date" name="edit-date-game-info" id="edit-date-game-info" value="" style="text-align:center;"/>
@@ -1799,7 +1783,7 @@
                                                 <tr>
                                                   <td>
                                                     <!--Location-->
-                                                    <label for="edit-locaition-info">Location</label>
+                                                    <label for="edit-locaition-info">Field</label>
                                                     <fieldset class="ui-field-contain">
 
                                                     </td>

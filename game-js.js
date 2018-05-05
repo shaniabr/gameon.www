@@ -197,6 +197,21 @@ $(document).on('vclick', '#gamebutton-join-game', function () {
   pageIsLoading();
 });
 
+//selecting all games
+$(document).on('vclick', '#gamebutton-join-game-manu', function () {
+  $.mobile.changePage("#join-game-page", {
+      transition: "slide", changeHase: false
+  });
+
+  //empty the list
+ $("#join-game-deatils").find('li').remove();
+
+ //get the games from DB
+  selectAllGame();
+  //animation
+  pageIsLoading();
+});
+
 //selecting all players from game to rank them
 function showPlayersToRank(game_id) {
 
@@ -297,7 +312,7 @@ pageIsLoading();
 function rankPlayer() {
 pageIsLoading();
  //updates the user deatils in DB
-  updateRanking($('#myId').attr('name')); 
+  updateRanking($('#myId').attr('name'));
 
 }
 
