@@ -1,0 +1,374 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+     /* Optional: Makes the sample page fill the window. */
+     #map{
+       height: 90%;
+        width: 100%;
+       margin: 0%;
+       padding: 0;
+
+     }
+     html, body{
+       height: 40%;
+     }
+
+     .field11, .ui-collapsible-content{
+       height: 80%;
+        padding-bottom: 0px;
+        margin: 0%;
+        padding: -5%;
+     }
+     element.style{padding-bottom: 0px;}
+body {
+	font-family: "Lato" ;
+}
+
+   /* background for the pages */
+.ui-page {
+
+    background-image: url("../img/backgroundGrassblur.jpg");
+     background-repeat:no-repeat;
+     background-attachment: fixed;
+     background-size:cover;
+}
+
+#wrap {
+	width:250px;
+	height: auto;
+	margin: auto;
+
+}
+
+   /* icons for category */
+.ui-icon-myicon:after {
+    background-image: url("../img/ball-icon.png");
+    /* Make your icon fit */
+    background-size: 22px 22px;
+}
+
+.ui-icon-myicon2:after {
+    background-image: url("../img/Info-icon.png");
+    /* Make your icon fit */
+    background-size: 26px 26px;
+}
+
+.ui-icon-myicon3:after {
+    background-image: url("../img/add-players.png");
+    /* Make your icon fit */
+    background-size: 16px 16px;
+}
+
+
+  .btn-primary,.close {
+    font-size: 125%;
+
+  }
+
+/* increasing the size of every button */
+  .button-row .ui-btn,
+    .ui-header .ui-btn {
+      zoom: 125%;
+    }
+    .ui-header {
+    height: 50px;
+    }
+
+/*
+.avatar {
+	width: 100%;
+	margin: auto;
+	width: 65px;
+	border-radius: 100px;
+	height: 65px;
+	background: #448ed3 ;
+	position: relative;
+	bottom: -15px;
+}/*
+.avatar img {
+	width: 55px;
+	height: 55px;
+	border-radius: 100px;
+	margin: auto;
+	border:3px solid #fff;
+	display: block;
+}*/
+
+#tbl1,#ranktbl1{
+  background-image: url("../img/profilesColor.png");
+  opacity: 0.75;
+  filter: alpha(opacity=75); /* For IE8 and earlier */
+  font-size: 22px;
+  border-spacing: 0.5em;
+
+}
+
+#tbl2{
+  background-image: url("../img/profilesColor.png");
+  opacity: 0.75;
+  filter: alpha(opacity=75); /* For IE8 and earlier */
+
+}
+
+#tbl11{
+  background-image: url("../img/profilesColor.png");
+
+
+}
+
+#tbl3{
+
+  opacity: 0.75;
+  filter: alpha(opacity=75); /* For IE8 and earlier */
+  color: black;
+  text-align:center;
+  border:2px solid #b8b8b8;
+
+}
+
+input {
+	border: none;
+	background: #fff;
+  font-family:Lato ;
+  font-weight:700 ;
+	display: block;
+	height: 40px;
+	outline: none;
+	width: calc(100% - 24px) ;
+	margin: -1%;
+	padding: 6px 12px 6px 12px;
+}
+
+.bar {
+	width: 100%;
+	height: 1px;
+	background: #fff ;
+}
+#s-line {
+	width: 95%;
+	margin: auto;
+	height: 1px ;
+	display: block;
+	background: #d1d1d1;
+}
+#uname[type="text"] {
+	border-radius: 7px 7px 0px 0px ;
+}
+#pass[type="password"] {
+	border-radius: 0px 0px 7px 7px ;
+}
+.forgot_link {
+	color: #83afdf ;
+	color: #83afdf;
+	text-decoration: none;
+	font-size: 11px;
+	position: relative;
+	left: 193px;
+	top: -36px;
+}
+#dan {
+	width: 100%;
+	border-radius: 7px;
+	background: #87CEFA;
+	text-decoration: center;
+	border: none;
+	color: #2F4F4F;
+  margin-top:-5px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	outline: none;
+	font-size: 13px;
+	border-bottom: 3px solid #2F4F4F;
+	cursor: pointer;
+}
+
+.div1  {
+  align-self: center;
+  align-content: center;
+   align-items: center;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+
+}
+#table1 { width:100%; font-size:13px }
+
+
+#gamebutton,#gamebutton-join-game,#gamebutton-my-games,#gamebutton-edit-games{
+    background-image: url("../img/gameColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#teambutton-create,#teambutton-my-team,#teambutton-tour,#create-tour,#join-tour{
+    background-image: url("../img/teamColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#tablebutton{
+    background-image: url("../img/infoColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+#infobutton-league,#infobutton-fields{
+    background-image: url("../img/newsColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+#gallerybutton{
+    background-image: url("../img/galleryColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+#playersbutton{
+    background-image: url("../img/profilesColor.png");
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#next,#next-game-creat,#next2-game-creat,#approve-game,#edit-update-game{
+  background-color:  #669900;
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#inpi{
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#players,#wins,#place,#players2,#wins2,#place2,#create-team-done,#done2,#done-game-creat,#team-name2,#update-acc,#edit-update-add-players,#rankPlayersBtn{
+  background-color:  #669900;
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#players,#wins,#place,#players2,#wins2,#place2,#team-name2{
+  background-color:  #0d0d0d;
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#cancel-game, #edit-delete-game{
+  background-color:  #8B0000;
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#edit-accesories-btn{
+  background-color:  #3c5d5d;
+
+   opacity: 0.75;
+   filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#edit-addPlayers{
+  background-color:    #3c5d5d;
+
+ opacity: 0.75;
+ filter: alpha(opacity=75); /* For IE8 and earlier */
+
+}
+
+.example1 {
+   height: 50px;
+   overflow: hidden;
+   position: relative;
+}
+.example1 h3 {
+   font-size: 2em;
+   color: white;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   line-height: 50px;
+   text-align: center;
+   /* Starting position */
+   -moz-transform:translateX(100%);
+   -webkit-transform:translateX(100%);
+   transform:translateX(100%);
+   /* Apply animation to this element */
+   -moz-animation: example1 15s linear infinite;
+   -webkit-animation: example1 15s linear infinite;
+   animation: example1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   {
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%);
+ }
+ 100% {
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%);
+ }
+}
+
+
+#profile_image2{
+    width:120px;
+    height:120px
+}
+.ui-btn.ui-checkbox-off:after{
+  background-color: #FFFFFF;
+
+}
+
+.list-with-checkbox .ui-btn{
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+.list-with-checkbox.ui-btn, label.list-with-checkbox.ui-btn{
+  border:none;
+}
+input.list-with-checkbox, input.list-with-checkbox.ui-radio {
+  height: 0px;
+}
+
+.butten-with-icon{
+  padding-left: 40px;
+}
+
+/* for rotate profile pic */
+.rotate {
+   -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+     transform: rotate(90deg);
+}
+
+.rotate2 {
+   -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+     transform: rotate(180deg);
+}
+
+.rotate3 {
+   -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+     transform: rotate(270deg);
+}
+
+
+.normal {
+   -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+     transform: rotate(0deg);
+}

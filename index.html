@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <!--<script type="text/javascript" src="PushNotification.js"></script>-->
+  <script src="js/sweetalert2.all.js"></script>
+  <script src="AjaxCalls.js"></script>
+  <script src="AjaxCalls2.js"></script>
+  <script src="AjaxCalls3.js"></script>
+
+  <script src="other-js.js"></script>
+  <script src="game-js.js"></script>
+  <script src="team-js.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1SaBCqCixv91J5Tr0i1ny12gVURWoCAk&callback=initMap"></script>
+
+  <script type="text/javascript">
+
+  </script>
+
+  <title>GameOn</title>
+</head>
+
+<body>
+  <!--page 1- Log-In-->
+  <div data-role="page" id="category-page" style=" background-image: url('img/greyback.png');">
+    <div data-role="content">
+
+      <div class="div1"><br>
+        <img src="img/game.png" style=" width: 100%" ></img>
+      </div>
+      <div id="wrap">
+        <form id="myForm">
+          <label id=passError></label>
+          <input id="uname" name="uname" data-role="none" type="text" placeholder="username"  data-clear-btn="true">
+
+          <label id=repassError></label>
+          <input id="pass" name="pass" data-role="none" type="password" placeholder="password" data-clear-btn="true">
+          <a href="" class="forgot_link">forgot ?</a>
+          <a id="submit" data-icon="check"  style="background-color:#33cc33; color: white; text-shadow:none" data-role="button">Log-In</a>
+          <a id="facelogin"  style="background-color:#3B5998; color: white; text-shadow:none"  data-role="button">Log-In with facebook</a>
+        </form>
+        <br><br>
+        <a href="#sign-up" style="text-shadow:none; color:white; font-size:15px" id="signup"><center>Click here to sign-up</center></a>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <!--panel-->
+  <div data-role="panel" data-display="overlay" id="menu-panel" class="left-panel" data-position="left" data-theme="b" style="width: 16em";>
+    <div>  <a href="#main-page" ><img src="img/game.png" style=" width:100%;"></img></a> </div>
+    <a href="#" class="btn-primary" data-role="button" id="profile-Button" data-icon="user" >Profile</a>
+    <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" >Notifications <div class="ui-li-count">0</div></a>
+    <a href="#join-game-page" class="btn-primary" data-role="button" id="SearchButton" data-icon="search" >Search</a>
+    <a href="#join-game-page2" class="btn-primary" data-role="button" data-icon="info" >About us</a>
+    <a href="#" data-role="button" class="btn-primary rate-btn" data-icon="gear" rel="external"  onclick="changeToRankPage()" >Settings</a>
+    <a href="#category-page" class="btn-primary" data-role="button" data-icon="power" onclick="logoutLocalStorage()">Logout</a>
+    <a href="#menu-panel" data-role="button" class="close" data-icon="minus">Close menu</a>
+  </div>
+
+  <!--page 2- main page-->
+  <div data-role="page" id="main-page" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <h1 style="font-size:120%" align="center"> GameOn </h1>
+    </div>
+
+    <div data-role="content">
+      <h1 align="center" style="margin-bottom: 35px;"> Welcome <span id="welcomUser"></span>! </h1>
+      <div align="center">  <img id="my-image" src="img/user.png" style="width:145px;height:145px; margin-bottom: 30px;  border:2px solid #b8b8b8; object-fit: cover;"></img> </div>
+      <br>
+      <table  style="border:none" align="center">
+        <tr align="center">
+          <td><a href="#game-page"><img src="img/gameCategory.png" style=" width:105%;"></img></a>
+          </td>
+          <td><a href="#team-page" id="team-page-select"><img src="img/teamCategory.png" style=" width:105%;"></img></a>
+          </td>
+          <td><a href="#table-page"><img src="img/infoCategory.png" style=" width:105%;"></img></a>
+          </td>
+        </tr>
+
+
+
+        <tr align="center">
+          <td><a href="#gallery-page"><img src="img/galleryCategory.png" style=" width:105%;"></img></a>
+          </td>
+          <td><a href="#info-page"><img src="img/newsCategory.png" style=" width:105%;"></img></a>
+          </td>
+          <td><a href="#players-page"><img src="img/profilesCategory.png" style=" width:105%;"></img></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!--page 3- game page-->
+  <div data-role="page" id="game-page" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%" align="center"> GameOn </h1>
+    </div>
+
+    <div data-role="content">
+      <table  style="border:none" align="center">
+        <tr align="center">
+          <td><img src="img/gameCategory.png" style=" width:50%;"></img>
+          </td>
+        </tr>
+      </table>
+      <div class="custom-footer">
+        <a  href="# create-game" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" onclick="clearGame()" id="gamebutton" >Create game</a>
+        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="gamebutton-edit-games" >Edit games</a>
+        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="gamebutton-my-games" >My games</a>
+        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="gamebutton-join-game" >Join games</a>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+  <!--page 3a.1- create-game page-->
+  <div data-role="page" id=" create-game" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%" align="center"> Create game </h1>
+    </div>
+
+    <div data-role="content">
+      <table  style="border:none" width="100%">
+        <tr>
+          <td>
+            <!--Date-->
+            <label for="date">Date:</label>
+          </td>
+          <td>
+            <input type="date" name="date-game-creat" id="date-game-creat" value=""  style="text-align:center;"/>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--Location-->
+            <fieldset class="ui-field-contain">
+              <label for="city">Location</label>
+            </td>
+            <td>
+              <select name="city-game-creat" id="city-game-creat">
+                <optgroup label="North">
+
+                </optgroup>
+              </select>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--start-time-->
+            <label for="start-time-game-creat">Start time</label>
+          </td>
+          <td>
+            <input name="start-time-game-creat" id="start-time-game-creat" type="time" data-clear-btn="true" value="" style="text-align:center;">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <!--Duration-->
+            <fieldset class="ui-field-contain">
+              <label for="duration">Duration</label>
+            </td>
+            <td>
+              <select name="duration" id="duration">
+
+                <option value=1>1</option>
+                <option value=1.5>1.5</option>
+                <option value=2>2</option>
+                <option value=2.5>2.5</option>
+                <option value=3>3</option>
+                <option value=3.5>3.5</option>
+                <option value=4>4</option>
+              </select>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--minimum-players-->
+            <label for="min-players-game-creat">Minimum players</label>
+          </td>
+          <td>
+            <input type="text" name="min-players-game-creat" id="min-players-game-creat" value="" data-clear-btn="true" style="text-align:center;">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--maximum-players-->
+            <label for="maximum-players-game-creat">Maximum players</label>
+          </td>
+          <td>
+            <input type="text" name="maximum-players-game-creat" id="maximum-players-game-creat" value="" data-clear-btn="true" style="text-align:center;">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--permanent-game-->
+            <label for="flip-select-second-game-creat">Permanent?</label>
+          </td>
+          <td>
+            <select id="flip-select-game-creat" name="flip-select-game-creat" data-role="flipswitch" >
+
+              <option selected="">No</option>
+              <option >Yes</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--public_game-game-->
+            <label for="public-game-creat">Public?</label>
+          </td>
+          <td>
+            <select id="public-game-creat" name="public-game-creat" data-role="flipswitch" >
+
+              <option selected="">No</option>
+              <option >Yes</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <div class="custom-footer">
+        <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="next-game-creat" >Next</a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--page 3a.2- create-game page-part 2-->
+  <div data-role="page" id="create-game-part2" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%" align="center"> Create game </h1>
+    </div>
+
+    <div data-role="content">
+
+      <!--ball-->
+
+      <fieldset class="ui-field-contain">
+
+        <label for="ball">  <img src="img/ball-icon.png" width="10%"></img> Ball</label>
+        <select name="ball-game-creat" id="ball-game-creat">
+          <option value=""></option>
+        </select>
+      </fieldset>
+      <!--Pump-->
+      <fieldset class="ui-field-contain">
+        <label for="pump"> <img src="img/pump.png" width="10%"></img> Pump</label>
+        <select name="pump-game-creat" id="pump-game-creat">
+          <option value=""></option>
+        </select>
+      </fieldset>
+      <!--Water-->
+      <fieldset class="ui-field-contain">
+        <label for="pump"><img src="img/water.png" width="10%"></img>Water</label>
+        <select name="water-game-creat" id="water-game-creat">
+          <option value=""></option>
+        </select>
+      </fieldset>
+      <!--Net-->
+      <fieldset class="ui-field-contain">
+        <label for="net"><img src="img/net.png" width="10%"></img>  Net</label>
+        <select name="net-game-creat" id="net-game-creat">
+          <option value=""></option>
+        </select>
+      </fieldset>
+      <div class="custom-footer">
+        <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="next2-game-creat">Next</a>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <!--page 3a.3- create-game page-part 3-->
+  <div data-role="page" id="add-playersToGame" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%"> Add Players </h1>
+    </div>
+
+    <div data-role="content">
+      <form method="POST" name="MyFormGame">
+        <ul data-role="listview" data-inset="true" class="list-with-checkbox" id="addPlayersToGame">
+
+        </ul>
+      </form>
+      <div class="custom-footer">
+        <a  href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon " data-role="button" id="done-game-creat" data-rel="popup" data-transition="pop" data-position-to="window" onclick="CheckCheckboxes()">Done</a>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!--page 3b- join-game page-->
+  <div data-role="page" id="join-game-page" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%"> Join game </h1>
+    </div>
+
+    <div data-role="content">
+      <ul id="join-game-deatils" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search...">
+        <!--games-->
+
+      </ul>
+
+    </div>
+  </div>
+
+  <!--page 3c- My-games page-->
+  <div data-role="page" id="my-games-page" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back" id="back-my-games" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%"> My games </h1>
+    </div>
+
+    <div data-role="content">
+      <ul id="my-game-deatils" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search...">
+
+        <!--games-->
+        <div data-role="tabs" id="tabs">
+          <div data-role="navbar">
+            <ul>
+              <li ><a href="#waiting" id="waiting-my" data-ajax="false">Waiting</a></li>
+              <li><a href="#joined" id="joined-my" ata-ajax="false" >Joined</a></li>
+              <li><a href="#canceled" id="canceled-my" data-ajax="false">Canceled</a></li>
+            </ul>
+          </div>
+          <div id="waiting" data-inset="true">
+            <ul data-role="listview" data-inset="true" id="waiting-ul">
+
+            </ul>
+          </div>
+          <div id="joined">
+            <ul data-role="listview" data-inset="true" id="joined-ul">
+
+            </ul>
+          </div>
+          <div id="canceled">
+            <ul data-role="listview" data-inset="true" id="canceled-ul">
+
+            </ul>
+
+
+          </div>
+        </div>
+      </ul>
+
+
+    </div>
+  </div>
+
+
+  <!--page 4- team page-->
+  <div data-role="page" id="team-page" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%"> GameOn </h1>
+    </div>
+
+    <div data-role="content">
+      <table  style="border:none" align="center">
+        <tr align="center">
+          <td><img src="img/teamCategory.png" style=" width:50%;"></img>
+          </td>
+        </tr>
+      </table>
+      <div class="custom-footer">
+        <a  href="#create-team" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-create" >Create team</a>
+        <a href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-my-team" >My team</a>
+        <a href="#tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-tour" >Tournament</a>
+
+      </div>
+
+    </div>
+  </div>
+  <!--page 4a- create-team page-->
+  <div data-role="page" id="create-team" data-theme="b" >
+
+    <div data-role="header">
+      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+      <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+      <h1 style="font-size:120%" align="center"> Create team </h1>
+    </div>
+
+    <div data-role="content">
+
+      <table  style="border:none" width="100%">
+        <tr>
+          <td>
+            <!--Name-->
+            <label for="team-name">Name</label>
+          </td>
+          <td>
+            <input type="text" name="team-create-name" id="team-create-name" data-clear-btn="true"  style="text-align:center;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!--Costume-->
+            <fieldset class="ui-field-contain" >
+              <label for="shirt-picker">Costume</label>
+            </td>
+            <td align="center">
+              <select id="shirt-picker" onchange="optionCusChanged()">
+                <option value="option1">Costume-1</option>
+                <option value="option2">Costume-2</option>
+              </select>
+            </td>
+            <tr>
+              <td>
+              </td>
+              <td align="center">
+                <img id="myImg" src="img/shirt1.png" width="25%"/>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <!--Symbol-->
+                <fieldset class="ui-field-contain">
+                  <label for="symbol-picker">Symbol</label>
+
+                </td>
+                <td align="center">
+                  <select  id="symbol-picker"  onchange="optionSymChanged()">
+                    <option value="symbol1">Symbol-1</option>
+                    <option value="symbol2">Symbol-2</option>
+                  </select>
+                </td>
+                <tr>
+                  <td>
+                  </td>
+                  <td align="center">
+                    <img id="myImg2" src="img/symbool1.png" heigth="70" width="72"/>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <!--Players-->
+                    <label for="players">Players</label>
+                  </td>
+                  <td>
+                    <input type="text" name="team-create-players" id="team-create-players" value="1"  readonly style="text-align:center;">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <!--Wins-->
+                    <label for="wins">Wins</label>
+                  </td>
+                  <td>
+                    <input type="text" name="team-create-wins" id="team-create-wins" value="0"  readonly style="text-align:center;">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <!--Place-->
+                    <label for="place">Place</label>
+                  </td>
+                  <td>
+                    <input type="text" name="team-create-place" id="team-create-place" value="200" readonly style="text-align:center;">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <!--Trophies-->
+                    <label>Trophies</label>
+                  </td>
+                  <td align="center">
+                    <img id="costume-image" src="img/cup.png" width="20%"/>x0
+                  </td>
+                </tr>
+              </table>
+
+              <div class="custom-footer">
+                <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="create-team-done" >Done</a>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!--page 4b- manage-team page-->
+          <div data-role="page" id="manage-team" data-theme="b" >
+
+            <div data-role="header">
+              <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+              <a data-rel="back" data-icon="info"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+              <h1 style="font-size:120%" align="center"> My team </h1>
+            </div>
+
+            <div data-role="content">
+              <table  style="border:none" width="100%">
+                <tr>
+                  <td>
+                  </td>
+                  <td>
+                    <a  href="#players-info" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2" data-role="button" id="playerInfo" >Players Information</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <!--Name-->
+                    <label for="team-name2">Name</label>
+                  </td>
+                  <td>
+                    <input type="text" name="team-name2" id="team-name2"  value=""  readonly style="text-align:center;"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <!--Costume-->
+                    <fieldset class="ui-field-contain" >
+                      <label for="costume2">Costume</label>
+                    </td>
+                    <td align="center">
+                      <select id="shirt-picker2" onchange="optionCusChangedManage()">
+                        <option value="option1">ParkGil Costume</option>
+                        <option value="option2">Costume-2</option>
+                      </select>
+                    </td>
+                    <tr>
+                      <td>
+                      </td>
+                      <td align="center">
+                        <img id="myImg3" src="img/park-gil-cus.png" width="25%"/>
+
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <!--Symbol-->
+                        <fieldset class="ui-field-contain">
+                          <label for="symbol-picker2">Symbol</label>
+
+                        </td>
+                        <td align="center">
+                          <select  id="symbol-picker2"  onchange="optionSymChangedManage()">
+                            <option value="symbol1">Maccabi Symbol</option>
+                            <option value="symbol2">Symbol-1</option>
+                          </select>
+                        </td>
+                        <tr>
+                          <td>
+                          </td>
+                          <td align="center">
+                            <img id="myImg4" src="img/symbool2.png" heigth="70" width="72"/>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>
+                            <!--Players-->
+                            <label for="players2">Players</label>
+                          </td>
+                          <td>
+                            <input type="text" name="players2" id="players2" value="7"  readonly style="text-align:center;">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <!--Wins-->
+                            <label for="wins2">Wins</label>
+                          </td>
+                          <td>
+                            <input type="text" name="wins2" id="wins2" value=""  readonly style="text-align:center;">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <!--Place-->
+                            <label for="place2">Place</label>
+                          </td>
+                          <td>
+                            <input type="text" name="place2" id="place2" value="7" readonly style="text-align:center;">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <!--Trophies-->
+                            <label>Trophies</label>
+                          </td>
+                          <td align="center">
+                            <img id="costume-image" src="img/cup.png" width="20%" />x<span id=team-NumOfThropies></span>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <div class="custom-footer">
+                        <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="done2" >Done</a>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!--page 4b.1- manage-team page-->
+                  <div data-role="page" id="players-info" data-theme="b" >
+
+                    <div data-role="header">
+                      <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                      <a data-rel="back" data-icon="info"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                      <h1 style="font-size:120%" align="center">Maccabi Park Gil</h1>
+                    </div>
+
+                    <div data-role="content">
+                      <table  style="border:none" width="100%">
+                        <tr>
+                          <td>
+                            <a href="#profile-page">
+                              <img src="img/barak.jpg" alt="Barak Osmo" width="90%"  style="border:2px solid #b8b8b8;"></a>
+                              <center>Barak Osmo</center>
+                            </td>
+                            <td>
+                              <a href="#">
+                                <img src="img/ron.jpg" alt="Ron Ocheri" width="90%"  style="border:2px solid #b8b8b8;"></a>
+                                <center> Ron Ocheri</center>
+                              </td>
+                              <td>
+                                <a href="#">
+                                  <img src="img/ido.jpg" alt="Ido Kabala" width="90%" style="border:2px solid #b8b8b8;"></a>
+                                  <center>Ido Kabala</center>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <a href="#">
+                                    <img src="img/adir.jpg" alt="Adir Pano" width="90%" style="border:2px solid #b8b8b8;"></a>
+                                    <center>Adir Pano</center>
+                                  </td>
+                                  <td>
+                                    <a href="#">
+                                      <img src="img/yoav.jpg" alt="Yoav Harel" width="90%" style="border:2px solid #b8b8b8;"></a>
+                                      <center>Yoav Harel</center>
+                                    </td>
+                                    <td>
+                                      <a href="#">
+                                        <img src="img/abiel.jpg" alt="Abiel Karadi" width="90%" style="border:2px solid #b8b8b8;"></a>
+                                        <center>Abiel Karadi</center>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <a href="#">
+                                          <img src="img/ronny.jpg" alt="Roni Kalmanovich" width="90%" style="border:2px solid #b8b8b8;"></a>
+                                          <center>Roni Kalmanovich</center>
+                                        </td>
+                                      </tr>
+                                    </table>
+
+                                    <div class="custom-footer">
+
+                                    </div>
+
+                                  </div>
+                                </div>
+
+
+
+
+                                <!--page 4c- tournament page-->
+                                <div data-role="page" id="tournament" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h1 style="font-size:120%" align="center"> GameOn </h1>
+                                  </div>
+
+                                  <div data-role="content">
+                                    <table  style="border:none" align="center">
+                                      <tr align="center">
+                                        <td><img src="img/teamCategory.png" style=" width:50%;"></img>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <div class="custom-footer">
+                                      <a  href="#creat-tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="create-tour" >Create tournament</a>
+                                      <a href="#join-tournament-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="join-tour" >Join tournament</a>
+                                    </div>
+
+                                  </div>
+                                </div>
+
+                                <!--page 4c1- creat-tournament page-->
+
+                                <div data-role="page" id="creat-tournament" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h1 style="font-size:120%" align="center">Create tournament</h1>
+                                  </div>
+
+                                  <div data-role="content">
+                                    <table  style="border:none" width="100%">
+                                      <tr>
+                                        <td>
+
+                                          <!--Date-->
+                                          <label for="date">Date:</label>
+                                        </td>
+                                        <td>
+                                          <input type="date" name="date" id="date" value=""  />
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--Location-->
+                                          <fieldset class="ui-field-contain">
+                                            <label for="city">Location</label>
+                                          </td>
+                                          <td>
+                                            <select name="city" id="city">
+                                              <optgroup label="North">
+                                                <option value="1">Nahariya</option>
+                                                <option value="2">Haifa</option>
+                                                <option value="3">Nesher</option>
+                                              </optgroup>
+                                              <optgroup label="Center">
+                                                <option value="4">Nataniya</option>
+                                                <option value="5">Tel-Aviv</option>
+                                              </optgroup>
+                                              <optgroup label="South">
+                                                <option value="6">Ashdod</option>
+                                              </optgroup>
+                                            </select>
+                                          </fieldset>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--start-time-->
+                                          <label for="start-time">Start time</label>
+                                        </td>
+                                        <td>
+                                          <input type="text" name="start-time" id="start-time" value="" data-clear-btn="true" >
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--end-time-->
+                                          <label for="end-time">End time</label>
+                                        </td>
+                                        <td>
+                                          <input type="text" name="end-time" id="end-time" value="" data-clear-btn="true" >
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--Team's size-->
+                                          <label for="team-size">Team's size</label>
+                                        </td>
+
+                                        <td>
+                                          <input type="text" name="team-size" id="team-size" value="" data-clear-btn="true">
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--Shirt Color-->
+                                          <fieldset class="ui-field-contain">
+                                            <label for="shirt-color">Shirt color</label>
+                                          </td>
+
+                                          <td>
+                                            <select name="shirt-color" id="shirt-color">
+
+                                              <option value="mon">White</option>
+                                              <option value="tue">Black</option>
+                                              <option value="wed">Blue</option>
+                                            </select>
+                                          </fieldset>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--permanent-game-->
+                                          <label for="flip-select-second">Permanent?</label>
+                                        </td>
+                                        <td>
+                                          <select id="flip-select-second" name="flip-select" data-role="flipswitch">
+                                            <option selected="">No</option>
+                                            <option >Yes</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <!--Throphy-->
+                                          <label for="cup-picker">Throphy</label>
+                                        </td>
+                                        <td>
+                                          <select  id="cup-picker"  onchange="optionCupChanged()">
+                                            <option value="Throphy-1">Throphy-1</option>
+                                            <option value="Throphy-2">Throphy-2</option>
+                                          </select>
+
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                        </td>
+                                        <td align="center">
+                                          <img id="cupImg" src="img/cup.png" heigth="70" width="72"/>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <div class="custom-footer">
+                                      <a  href="#create-tournament-part2" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="next" >Next</a>
+
+                                    </div>
+
+                                  </div>
+                                </div>
+
+                                <!--page 4c.2- create-tournament page-part 2-->
+                                <div data-role="page" id="create-tournament-part2" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h3 style="font-size:110%" align="center"> Create tournament </h3>
+                                  </div>
+
+                                  <div data-role="content">
+
+                                    <!--ball-->
+
+                                    <fieldset class="ui-field-contain">
+
+                                      <label for="ball">  <img src="img/ball-icon.png" width="10%"></img> Ball</label>
+                                      <select name="ball" id="ball">
+                                        <option value="mon">Ron</option>
+                                        <option value="tue">Shani</option>
+                                        <option value="wed">Ofer</option>
+                                      </select>
+                                    </fieldset>
+                                    <!--Pump-->
+                                    <fieldset class="ui-field-contain">
+                                      <label for="pump"> <img src="img/pump.png" width="10%"></img> Pump</label>
+                                      <select name="pump" id="pump">
+                                        <option value="mon">---</option>
+                                        <option value="mon">Ron</option>
+                                        <option value="tue">Shani</option>
+                                        <option value="wed">Ofer</option>
+                                      </select>
+                                    </fieldset>
+                                    <!--Water-->
+                                    <fieldset class="ui-field-contain">
+                                      <label for="pump"><img src="img/water.png" width="10%"></img>Water</label>
+                                      <select name="water" id="water">
+                                        <option value="mon">---</option>
+                                        <option value="mon">Ron</option>
+                                        <option value="tue">Shani</option>
+                                        <option value="wed">Ofer</option>
+                                      </select>
+                                    </fieldset>
+                                    <!--Net-->
+                                    <fieldset class="ui-field-contain">
+                                      <label for="net"><img src="img/net.png" width="10%"></img>  Net</label>
+                                      <select name="net" id="net">
+                                        <option value="mon">---</option>
+                                        <option value="mon">Ron</option>
+                                        <option value="tue">Shani</option>
+                                        <option value="wed">Ofer</option>
+                                      </select>
+                                    </fieldset>
+                                    <div class="custom-footer">
+                                      <a  href="#tournament-created-yes-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="next" data-rel="popup" data-transition="pop" data-position-to="window">Next</a>
+
+                                    </div>
+
+                                    <!-- success-message -->
+
+                                    <div data-role="popup"  data-dismissible="false" id="tournament-created-yes-page" style="max-width:400px;">
+                                      <div role="main" class="ui-content">
+                                        <p>Tournament was successfully created!</p>
+                                        <a href="#team-page" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5"><center>OK</center></a>
+                                      </div>
+                                    </div>
+
+
+                                  </div>
+
+
+                                </div>
+                                <!--page 4c2- join-Tournament page-->
+                                <div data-role="page" id="join-tournament-page" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h1 style="font-size:120%"> Join tournament </h1>
+                                  </div>
+
+                                  <div data-role="content">
+                                    <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search...">
+                                      <!--tournament1-->
+                                      <li>
+                                        <a href="#">
+                                          <h1 > Park Gil </h1>
+                                          <p>25/12/18<p></a>
+                                          </li>
+                                          <!--tournament2-->
+                                          <li><a href="#">
+
+                                            <h1> Rampot </h1>
+                                            <p>2/8/18<p></a>
+                                            </li>
+                                          </ul>
+
+                                        </div>
+                                      </div>
+                                      <!--page 5- table-page-->
+                                      <div data-role="page" id="table-page" data-theme="b" >
+
+                                        <div data-role="header">
+                                          <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                          <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                          <h1 style="font-size:120%"> League table </h1>
+                                        </div>
+
+                                        <div data-role="content">
+                                          <table id="table1" summary="This table lists all the JetBlue flights.">
+                                            <thead>
+                                              <tr style="background:#999;">
+                                                <th scope="col" >Rank</th>
+                                                <th scope="col" >Name</th>
+                                                <th scope="col" >Points</th>
+                                                <th scope="col">Games</th>
+                                                <th scope="col">W</th>
+                                                <th scope="col">T</th>
+                                                <th scope="col">L</th>
+
+                                              </tr>
+                                            </thead>
+
+                                            <tbody>
+                                              <tr>
+                                                <th>1</th>
+                                                <td>Park Gil</td>
+                                                <td>9</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                              </tr>
+
+                                              <tr>
+                                                <th>2</th>
+                                                <td>Hapoel</td>
+                                                <td>6</td>
+                                                <td>3</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>1</td>
+
+                                              </tr>
+
+                                              <tr>
+                                                <th>3</th>
+                                                <td>Maccabi</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>3</td>
+
+                                              </tr>
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                      <!--page 6- gallery-page-->
+                                      <div data-role="page" id="gallery-page" data-theme="b" >
+
+                                        <div data-role="header">
+                                          <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                          <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                          <h1 style="font-size:120%"> Gallery </h1>
+                                        </div>
+
+                                        <div data-role="content">
+                                          <table  style="border:none" align="center">
+                                            <tr align="center">
+                                              <!--pic1-->
+                                              <td><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup1" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7262-24.jpg" alt="Skaret View" style="width:100%;"></a>
+                                              </td>
+                                              <!--pic2-->
+                                              <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup2" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7282-34.jpg" alt="Skaret2 View" style="width:100%;"></a>
+                                              </td>
+                                            </tr>
+                                            <tr align="center">
+                                              <!--pic3-->
+                                              <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup3" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7387-3.jpg" alt="Skaret2 View" style="width:100%;"></a>
+                                              </td>
+                                              <!--pic4-->
+                                              <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup4" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7461-1.jpg" alt="Skaret2 View" style="width:100%;"></a>
+                                              </td>
+                                            </tr>
+                                            <tr align="center">
+                                              <!--pic5-->
+                                              <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup6" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7345-19.jpg" alt="Skaret2 View" style="width:100%;"></a>
+                                              </td>
+                                              <!--pic6-->
+                                              <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup5" data-rel="popup" data-position-to="window">
+                                                <img src="img/IMG_7489-9.jpg" alt="Skaret2 View" style="width:100%;"></a>
+                                              </td>
+                                            </tr>
+                                            <!--pic7-->
+                                            <tr align="center"><td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup8" data-rel="popup" data-position-to="window">
+                                              <img src="img/img8.jpeg" alt="Skaret2 View" style="width:100%;"></a>
+                                            </td>
+
+                                            <!--pic8-->
+                                            <td ><a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#myPopup7" data-rel="popup" data-position-to="window">
+                                              <img src="img/WhatsApp Image 2018-02-20 at 21.16.31.jpeg" alt="Skaret2 View" style="width:100%;"></a>
+                                            </td>
+                                          </tr>
+                                        </table>
+
+                                        <!--pic1-popup-->
+                                        <div data-role="popup" id="myPopup1" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7262-24.jpg" style="width:100%;height:100%;" alt="Skaret View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic1-->
+                                        <!--pic2-popup-->
+                                        <div data-role="popup" id="myPopup2" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7282-34.jpg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic2-->
+                                        <!--pic3-popup-->
+                                        <div data-role="popup" id="myPopup3" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7387-3.jpg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic3-->
+
+                                        <!--pic4-popup-->
+                                        <div data-role="popup" id="myPopup4" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7461-1.jpg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic4-->
+                                        <!--pic5-popup-->
+                                        <div data-role="popup" id="myPopup5" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7489-9.jpg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic5-->
+                                        <!--pic6-popup-->
+                                        <div data-role="popup" id="myPopup6" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/IMG_7345-19.jpg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+                                        <!--end of pic6-->
+                                        <!--pic8-popup-->
+                                        <div data-role="popup" id="myPopup7" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/WhatsApp Image 2018-02-20 at 21.16.31.jpeg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic8-->
+                                        <!--pic7-popup-->
+                                        <div data-role="popup" id="myPopup8" data-overlay-theme="b">
+                                          <a href="tryit.asp-filename=tryjqmob_popup_overlay_photo.html#gallery-page" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="img/img8.jpeg" style="width:100%;height:100%;" alt="Skaret2 View">
+                                        </div>
+
+                                        <div class="custom-footer">
+                                        </div>
+                                        <!--end of pic7-->
+                                        <br>
+                                        <a  href="https://www.facebook.com/pg/gameonron/photos/?ref=page_internal"  style="background-color:#3B5998;  color: white; text-shadow:none"  data-role="button">Click here for more pictures </a>
+
+                                      </div>
+                                    </div>
+
+
+
+                                    <!--page 7- news-page-->
+                                    <div data-role="page" id="info-page" data-theme="b" >
+
+                                      <div data-role="header">
+                                        <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                        <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                        <h1 style="font-size:120%"> Information </h1>
+                                      </div>
+                                      <div data-role="content">
+                                        <table  style="border:none" align="center">
+                                          <tr align="center">
+                                            <td><img src="img/newsCategory.png" style=" width:50%;"></img>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                        <div class="custom-footer">
+                                          <a  href="#league-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="infobutton-league" >League table</a>
+                                          <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="infobutton-fields" >Fields</a>
+                                        </div>
+
+                                      </div>
+
+                                      <!--<div data-role="content">
+                                      <div class="example1">
+                                      <h3>No news for now </h3>
+                                    </div>
+
+                                  </div>-->
+                                </div>
+
+
+
+                                <!--page 8- players-page-->
+                                <div data-role="page" id="players2-page" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h1 style="font-size:120%"> GameOn </h1>
+                                  </div>
+
+                                  <div data-role="content">
+                                    <table  style="border:none" align="center">
+                                      <tr align="center">
+                                        <td><img src="img/profilesCategory.png" style=" width:50%;"></img>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <div class="custom-footer">
+                                      <a  href="#rank-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="playersbutton" >Watch</a>
+                                      <a href="#rank-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="playersbutton" >Rank</a>
+                                    </div>
+
+                                  </div>
+                                </div>
+
+                                <!--page 8.1-pre-rank-page-->
+                                <div data-role="page" id="players-page" data-theme="b" >
+
+                                  <div data-role="header">
+                                    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                    <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                    <h1 style="font-size:120%"> Players </h1>
+                                  </div>
+
+                                  <div data-role="content">
+                                    <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search...">
+                                      <!--player1-->
+                                      <li>
+                                        <a href="#profile-page">
+                                          <img src="img/barak.jpg" alt="Barak Osmo">
+                                          <h1 > Barak Osmo </h1>
+                                          <p>Position:Midfielder<p></a>
+                                          </li>
+                                          <!--player2-->
+                                          <li><a href="#">
+                                            <img src="img/adir.jpg" alt="Adir Pano">
+                                            <h1> Adir Pano </h1>
+                                            <p>Position:Midfielder<p></a>
+                                            </li>
+                                          </ul>
+
+                                        </div>
+                                      </div>
+
+                                      <!--page 8.1.1-profile-page-->
+                                      <div data-role="page" id="profile-page" data-theme="b" >
+
+                                        <div data-role="header">
+                                          <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                          <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                          <h1 id="user-full-name" style="font-size:120%"> </h1>
+                                        </div>
+
+                                        <div data-role="content">
+                                          <center><img id="user-image-pro" src="img/user.png" alt="Barak Osmo" style="width:300px;height:300px; border:2px solid #b8b8b8; object-fit: cover;">
+
+                                          </center>
+                                          <table id="tbl3"  bgcolor="#ffffff" align="center" width="70%">
+
+                                            
+                                            <tr>
+                                              <td align="right">Age:
+                                              </td>
+                                              <td align="left"><span  id="userAgeProfile"></span>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td align="right">City:
+                                              </td>
+                                            </td>
+                                            <td align="left"> <span id="userCityProfile"></span>
+                                            </tr>
+                                            <tr>
+                                              <td align="right">Foot:
+                                              </td>
+                                            </td>
+                                            <td align="left"><span  id="userFootProfile"></span>
+                                            </tr>
+                                          </table>
+
+                                          <table style="border:none" align="center">
+                                            <tr>
+                                              <td  style="padding: 25px;">Goals<img src="img/ball-icon.png" width="25%" ></img>x<span id="user-goals"></span>
+                                              </td>
+                                              <td  align="right" style="padding-right: 25px;"> Assits<img src="img/soccer-shoe.png" width="35%" ></img>x<span id="user-assists"></span>
+                                              </td>
+                                            </tr>
+                                          </table>
+
+
+
+                                          <table id="tbl1" style=" border:2px solid #b8b8b8;" align="center" >
+
+                                            <tr>
+                                              <td>Speed
+                                              </td>
+                                              <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/golden-ball.png" width="30%" class="category_rank" id="Speed"></img></a>
+                                              </td>
+                                              <td id="Speed-td">x<span id="user-Speed"></span>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td >Shot
+                                              </td>
+                                              <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/golden-ball.png" width="30%" class="category_rank" id="Shot" ></img></a>
+                                              </td>
+                                              <td id="Shot-td">x<span id="user-Shot"></span>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td >Dribble
+                                              </td>
+                                              <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/golden-ball.png" width="30%" class="category_rank" id="Dribble" ></img></a>
+                                              </td>
+                                              <td id="Dribble-td">x<span id="user-Dribble"></span>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td >Fairness
+                                              </td>
+                                              <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/golden-ball.png" width="30%" id="Fairness" ></img></a>
+                                              </td>
+                                              <td id="Fairness-td">x<span id="user-Fairness"></span>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td >Header
+                                              </td>
+                                              <td align="right">  <img src="img/golden-ball.png" width="30%"  id="Header"></img></td>
+                                              <td id="Header-td">x<span id="user-Header"></span>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                        </div>
+
+                                      </div>
+
+
+
+
+                                      <!--page 9- sign-up page-->
+
+                                      <div data-role="page" id="sign-up" data-theme="b" style=" background-image: url('img/purple.png');">
+                                        <div data-role="header">
+
+
+                                          <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-right ui-btn-icon-notext"  ></a>
+                                          <h1 style="font-size:120%">Sign-up</h1>
+                                        </div>
+                                        <div role="main" class="ui-content" >
+                                          <!--picture-->
+                                          <!--  <div align="center">  <img src="img/user.png" style=" width:25%;"></img> </div><br>
+
+                                          <form method="POST" action="uploadGame2.php" enctype="multipart/form-data">
+
+                                          <input type="file" name="image">
+                                          <input type="submit" name="submit_image" value="Upload">
+                                        </form>-->
+                                        <div style="margin:0 auto; width:30%!important;text-align: center;">
+                                          <img src="img/user.png" id='img'class="normal" style="width: 100px; height: 100px;"></div>
+                                          <table style="border:none" align="center">
+                                            <tr>
+                                              <td>
+                                                <button onclick="Rotate()">Rotate</button>
+                                              </td>
+                                              <td>
+                                                <button onclick="deletePhoto()">Delete</button>
+                                              </td>
+                                            </tr>
+                                          </table>
+
+                                          <br/>
+                                          <div style="width:100%; text-align:center; padding:10px;">
+                                            <button id='but_take'>Take photo</button>
+                                            <button id='but_select'>Select photo from Gallery</button>
+                                          </div>
+                                          <table  style="border:none" align="center">
+                                            <tr>
+                                              <td>
+                                                <!--User Name-->
+                                                <label for="txt-user-sign-in">User Name</label>
+                                              </td>
+                                              <td>
+                                                <input type="text" name="txt-user-sign-in" id="txt-user-sign-in" value="" data-clear-btn="true">
+                                              </td>
+                                            </tr>
+                                            <tr><td>
+
+                                              <!--First Name-->
+                                              <label for="txt-first-sign-in">First Name</label>
+                                            </td>
+                                            <td>
+                                              <input type="text" name="txt-first-sign-in" id="txt-first-sign-in" value="" data-clear-btn="true">
+                                            </td>
+                                          </tr>
+                                          <tr><td>
+                                            <!--Last Name-->
+                                            <label for="txt-last-sign-in">Last Name</label>
+                                          </td>
+                                          <td>
+                                            <input type="text" name="txt-last-sign-in" id="txt-last-sign-in" value="" data-clear-btn="true">
+                                          </td>
+                                        </tr>
+                                        <tr><td>
+                                          <!--password-->
+                                          <label for="txt-password-sign-in">Password</label>
+                                        </td>
+                                        <td>
+                                          <input type="password" name="txt-password-sign-in" id="txt-password-sign-in" value="" data-clear-btn="true">
+                                        </td>
+                                      </tr>
+                                      <tr><td>
+                                        <!--E-mail-->
+                                        <label for="txt-email-sign-in">Email</label>   </td> <td>
+                                          <input type="text" name="txt-email-sign-in" id="txt-email-sign-in" value="" data-clear-btn="true">
+                                        </td>
+                                      </tr>
+                                      <tr><td>
+                                        <!--City-->
+                                        <fieldset class="ui-field-contain">
+                                          <label for="city-sign-in">City</label>  </td> <td>
+                                            <select name="city-sign-in" id="city-sign-in">
+                                              <optgroup label="North">
+                                                <option value="1">Nahariya</option>
+                                                <option value="2">Haifa</option>
+                                                <option value="3">Nesher</option>
+                                              </optgroup>
+                                              <optgroup label="Center">
+                                                <option value="4">Nataniya</option>
+                                                <option value="5">Tel-Aviv</option>
+                                              </optgroup>
+                                              <optgroup label="South">
+                                                <option value="6">Ashdod</option>
+                                              </optgroup>
+                                            </select>
+                                          </fieldset>
+                                        </td>
+                                      </tr>
+                                      <tr><td>
+                                        <!--Date of birt-->
+                                        <label for="date-sign-in">Date of birth:</label>  </td> <td>
+                                          <input type="date" name="date-sign-in" id="date-sign-in" value=""  />
+                                        </td>
+                                      </tr>
+
+                                      <!--Foot-->
+                                      <tr><td>
+                                        <label for="foot-sign-in">Strong foot</label>
+                                        <td>
+                                          <select id="foot-sign-in" name="foot-sign-in" data-role="flipswitch" >
+
+                                            <option selected="">L</option>
+                                            <option >R</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                    </table>
+
+                                    <a href="#dlg-pwd-reset-sent" data-rel="popup" data-role="button" data-transition="pop" data-position-to="window" id="sign-in-btn" name="sign-in-btn" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+                                    <!-- <div data-role="popup" id="dlg-pwd-reset-sent" data-dismissible="false" style="max-width:400px;">
+                                    <div data-role="header">
+                                    <h1>Password Reset</h1>
+                                  </div>
+                                  <div role="main" class="ui-content">
+                                  <h3>Check Your Inbox</h3>
+                                  <p>We sent you an email with instructions on how to reset your password. Please check your inbox and follow the instructions in the email.</p>
+                                  <div class="mc-text-center"><a href="#sign-up" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a></div>
+                                </div>-->
+
+                              </div><!-- /content -->
+                            </div><!-- /page -->
+
+
+                            <!-- password-message Page -->
+                            <div data-role="page" data-dialog="true" id="password-page">
+                              <div data-role="popup"  data-dismissible="false" style="max-width:400px;">
+                                <div data-role="header">
+                                  <h1>Error!</h1>
+                                </div>
+                                <div role="main" class="ui-content">
+                                  <p>Please fill in the password field</p>
+                                  <a href="#category-page"><center>OK</center></a>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <!-- user-message Page -->
+                            <div data-role="page" data-dialog="true" id="user-page">
+                              <div data-role="header">
+                                <h1 align="center">Error!</h1>
+                              </div>
+                              <div role="main" class="ui-content">
+                                <p align="center">Please fill in the user-name field</p>
+                                <a href="#category-page"><center>OK</center></a>
+                              </div>
+                            </div>
+
+
+
+
+                            <!-- map page-->
+                            <div data-role="page" id="map-page" data-theme="b" data-url="map-page">
+
+                              <div data-role="header">
+                                <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow-icon ui-corner-all" data-icon="bars"></a>
+                                <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                <h1 style="font-size:120%"> GameOn </h1>
+                              </div>
+
+
+                              <div id="map-canvas">
+                                <!-- map loads here... -->
+                              </div>
+
+                            </div>
+
+
+                            <!--Fields-page-->
+                            <div data-role="page" id="fields-page" data-theme="b" >
+
+                              <div data-role="header">
+                                <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                <h1 style="font-size:120%"> Fields </h1>
+                              </div>
+
+                              <div data-role="content">
+                                <ul  data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search..." id=fields-list>
+                                  <!--field1-->
+
+                                </ul>
+
+                              </div>
+                            </div>
+
+
+                            <!--Field1-page-->
+                            <div data-role="page" id="field-info-dynamic" data-theme="b" class="field11">
+                              <div data-role="header">
+                                <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                <h1 id="field-name-h1" style="font-size:120%"> </h1>
+                              </div>
+                              <div align="center">
+                                <br>
+                                <img id="field-img" src="" alt="gil park" style="width:344px;height:344px; object-fit: cover; border:2px solid #b8b8b8;">
+                              </div>
+                              <div data-role="content" data-role="collapsibleset" class="field11">
+                                <div data-role="collapsible">
+                                  <h2>Details</h2>
+                                  <ul data-role="listview" data-theme="a" id="field-deatils">
+                                    <li style="font-size:80%"><b>Type:</b> <span id="type-field"></li>
+                                      <li style="font-size:80%"><b>Size:</b> <span id="size-field"></li>
+                                        <li style="font-size:80%"><b>Amount of people:</b> <span id="amountOfpeople-field"></li>
+                                        </ul>
+                                      </div>
+                                      <div data-role="collapsible">
+                                        <h2>Activity time</h2>
+                                        <ul data-role="listview" data-theme="a">
+                                          <li style="font-size:80%"><b>Hours:</b> <span id="hours-field"></li>
+                                            <li style="font-size:80%"><b>Lighting:</b> <span id="lighting-field"></li>
+                                            </ul>
+                                          </div>
+                                          <div data-role="collapsible" class="field11">
+                                            <h2>Location</h2>
+                                            <ul data-role="listview" data-theme="a" class="field11">
+                                              <li style="font-size:80%"><b>City:</b> <span id="city-field"></li>
+                                                <li style="font-size:80%"><b>Address:</b> <span id="address-field"></li>
+                                                  <li class="field11" style="font-size:80%"><b>Map:</b><div id="map"></div> </li>
+
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <!--page 11- about-us page-->
+
+                                          <div data-role="page" id="join-game-page2" data-theme="b">
+                                            <div data-role="header">
+                                              <h1>About Us</h1>
+                                            </div>
+                                            <!-- /header -->
+                                            <div data-role="content">
+                                              <div data-role="controlgroup">
+                                                <input type="text" id="txt" placeholder="Enter Your Name" />
+                                                <br>
+                                                <fieldset data-role="controlgroup" data-type="horizontal">
+                                                  <input type="radio" name="radio-view" id="radio-view-a" value="Camera" checked="checked" />
+                                                  <label for="radio-view-a">Camera</label>
+                                                  <input type="radio" name="radio-view" id="radio-view-b" value="Gallery" />
+                                                  <label for="radio-view-b">Gallery</label>
+                                                </fieldset>
+                                                <a href="#" id="getPic" data-role="button" onclick="workManager()">Take A Picture</a>
+                                              </div>
+
+                                            </div>  <!-- /content -->
+                                            <div data-role="controlgroup" data-type="horizontal" style="text-align:center; width:100%">
+                                              <img id="mainImage" style="width:90%; border: 5px solid white" src="img/user.png" />
+                                            </div>
+
+                                          </div> <!-- /page -->
+
+                                          <!--page 12- game-info page-->
+                                          <div data-role="page" id="game-info" data-theme="b" >
+
+                                            <div data-role="header">
+                                              <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                              <a data-rel="back" id="back-game-info" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                              <h1 style="font-size:120%" align="center"> Game info </h1>
+                                            </div>
+
+                                            <div data-role="content">
+                                              <table  style="border:none" width="100%">
+                                                <tr>
+                                                  <td>
+                                                    <!--Game's Creator-->
+                                                    <label for="game-creator-info">Game's Creator:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="game-creator-info" id="game-creator-info" value=""  readonly style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Game id-->
+                                                    <label for="game-id-info">Game id:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="game-id-info" id="game-id-info" value=""  readonly style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Date-->
+                                                    <label for="date-game-info">Date:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input type="date" name="date-game-info" id="date-game-info" value=""  readonly style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Location-->
+                                                    <label for="locaition-info">Location</label>
+                                                  </td>
+                                                  <td>
+
+                                                    <a name="locaition-info" id="locaition-info" value="" data-role="button"  onclick="fieldsDeatilsToAjax()" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 butten-with-icon loadinfo" readonly style="text-align:center; background-color: #2a2a2a;"></a>
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--start-time-->
+                                                    <label for="start-time-game-info">Start time</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="start-time-game-info" id="start-time-game-info" type="time" value="" readonly style="text-align:center;">
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                  <td>
+                                                    <!--End time-->
+
+                                                    <label for="duration-info">End time</label>
+                                                  </td>
+                                                  <td>
+                                                    <input type="time" name="duration-info" id="duration-info" value="" readonly style="text-align:center;">
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--current-players-->
+                                                    <label for="current-players-game-info">Current players</label>
+                                                  </td>
+                                                  <td>
+                                                    <!--current players info-->
+                                                    <a name="current-players-game-info" id="current-players-game-info" data-role="button"  onclick="showPlayersList()" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 butten-with-icon loadinfo" readonly style="text-align:center; background-color: #2a2a2a;"></a>
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                  <td>
+                                                    <!--Available spaces-->
+                                                    <label for="num-players-game-info">Available spaces</label>
+                                                  </td>
+                                                  <td>
+                                                    <!--players info-->
+                                                    <input type="text" name="num-players-game-info" id="num-players-game-info"  value="" readonly style="text-align:center;">
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                  <td>
+                                                    <!--permanent-game-->
+                                                    <label for="flip-select-second-game-creat">Permanent?</label>
+                                                  </td>
+                                                  <td>
+                                                    <input type="text" name="permanent-game-info" id="permanent-game-info" value="" readonly style="text-align:center;">
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--public_game-->
+                                                    <label for="public-game-creat">Public?</label>
+                                                  </td>
+                                                  <td>
+                                                    <input type="text" name="public-game-info" id="public-game-info" value="" readonly style="text-align:center;">
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                              <div class="custom-footer">
+                                                <table  style="border:none" width="100%">
+                                                  <tr>
+                                                    <td width="50%">
+                                                      <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check" data-role="button"  onclick="joinInvitation()" id="approve-game" >Join</a>
+                                                    </td>
+                                                    <td width="50%">
+                                                      <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" data-role="button"  onclick="cancelInvitation()" id="cancel-game" >Cancel</a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </div>
+
+                                            </div>
+                                          </div>
+
+                                          <!--page 12.b part 2- players list-->
+                                          <div data-role="page" id="players-joined-list" data-theme="b" >
+
+                                            <div data-role="header">
+                                              <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                              <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                              <h1 style="font-size:120%"> Players list</h1>
+                                            </div>
+
+                                            <div data-role="content">
+                                              <form method="POST" name="MyFormGame-playersList">
+                                                <ul data-role="listview" data-inset="true" class="list-with-checkbox" id="players-list-info">
+
+                                                </ul>
+                                              </form>
+                                            </div>
+                                          </div>
+
+
+                                          <!--page 13- edit-game-info page-->
+                                          <div data-role="page" id="edit-game-info" data-theme="b" >
+
+                                            <div data-role="header">
+                                              <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                              <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                              <h1 style="font-size:120%"> Edit games </h1>
+                                            </div>
+
+                                            <div data-role="content">
+                                              <ul id="edit-game-deatils" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search...">
+                                                <!--games-->
+
+                                              </ul>
+
+                                            </div>
+                                          </div>
+                                          <!--page 13- edit-game-info page-->
+                                          <div data-role="page" id="edit-specific-game-info" data-theme="b" >
+
+                                            <div data-role="header">
+                                              <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                              <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                              <h1 style="font-size:120%" align="center"> Edit Game </h1>
+                                            </div>
+
+                                            <div data-role="content">
+                                              <table  style="border:none" width="100%">
+
+                                                <tr>
+                                                  <td>
+                                                    <!--Game's Creator-->
+                                                    <label for="game-creator-info">Game's Creator:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="edit-game-creator-info" id="edit-game-creator-info" value=""  readonly style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Game id-->
+                                                    <label for="edit-game-id-info">Game id:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="edit-game-id-info" id="edit-game-id-info" value=""  readonly style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Date-->
+                                                    <label for="edit-date-game-info">Date:</label>
+                                                  </td>
+                                                  <td>
+                                                    <input type="date" name="edit-date-game-info" id="edit-date-game-info" value="" style="text-align:center;"/>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Location-->
+                                                    <label for="edit-locaition-info">Location</label>
+                                                    <fieldset class="ui-field-contain">
+
+                                                    </td>
+                                                    <td>
+                                                      <select name="edit-locaition-info" id="edit-locaition-info">
+                                                        <optgroup label="North">
+
+                                                        </optgroup>
+                                                      </select>
+                                                    </fieldset>
+
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--start-time-->
+                                                    <label for="edit-start-time-game-info">Start time</label>
+                                                  </td>
+                                                  <td>
+                                                    <input name="edit-start-time-game-info" id="edit-start-time-game-info" type="time" value="" style="text-align:center;">
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td>
+                                                    <!--Duration-->
+                                                    <fieldset class="ui-field-contain">
+                                                      <label for="edit-duration-info">Duration</label>
+                                                    </td>
+                                                    <td>
+                                                      <select name="edit-duration-info" id="edit-duration-info">
+
+                                                        <option value=1>1</option>
+                                                        <option value=1.5>1.5</option>
+                                                        <option value=2>2</option>
+                                                        <option value=2.5>2.5</option>
+                                                        <option value=3>3</option>
+                                                        <option value=3.5>3.5</option>
+                                                        <option value=4>4</option>
+                                                      </select>
+                                                    </fieldset>
+                                                  </td>
+                                                </tr>
+                                                <td>
+                                                  <!--Max spaces-->
+                                                  <label for="edit-max-players-game-info">Maximum players</label>
+                                                </td>
+                                                <td>
+                                                  <!--players info-->
+                                                  <input type="text" name="edit-max-players-game-info" id="edit-max-players-game-info"  value="" style="text-align:center;">
+                                                </td>
+                                              </tr>
+
+                                              <tr>
+                                                <td>
+                                                  <!--permanent-game-->
+                                                  <label for="edit-flip-select-second-game-creat">Permanent?</label>
+                                                </td>
+                                                <td>
+                                                  <select id="edit-flip-select-second-game-creat" name="edit-flip-select-second-game-creat" data-role="flipswitch" >
+
+                                                    <option selected="">No</option>
+                                                    <option >Yes</option>
+                                                  </select>
+
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                  <!--public_game-->
+                                                  <label for="edit-public-game-creat">Public?</label>
+                                                </td>
+                                                <td>
+                                                  <select id="edit-public-game-creat" name="edit-public-game-creat" data-role="flipswitch" >
+
+                                                    <option selected="">No</option>
+                                                    <option >Yes</option>
+                                                  </select>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <div class="custom-footer">
+                                              <table  style="border:none" width="100%">
+                                                <tr>
+                                                  <td width="50%">
+                                                    <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon3" data-role="button"   id="edit-addPlayers" >Add Players</a>
+                                                  </td>
+                                                  <td width="50%">
+                                                    <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-shop" data-role="button"   id="edit-accesories-btn" >Accesories</a>
+                                                  </td>
+                                                </tr>
+
+                                                <tr>
+                                                  <td width="50%">
+                                                    <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle" data-role="button"   id="edit-update-game" >Update</a>
+                                                  </td>
+                                                  <td width="50%">
+                                                    <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-forbidden" data-role="button"  id="edit-delete-game" >Delete</a>
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                            </div>
+
+                                          </div>
+                                        </div>
+
+                                        <!--page 14- edit accesories-->
+                                        <div data-role="page" id="edit-accesories" data-theme="b" >
+
+                                          <div data-role="header">
+                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                            <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                            <h1 style="font-size:120%" align="center"> Edit accesories </h1>
+                                          </div>
+
+                                          <div data-role="content">
+
+                                            <!--ball-->
+
+                                            <fieldset class="ui-field-contain">
+
+                                              <label for="ball">  <img src="img/ball-icon.png" width="10%"></img> Ball</label>
+                                              <select name="ball-game-creat" id="edit-ball-game">
+                                                <option value=""></option>
+                                              </select>
+                                            </fieldset>
+                                            <!--Pump-->
+                                            <fieldset class="ui-field-contain">
+                                              <label for="pump"> <img src="img/pump.png" width="10%"></img> Pump</label>
+                                              <select name="pump-game-creat" id="edit-pump-game">
+                                                <option value=""></option>
+                                              </select>
+                                            </fieldset>
+                                            <!--Water-->
+                                            <fieldset class="ui-field-contain">
+                                              <label for="pump"><img src="img/water.png" width="10%"></img>Water</label>
+                                              <select name="water-game-creat" id="edit-water-game">
+                                                <option value=""></option>
+                                              </select>
+                                            </fieldset>
+                                            <!--Net-->
+                                            <fieldset class="ui-field-contain">
+                                              <label for="net"><img src="img/net.png" width="10%"></img>  Net</label>
+                                              <select name="net-game-creat" id="edit-net-game">
+                                                <option value=""></option>
+                                                <option value="Ron"></option>
+                                              </select>
+                                            </fieldset>
+                                            <div class="custom-footer">
+                                              <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle" data-role="button" id="update-acc">Update</a>
+
+                                            </div>
+
+
+
+                                          </div>
+
+
+                                        </div>
+
+                                        <!--page 15- edit-game -add-playersToGame-->
+                                        <div data-role="page" id="edit-add-playersToGame" data-theme="b" >
+
+                                          <div data-role="header">
+                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                            <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                            <h1 style="font-size:120%"> Add Players </h1>
+                                          </div>
+
+                                          <div data-role="content">
+                                            <form method="POST" name="MyFormEditGame">
+                                              <ul data-role="listview" data-inset="true" class="list-with-checkbox" id="ulEdit-addPlayersToGame">
+
+                                              </ul>
+                                            </form>
+                                            <div class="custom-footer">
+                                              <a  href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle " data-role="button" id="edit-update-add-players" data-rel="popup" data-transition="pop" data-position-to="window" onclick="CheckCheckboxesForEdit()">Done</a>
+
+                                            </div>
+
+
+                                          </div>
+                                        </div>
+                                        <!--page 16-rank-profile-page-->
+                                        <div data-role="page" id="rank-page" data-theme="b" >
+
+                                          <div data-role="header">
+                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                            <a data-rel="back" data-icon="back" id="back-from-rank" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                            <h1 id="rank-full-name" style="font-size:120%"> </h1>
+                                          </div>
+
+                                          <div data-role="content">
+                                            <center><img id="rank-image-pro" src="img/user.png" alt="Barak Osmo" style="width:300px;height:300px; border:2px solid #b8b8b8; object-fit: cover;">
+
+                                            </center>
+
+
+                                            <table style="border:none" align="center">
+                                              <tr>
+                                                <td  style="padding: 25px;">Goals<img src="img/ball-icon.png" width="25%" ></img>x<span id="rank-user-goals"></span>
+                                                </td>
+                                                <td  align="right" style="padding-right: 25px;"> Assits<img src="img/soccer-shoe.png" width="35%" ></img>x<span id="rank-user-assists"></span>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <div id="myId" name=""></div>
+
+
+                                            <table id="ranktbl1" style=" border:2px solid #b8b8b8;" align="center" >
+
+                                              <tr >
+                                                <td >Speed
+                                                </td>
+                                                <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/ball-icon2.png" width="30%" class="category_rank" id="rank-Speed" onclick="changeToRankedBall('Speed')"></img></a>
+                                                </td>
+                                                <td id="rank-Speed-td">x<span id="rank-user-Speed"></span>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td >Shot
+                                                </td>
+                                                <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/ball-icon2.png" width="30%" class="category_rank" id="rank-Shot" onclick="changeToRankedBall('Shot')"></img></a>
+                                                </td>
+                                                <td id="rank-Shot-td">x<span id="rank-user-Shot"></span>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td >Dribble
+                                                </td>
+                                                <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/ball-icon2.png" width="30%" class="category_rank" id="rank-Dribble" onclick="changeToRankedBall('Dribble')"></img></a>
+                                                </td>
+                                                <td id="rank-Dribble-td">x<span id="rank-user-Dribble"></span>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td >Fairness
+                                                </td>
+                                                <td align="right"> <a href="#" data-rel="popup" data-transition="pop" data-position-to="window"> <img src="img/ball-icon2.png" width="30%" id="rank-Fairness" onclick="changeToRankedBall('Fairness')"></img></a>
+                                                </td>
+                                                <td id="rank-Fairness-td">x<span id="rank-user-Fairness"></span>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td >Header
+                                                </td>
+                                                <td align="right">  <img src="img/ball-icon2.png" width="30%"  id="rank-Header" onclick="changeToRankedBall('Header')"></img></td>
+                                                <td id="rank-Header-td">x<span id="rank-user-Header"></span>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <div class="custom-footer">
+                                              <a  href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon " data-role="button" id="rankPlayersBtn" onclick="rankPlayer()">Done</a>
+
+                                            </div>
+                                          </div>
+
+                                        </div>
+
+                                        <!--page 17- playersFromGame-ranking players-->
+                                        <div data-role="page" id="playersFromGame" data-theme="b" >
+
+                                          <div data-role="header">
+                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                            <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                            <h1 style="font-size:120%"> Ranking Players </h1>
+                                          </div>
+
+                                          <div data-role="content">
+                                            <form method="POST" name="MyFormRanking">
+                                              <ul data-role="listview" data-inset="true" class="list-with-checkbox" id="ulRanking-Players">
+
+                                              </ul>
+                                            </form>
+                                            <div class="custom-footer">
+                                              <a  href="#main-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon " data-role="button" id="edit-update-add-players">Done</a>
+
+                                            </div>
+
+
+                                          </div>
+                                        </div>
+
+                                        <script type="text/javascript" src="cordova.js"></script>
+
+                                      </body>
+                                      </html>
