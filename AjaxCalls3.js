@@ -3,7 +3,7 @@
            function selectPlayersNotInvited(gameid){
 
           $.ajax({
-                  url: "http://35.233.40.121/gameonphp/selectAllPlayersNotInvited.php",
+                  url: "http://35.233.83.193 /gameonphp/selectAllPlayersNotInvited.php",
                   type: "post",
                   data:{gameid:gameid},
                   success: function(data){
@@ -37,7 +37,7 @@ $('#ulEdit-addPlayersToGame').listview('refresh');
                  var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
                 $.ajax({
-                        url: "http://35.233.40.121/gameonphp/selectGamesThatOver.php",
+                        url: "http://35.233.83.193 /gameonphp/selectGamesThatOver.php",
                         type: "post",
                         data:{uname:uname,hourTime:hourTime,now:now,today:today},
 
@@ -73,7 +73,7 @@ showPlayersToRank(item.game_id);
                        //selecting user's deatils- for ranking
                        function   profileDeatilsForRanking(username){
                          $.ajax({
-                           url: "http://35.233.40.121/gameonphp/connection.php",
+                           url: "http://35.233.83.193 /gameonphp/connection.php",
                            type: "post",
                            data:{uname:username},
                            success: function(data){
@@ -98,13 +98,13 @@ showPlayersToRank(item.game_id);
                                if(item.profile_picture!=null  && item.profile_picture!="")
                                {
                                  //picture in profile page
-                                 y.setAttribute("src", "http://35.233.40.121/gameonphp/upload/"+item.profile_picture);
+                                 y.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/"+item.profile_picture);
 
                                }
                                else {
 
                                  //picture in menu
-                                 y.setAttribute("src", "http://35.233.40.121/gameonphp/upload/user.png");
+                                 y.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/user.png");
                                }
 
                              });
@@ -142,7 +142,7 @@ document.getElementById("rank-Header").src="img/ball-icon2.png";
                         var fairness= parseInt(document.getElementById("rank-user-Fairness").innerHTML);
 
                          $.ajax({
-                           url: "http://35.233.40.121/gameonphp/update_rank_user.php",
+                           url: "http://35.233.83.193 /gameonphp/update_rank_user.php",
                            type: "post",
                            data:{playerId:playerId,
                            goals:goals,assits:assits,
@@ -173,7 +173,7 @@ document.getElementById("rank-Header").src="img/ball-icon2.png";
                      var user_choice="joined";
 
                          $.ajax({
-                           url: "http://35.233.40.121/gameonphp/show_players_list.php",
+                           url: "http://35.233.83.193 /gameonphp/show_players_list.php",
                            type: "post",
                            data:{game_id:game_id, user_choice:user_choice},
                            success: function(data){
