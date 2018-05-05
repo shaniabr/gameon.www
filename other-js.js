@@ -78,19 +78,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.233.83.193/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.233.83.193/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.233.83.193/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.83.193 /gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.233.83.193/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
