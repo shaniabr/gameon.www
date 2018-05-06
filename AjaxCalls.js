@@ -170,7 +170,8 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
         if(data.length!=0)
         $.each(data,function(i,item){
 
-          $('#join-game-deatils').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="gamesDeatils(\'' +item.game_id+ '\');">Date:'+' '+item.game_date+' Time:'+' '+item.start_time+'</a></li>').listview('refresh');
+          $('#join-game-deatils').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="gamesDeatils(\'' +item.game_id+ '\');" style="padding-top: 0px; padding-bottom: 0px;"> <h1 style="color:#8bb7f0;">Date: '+item.game_date+'   '+item.start_time+'</h1> <p style="font-size: 14px;">Location: '+item.field_name+', '+item.city+'</p> <p style="font-size: 14px;">Creator: '+item.first_name+' '+item.last_name+'</p></a></li>').listview('refresh');
+
         });
         hideLoading();
       }
