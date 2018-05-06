@@ -153,7 +153,7 @@ $('#addPlayersToGame').listview('refresh');
 
                   //add the elemnts to the list
 
-                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');">'+item.field_name+':'+' '+item.city+' ,'+item.address+'</a></li>').listview('refresh');
+                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.field_img+'"><h1>'+item.field_name+':'+' '+item.city+' </h1><p>'+item.address+'</p></a></li>').listview('refresh');
                             });
                             hideLoading();
                           }, error: function(data){hideLoading();}
