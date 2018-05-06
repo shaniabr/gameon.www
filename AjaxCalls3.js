@@ -151,6 +151,9 @@ document.getElementById("rank-Header").src="img/ball-icon2.png";
                           fairness:fairness},
                            success: function(data){
                                setTimeout(function(){   swal("User was ranked!");},50);
+                               //add Notification for ranking
+                               addRnkingNoti(uname,playerId);
+
                              $.each(data,function(i,item){
 
                              });
@@ -187,3 +190,100 @@ document.getElementById("rank-Header").src="img/ball-icon2.png";
 
              hideLoading();
                        }
+
+
+
+                       //selecting all notifications to user
+                       function selectAllNotiOfPlayer(uname){
+
+
+                         $.ajax({
+                           url: "http://localhost/gameonphp/selectAllNoti.php",
+                           type: "post",
+                           data:{uname: uname},
+                           success: function(data){
+                             if(data.length!=0)
+                             $.each(data,function(i,item){
+
+//game invitation noti//
+                     if(item.text=="game_invitation_mes")
+
+                                   $('#ulNoti').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="updateGameNoti(\'' +item.noti_id + '\',\'' +item.game_id+ '\');">Game invitation from '+item.first_name+" "+item.last_name+'</a></li>').listview('refresh');
+
+//ranking noti//
+                               else {
+ $('#ulNoti').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="updateNoti(\'' +item.noti_id+ '\');">You were ranked by'+' '+item.first_name+" "+item.last_name+'</a></li>').listview('refresh');
+                               }
+                             });
+                             hideLoading();
+                           },  error: function(data){hideLoading();},
+                         });
+
+                       }
+
+
+                       //updating notifications to 'read' and calling game deatils function
+                       function updateGameNoti(noti_id,game_id){
+
+                         $.ajax({
+                           url: "http://localhost/gameonphp/update_noti.php",
+                           type: "post",
+                           data:{noti_id: noti_id},
+                           success: function(data){
+                             if(data.length!=0)
+                          //   $.each(data,function(i,item){
+
+                                  gamesDeatils(game_id);
+                          //   });
+                             hideLoading();
+                           }
+                         });
+                       }
+
+
+                       //updating notifications to 'read' and calling profile deatils function
+                       function updateNoti(noti_id){
+
+                         $.ajax({
+                           url: "http://localhost/gameonphp/update_noti.php",
+                           type: "post",
+                           data:{noti_id: noti_id},
+                           success: function(data){
+                             if(data.length!=0)
+                          //   $.each(data,function(i,item){
+
+                                profileDeatils(uname);
+                        //     });
+                             hideLoading();
+                           }
+                         });
+                       }
+
+
+
+                        //creating notification of game invitation to user
+                        function addGameNoti(g_id,uname,picked_Users){
+                     var notiType="game_invitation_mes";
+                          $.ajax({
+                            url: "http://localhost/gameonphp/add_noti.php",
+                            type: "post",
+                            data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
+                            success: function(data){
+                            //  if(data.length!=0)
+                            }
+                          });
+                        }
+
+                        //creating notification of game invitation to user
+                        function addRnkingNoti(uname,picked_Users){
+                     var notiType="ranking";
+                     g_id=null;
+                          $.ajax({
+                            url: "http://localhost/gameonphp/add_noti.php",
+                            type: "post",
+                            data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
+                            success: function(data){
+                            //  if(data.length!=0)
+                            }
+                          });
+                        }

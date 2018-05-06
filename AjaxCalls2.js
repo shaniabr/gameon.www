@@ -73,6 +73,8 @@ $('#addPlayersToGame').listview('refresh');
                              g_id=item.game_id;
                              //add invitation DB
                              addInvation(g_id,picked_Users);
+                             //sending notification
+                             addGameNoti(g_id,uname,picked_Users);
 
                    });
                    }

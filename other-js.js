@@ -380,9 +380,29 @@ document.getElementById("rank-Fairness").src="img/ball-icon2.png";
 document.getElementById("rank-Header").src="img/ball-icon2.png";
 });
 
+//calcultes the age of a player
 function calculateAge(birthday) { // birthday is a date
   var bd=new Date(birthday);
     var ageDifMs = Date.now() - bd.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+//show notifications page//
+//selecting all players from game to rank them
+function showNotiPage() {
+
+  $.mobile.changePage("#noti-page", {
+
+    transition: "slide", changeHase: false
+  });
+
+pageIsLoading();
+  //empty the list
+ $("#ulNoti").find('li').remove();
+
+ //get the games from DB
+  selectAllNotiOfPlayer(uname);
+  //animation
+
 }

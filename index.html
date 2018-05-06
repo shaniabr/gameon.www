@@ -57,7 +57,7 @@
   <div data-role="panel" data-display="overlay" id="menu-panel" class="left-panel" data-position="left" data-theme="b" style="width: 16em";>
     <div>  <a href="#main-page" ><img src="img/game.png" style=" width:100%;"></img></a> </div>
     <a href="#" class="btn-primary" data-role="button" id="profile-Button" data-icon="user" >Profile</a>
-    <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" >Notifications <div class="ui-li-count"><span id="noti-span">0</span></div></a>
+    <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" onclick="showNotiPage()">Notifications <div class="ui-li-count"><span id="noti-span">0</span></div></a>
     <a href="#" class="btn-primary" data-role="button" id="gamebutton-join-game-manu" data-icon="search" >Search</a>
     <a href="#about-us" class="btn-primary" data-role="button" data-icon="info" >About us</a>
     <a href="#" data-role="button" class="btn-primary rate-btn" data-icon="gear" rel="external"  onclick="changeToRankPage()" >Settings</a>
@@ -2058,6 +2058,22 @@
 
                                             </div>
 
+
+                                          </div>
+                                        </div>
+
+                                        <!--page 18- notifications-->
+                                        <div data-role="page" id="noti-page" data-theme="b" >
+
+                                          <div data-role="header">
+                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                            <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                            <h1 style="font-size:120%"> Notifications </h1>
+                                          </div>
+
+                                          <div data-role="content">
+                                              <ul data-role="listview" data-inset="true" id="ulNoti">
+                                              </ul>
 
                                           </div>
                                         </div>
