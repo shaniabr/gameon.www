@@ -1,5 +1,6 @@
 uname=null;
 imageAddress=null;
+/*shani*/
 
 $(document).on('vclick', '#submit', function () {
   //  document.getElementById("submit").disabled=true;
