@@ -1,6 +1,6 @@
 
 /*server address=173.194.106.92*/
-
+//shani//
            /*the function insert an invitation to DB*/
 
            function addInvation(game_id,u_id){
