@@ -124,12 +124,9 @@ body {
 
   opacity: 0.75;
   filter: alpha(opacity=75); /* For IE8 and earlier */
-  color: #404040;
+  
   text-align:center;
-  border:2px solid #b8b8b8;
-   font-size: 18px;
- font-family:Comic Sans MS;
-
+  font-size: 20px;
 
 }
 
