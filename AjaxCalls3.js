@@ -318,12 +318,12 @@ function   updateRanking(playerId){
       data:{uname: uname},
       success: function(data){
         if(data.length!=0)
-      //  $.each(data,function(i,item){
+        $.each(data,function(i,item){
           //updating num of notifications
           document.getElementById("noti-span").innerHTML=item.numberOfNoti;
 
       //  }
-    //  });
+      });
       //hideLoading();
     },  error: function(data){hideLoading();},
   });

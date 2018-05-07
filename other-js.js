@@ -410,7 +410,7 @@ pageIsLoading();
 
 
 //user clicked the side menu
-$(document).on('vclick', '#menu-icon', function () {
+$(document).on('vclick', '.menu', function () {
   //summon the function to calculate the number of notifications
   calculateAllNotiOfPlayer(uname);
 });
