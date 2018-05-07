@@ -31,13 +31,13 @@
   <!--  FB SDK  -->
   <script>
   var fbLoginSuccess = function (userData) {
-    alert(JSON.stringify(userData.authResponse));
+    alert('1 '+JSON.stringify(userData.authResponse));
     var userid = userData.authResponse.userID;
-    facebookConnectPlugin.api("/"+userid+"/?fields=email", ["user_birthday"],
+    facebookConnectPlugin.api("/"+userid  , //+"/?fields=email,name", ["user_birthday"],
       function onSuccess (result) {
-        alert(JSON.stringify(result));
+        alert('2 '+JSON.stringify(result));
       }, function onError (error) {
-        console.log("Failed: ", error);
+        //console.log("Failed: ", error);
         alert("Failed: ", JSON.stringify(error));
       }
     );
