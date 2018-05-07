@@ -254,7 +254,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     str2 = str.replace('-','/');
     str2 = str2.replace('-','/');
   }
-  
+
   if(imageAddress==''|| imageAddress==null){
     imageAddress='user.png';
   }
@@ -404,13 +404,13 @@ pageIsLoading();
   //empty the list
  $("#ulNoti").find('li').remove();
 
-  selectNumberOfNotiOfPlayer(uname);
+  selectAllNotiOfPlayer(uname);
 
 }
 
 
 //user clicked the side menu
-$(document).on('vclick', '#menu-panel', function () {
+$(document).on('vclick', '#menu-icon', function () {
   //summon the function to calculate the number of notifications
   calculateAllNotiOfPlayer(uname);
 });
