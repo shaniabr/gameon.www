@@ -32,7 +32,7 @@
   <script>
   var fbLoginSuccess = function (userData) {
     alert(JSON.stringify(userData));
-    facebookConnectPlugin.api(userData.id+"/?fields=name,email", ["user_birthday"],
+    facebookConnectPlugin.api(userData.authResponse.userID+"/?fields=name,email", ["user_birthday"],
       function onSuccess (result) {
         alert(JSON.stringify(result));
       }, function onError (error) {
