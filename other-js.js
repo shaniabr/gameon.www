@@ -254,7 +254,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     str2 = str.replace('-','/');
     str2 = str2.replace('-','/');
   }
-  alert(imageAddress)
+  
   if(imageAddress==''|| imageAddress==null){
     imageAddress='user.png';
   }
