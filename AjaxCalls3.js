@@ -321,9 +321,20 @@ function   updateRanking(playerId){
         $.each(data,function(i,item){
           //updating num of notifications
           document.getElementById("noti-span").innerHTML=item.numberOfNoti;
+          if(item.numberOfNoti==0)
+          {
+             document.getElementById("notiDiv").style.backgroundColor = "grey";
+          }
+          else {
+           document.getElementById("notiDiv").style.backgroundColor = "red";
+          }
 
       //  }
       });
+      else {
+        document.getElementById("noti-span").innerHTML=0;
+       document.getElementById("notiDiv").style.backgroundColor = "grey";
+      }
       //hideLoading();
     },  error: function(data){hideLoading();},
   });

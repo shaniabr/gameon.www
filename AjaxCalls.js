@@ -56,7 +56,8 @@ function checkingLogin(uname,pass){
           uname1=item.user_id;
           //for welcoming him
           document.getElementById("welcomUser").innerHTML=item.first_name
-
+          //calcultes notifications
+          calculateAllNotiOfPlayer(uname1);
 
 
         });
