@@ -28,6 +28,30 @@
 </head>
 
 <body>
+  <!--  FB SDK  -->
+  <script>
+  var fbLoginSuccess = function (userData) {
+    alert(userData);
+    facebookConnectPlugin.api(userData.id+"/?fields=name,email", ["user_birthday"],
+      function onSuccess (result) {
+        alert(JSON.stringify(result));
+      }, function onError (error) {
+        console.log("Failed: ", error);
+        alert("Failed: ", JSON.stringify(error));
+      }
+    );
+  }
+
+   function fb_login(){
+    facebookConnectPlugin.login(["public_profile"], fbLoginSuccess,
+      function (error) {
+        console.log(error);
+        alert("Failed: ", JSON.stringify(error));
+      }
+    );
+  }
+  </script>
+  <!--  FB SDK  -->
   <!--page 1- Log-In-->
   <div data-role="page" id="category-page" style=" background-image: url('img/greyback.png');">
     <div data-role="content">
