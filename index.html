@@ -31,7 +31,7 @@
   <!--  FB SDK  -->
   <script>
   var fbLoginSuccess = function (userData) {
-    alert(JSON.stringify(userData.authResponse.userID));
+    alert(JSON.stringify(userData.authResponse));
     var userid = userData.authResponse.userID;
     facebookConnectPlugin.api("/"+userid+"/?fields=email", ["user_birthday"],
       function onSuccess (result) {
