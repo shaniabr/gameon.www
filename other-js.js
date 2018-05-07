@@ -393,7 +393,6 @@ function calculateAge(birthday) { // birthday is a date
 }
 
 //show notifications page//
-//selecting all players from game to rank them
 function showNotiPage() {
 
   $.mobile.changePage("#noti-page", {
@@ -405,8 +404,13 @@ pageIsLoading();
   //empty the list
  $("#ulNoti").find('li').remove();
 
- //get the games from DB
-  selectAllNotiOfPlayer(uname);
-  //animation
+  selectNumberOfNotiOfPlayer(uname);
 
 }
+
+
+//user clicked the side menu
+$(document).on('vclick', '#menu-panel', function () {
+  //summon the function to calculate the number of notifications
+  calculateAllNotiOfPlayer(uname);
+});

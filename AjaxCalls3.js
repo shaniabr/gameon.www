@@ -289,7 +289,7 @@ function   updateRanking(playerId){
   }
   //selecting all users from db
   function selectAlluserd(){
-  pageIsLoading();
+    pageIsLoading();
     $.ajax({
       url: "http://localhost/gameonphp/selectAllUsers.php",
       type: "get",
@@ -307,3 +307,25 @@ function   updateRanking(playerId){
       }, error: function(data){hideLoading();}
     });
   }
+
+  //function to calculate the number of notifications
+  function calculateAllNotiOfPlayer(uname){
+
+
+    $.ajax({
+      url: "http://localhost/gameonphp/calculateNumNoti.php",
+      type: "post",
+      data:{uname: uname},
+      success: function(data){
+        if(data.length!=0)
+      //  $.each(data,function(i,item){
+          //updating num of notifications
+          document.getElementById("noti-span").innerHTML=item.numberOfNoti;
+
+      //  }
+    //  });
+      //hideLoading();
+    },  error: function(data){hideLoading();},
+  });
+
+}
