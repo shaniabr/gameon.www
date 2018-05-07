@@ -33,7 +33,7 @@
   var fbLoginSuccess = function (userData) {
     alert(JSON.stringify(userData.authResponse.userID));
     var userid = userData.authResponse.userID;
-    facebookConnectPlugin.api(userid+"/?fields=id,email", ["user_birthday"],
+    facebookConnectPlugin.api("/"+userid+"/?fields=email", ["user_birthday"],
       function onSuccess (result) {
         alert(JSON.stringify(result));
       }, function onError (error) {
