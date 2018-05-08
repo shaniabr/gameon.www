@@ -63,9 +63,13 @@ body {
     background-size: 16px 16px;
 }
 
-
+/*
   .btn-primary,.close {
     font-size: 125%;
+*/
+
+  .btn-primary {
+    font-size: 110%;
 
   }
 
@@ -107,6 +111,15 @@ body {
   opacity: 0.75;
   filter: alpha(opacity=75); /* For IE8 and earlier */
   font-size: 22px;
+  border-spacing: 0.5em;
+
+}
+
+#about_table{
+  background-image: url("../img/profilesColor.png");
+  opacity: 0.75;
+  filter: alpha(opacity=75); /* For IE8 and earlier */
+  font-size: 18px;
   border-spacing: 0.5em;
 
 }
