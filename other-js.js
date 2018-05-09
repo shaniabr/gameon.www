@@ -306,12 +306,10 @@ $(document).ready(function(){
 
     //loading
     pageIsLoading();
-  
+
     // Set image source
     var image = document.getElementById('img');
     image.src = imageURI  + '?' + Math.random();
-
-
      
     var options = new FileUploadOptions();
     options.fileKey = "file";
