@@ -451,3 +451,23 @@ function termsOfUse()
   cancelButtonAriaLabel: 'Thumbs down',
 }); },50);
 }
+
+<!--  FB SDK  -->
+var fbLoginSuccess = function (data) {
+            alert("Success! " + data.authResponse.userID);
+            if (data.status == 'connected'){
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location",["public_profile","email"], function(profileData) {
+                    alert('Successful login for: ' + JSON.stringify(profileData));
+                    var email = profileData.email;
+                    var fullname = profileData.name;
+                });
+            }
+        }
+
+        function login_fb(){
+            facebookConnectPlugin.login(["public_profile","email"],
+                fbLoginSuccess,
+                function (error) { alert("err in login" + JSON.stringify(error)); }
+            );
+        }
+<!--  FB SDK  -->

@@ -30,31 +30,7 @@
 </head>
 
 <body>
-  <!--  FB SDK  -->
-  <script>
-  var fbLoginSuccess = function (userData) {
-    alert('1 '+JSON.stringify(userData.authResponse));
-    var userid = userData.authResponse.userID;
-    facebookConnectPlugin.api("/"+userid  , //+"/?fields=email,name", ["user_birthday"],
-      function onSuccess (result) {
-        alert('2 '+JSON.stringify(result));
-      }, function onError (error) {
-        //console.log("Failed: ", error);
-        alert("Failed: ", JSON.stringify(error));
-      }
-    );
-  }
 
-   function fb_login(){
-    facebookConnectPlugin.login(["public_profile"], fbLoginSuccess,
-      function (error) {
-        console.log(error);
-        alert("Failed: ", JSON.stringify(error));
-      }
-    );
-  }
-  </script>
-  <!--  FB SDK  -->
   <!--page 1- Log-In-->
   <div data-role="page" id="category-page" style=" background-image: url('img/greyback.png');">
     <div data-role="content">
