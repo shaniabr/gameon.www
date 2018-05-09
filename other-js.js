@@ -459,71 +459,23 @@ function termsOfUse()
 }); },50);
 }
 
-///
+<!--  FB SDK  -->
+var fbLoginSuccess = function (data) {
+            alert("Success! " + data.authResponse.userID);
+            if (data.status == 'connected'){
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location",["public_profile","email"], function(profileData) {
+                    alert('Successful login for: ' + JSON.stringify(profileData));
+                    var email = profileData.email;
+                    var fullname = profileData.name;
+                    var fbid=profileData.id;
+                });
+            }
+        }
 
-function PictureSourceType() {};
-        PictureSourceType.PHOTO_LIBRARY = 0;
-        PictureSourceType.CAMERA = 1;
-
-        function getPicture(sourceType)
-        {
-             var options = { quality: 10 };
-             if (sourceType != undefined) {
-                  options["sourceType"] = sourceType;
-                 // options["destinationType"] = destinationType.DATA_URL;
-             }
-             // if no sourceType specified, the default is CAMERA
-             navigator.camera.getPicture(getPicture_Success, null, options);
-        };
-
-
-        function getPicture_Success(imageData)
-        {
-                 alert("getpic success "+ imageData);
-                document.getElementById("test_img").src =  imageData;
-        };
-
-        function success(response) {
-            alert("Your photo has been uploaded!");
-          };
-          // callback if the photo fails to upload successfully.
-
-          function fail(error) {
-            alert("if refreshed An error has occurred: Code = " + error.code);
-          };
-
-        function uploadPhoto()
-        {
-
-
-            //loading
-            pageIsLoading();
-            // Set image source
-              var imageFile = document.getElementById("test_img").src;
-
-
-            var options = new FileUploadOptions();
-            options.fileKey = "file";
-            options.fileName = imageFile.substr(imageFile.lastIndexOf('/') + 1);
-            options.mimeType = "image/jpeg";
-
-            var params = {};
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-            options.chunkedMode = false;
-
-            var ft = new FileTransfer();
-            ft = new FileTransfer();
-
-            ft.upload(imageFile, "http://23.251.139.146/gameonphp/upload.php", function(result){
-              // swal('successfully uploaded ' + result.response);
-              imageAddress=result.response;
-
-              hideLoading();
-            }, function(error){
-              swal('error : ' + JSON.stringify(error));
-              hideLoading();
-            }, options);
-        };
+        function login_fb(){
+            facebookConnectPlugin.login(["public_profile","email"],
+                fbLoginSuccess,
+                function (error) { alert("err in login" + JSON.stringify(error)); }
+            );
+        }
+<!--  FB SDK  -->
