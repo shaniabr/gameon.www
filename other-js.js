@@ -243,6 +243,12 @@ $(document).on('vclick', '#sign-in-btn', function () {
     flag=false;
   }
 
+  if(flag &&  document.getElementById("checkbox-enhanced").checked==false)
+  {
+setTimeout(function(){  swal("You must agree to terms of use"); },50);
+    flag=false;
+  }
+
 
   if(flag && !functionCheckUserName($("#txt-user-sign-in").val())){
     setTimeout(function(){  swal("User name Exists, please choose another user name"); },50);
@@ -414,3 +420,34 @@ $(document).on('vclick', '.menu', function () {
   //summon the function to calculate the number of notifications
   calculateAllNotiOfPlayer(uname);
 });
+
+
+//terms of use
+function termsOfUse()
+{
+  setTimeout(function(){  swal({
+//  title: 'Terms Of Use',
+  text: 'Modal with a custom image.',
+  imageUrl: 'http://localhost/gameonphp/upload/game.png',
+  imageWidth: 400,
+  imageHeight: 140,
+  //type: 'info',
+  html:
+    'The Gameon app will not be responsible '+
+     'for any violent or racist action resulting from '+
+      'the organization of the Games. We ask each user '+
+      'to respect human rights and to respect other users. '+
+        'A user who does not '+
+     'comply with what is said here will be suspended from '+
+      'the app and may be permanently removed from it.',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Ok',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+  cancelButtonText:
+  '<i class="fa fa-thumbs-down"></i>',
+  cancelButtonAriaLabel: 'Thumbs down',
+}); },50);
+}
