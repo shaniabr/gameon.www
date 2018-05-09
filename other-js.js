@@ -487,30 +487,7 @@ function PictureSourceType() {};
 
         function uploadPhoto()
         {
-            var imageFile = document.getElementById("test_img").src;
-    //        alert(imageFile);
-
-            var ft,options;
-
-
-            options = new FileUploadOptions();
-            options.fileKey = "profile_image";
-              // name of the file:
-              options.fileName = imageFile.substr(imageFile.lastIndexOf('/') + 1);
-              // mime type:
-              options.mimeType = "multipart/form-data";
-              params = {
-                val1: "some value",
-                val2: "some other value"
-              };
-              options.params = params;
-
-
-
-            ft = new FileTransfer();
-            ft.upload(imageFile, 'http://35.233.15.71/gameonphp/upload.php', success, fail, options);
-            alert("There is something called file transfer " + imageFile);
-
+        
 
             //loading
             pageIsLoading();
