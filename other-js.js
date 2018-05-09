@@ -303,12 +303,15 @@ $(document).ready(function(){
 
   // Change image source and upload photo to server
   function onSuccess(imageURI) {
+
     //loading
     pageIsLoading();
     // Set image source
     var image = document.getElementById('img');
     image.src = imageURI  + '?' + Math.random();
-
+    var file = document.getElementById('img').files;
+    alert(file.size)
+     
     var options = new FileUploadOptions();
     options.fileKey = "file";
     options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
