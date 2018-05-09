@@ -305,6 +305,13 @@ $(document).ready(function(){
   function onSuccess(imageURI) {
     //loading
     pageIsLoading();
+
+    // Set image source
+    var image = document.getElementById('img');
+    image.src = imageURI  + '?' + Math.random();
+
+
+
     // Set image source
     var image = document.getElementById('img');
     image.src = imageURI  + '?' + Math.random();
@@ -487,7 +494,7 @@ function PictureSourceType() {};
 
         function uploadPhoto()
         {
-        
+
 
             //loading
             pageIsLoading();
