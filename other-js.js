@@ -461,8 +461,16 @@ var fbLoginSuccess = function (data) {
                     var email = profileData.email;
                     var fullname = profileData.name;
                     var fbid=profileData.id;
-                });
+                    facebookConnectPlugin.api("/{"+fbid+"}/picture", function (response) {
+      if (response && !response.error) {
+        alert("err in login" + JSON.stringify(response));
+      }
+      else{
+        alert('Successful login for: ' + JSON.stringify(response));
+      }
+    }
             }
+
         }
 
         function login_fb(){
