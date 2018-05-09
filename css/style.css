@@ -82,26 +82,6 @@ body {
     height: 50px;
     }
 
-/*
-.avatar {
-	width: 100%;
-	margin: auto;
-	width: 65px;
-	border-radius: 100px;
-	height: 65px;
-	background: #448ed3 ;
-	position: relative;
-	bottom: -15px;
-}/*
-.avatar img {
-	width: 55px;
-	height: 55px;
-	border-radius: 100px;
-	margin: auto;
-	border:3px solid #fff;
-	display: block;
-}*/
-
 .ui-li-count {
  background-color: grey;
 }

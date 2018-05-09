@@ -79,19 +79,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.233.15.71/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.233.15.71/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.233.15.71/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.233.15.71/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -294,7 +294,7 @@ $(document).ready(function(){
 
   // upload select
   $("#but_select").click(function(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       destinationType: Camera.DestinationType.FILE_URI
@@ -428,7 +428,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://localhost/gameonphp/upload/game.png',
+  imageUrl: 'http://35.233.15.71/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
@@ -451,3 +451,95 @@ function termsOfUse()
   cancelButtonAriaLabel: 'Thumbs down',
 }); },50);
 }
+
+///
+
+function PictureSourceType() {};
+        PictureSourceType.PHOTO_LIBRARY = 0;
+        PictureSourceType.CAMERA = 1;
+
+        function getPicture(sourceType)
+        {
+             var options = { quality: 10 };
+             if (sourceType != undefined) {
+                  options["sourceType"] = sourceType;
+                 // options["destinationType"] = destinationType.DATA_URL;
+             }
+             // if no sourceType specified, the default is CAMERA
+             navigator.camera.getPicture(getPicture_Success, null, options);
+        };
+
+
+        function getPicture_Success(imageData)
+        {
+                 alert("getpic success "+ imageData);
+                document.getElementById("test_img").src =  imageData;
+        };
+
+        function success(response) {
+            alert("Your photo has been uploaded!");
+          };
+          // callback if the photo fails to upload successfully.
+
+          function fail(error) {
+            alert("if refreshed An error has occurred: Code = " + error.code);
+          };
+
+        function uploadPhoto()
+        {
+            var imageFile = document.getElementById("test_img").src;
+    //        alert(imageFile);
+
+            var ft,options;
+
+
+            options = new FileUploadOptions();
+            options.fileKey = "profile_image";
+              // name of the file:
+              options.fileName = imageFile.substr(imageFile.lastIndexOf('/') + 1);
+              // mime type:
+              options.mimeType = "multipart/form-data";
+              params = {
+                val1: "some value",
+                val2: "some other value"
+              };
+              options.params = params;
+
+
+
+            ft = new FileTransfer();
+            ft.upload(imageFile, 'http://35.233.15.71/gameonphp/upload.php', success, fail, options);
+            alert("There is something called file transfer " + imageFile);
+
+
+            //loading
+            pageIsLoading();
+            // Set image source
+              var imageFile = document.getElementById("test_img").src;
+
+
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = imageFile.substr(imageFile.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+            options.chunkedMode = false;
+
+            var ft = new FileTransfer();
+            ft = new FileTransfer();
+
+            ft.upload(imageFile, "http://23.251.139.146/gameonphp/upload.php", function(result){
+              // swal('successfully uploaded ' + result.response);
+              imageAddress=result.response;
+
+              hideLoading();
+            }, function(error){
+              swal('error : ' + JSON.stringify(error));
+              hideLoading();
+            }, options);
+        };
