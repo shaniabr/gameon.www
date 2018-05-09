@@ -79,19 +79,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://35.233.15.71/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.15.71/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://35.233.15.71/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.15.71/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -435,7 +435,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://35.233.15.71/gameonphp/upload/game.png',
+  imageUrl: 'http://localhost/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
