@@ -517,7 +517,7 @@ function termsOfUse()
                     var picture = profileData.picture;
                     var fbpic=picture.data.url;
                     var fbid=profileData.id;
-                    alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
+            //        alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
                       if(!functionCheckUserName(fbid))
                     addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbpic);
                     else{
