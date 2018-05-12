@@ -515,7 +515,7 @@ function termsOfUse()
                     var gender = profileData.gender;
                     var location = profileData.location;
                     var picture = profileData.picture;
-                    var fbpic=picture.url;
+                    var fbpic=picture.data.url;
                     alert("email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
                 });
