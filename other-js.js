@@ -194,11 +194,6 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Please fill in the last-name field"); },50);
     flag=false;
   }
-  if(flag && !/^[a-zA-Z]+$/.test($("#txt-last-sign-in").val()))
-  {
-    setTimeout(function(){  swal("Last name should contains only letters"); },50);
-    flag=false;
-  }
 
   //check password
   if(flag && $("#txt-password-sign-in").val()=="" )
@@ -508,14 +503,17 @@ function termsOfUse()
             //alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
                 facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location{city},picture", ["public_profile", "email"], function (profileData) {
-                    alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
-                    var fullname = profileData.name;
+                    var fullname = profileData.name.split(' ');
+                    var firstName=fullname[0];
+                    var lastName=fullname[fullname.length - 1];
+
                     var birthday = profileData.birthday;
                     var gender = profileData.gender;
                     var location = profileData.location;
                     var picture = profileData.picture;
-              //      funxxxx(email,fullname)
+                    alert("email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +picture  );
+
                 });
             }
         }
