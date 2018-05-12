@@ -503,23 +503,28 @@ function termsOfUse()
 }); },50);
 }
 
-<!--  FB SDK  -->
-var fbLoginSuccess = function (data) {
+//  FB SDK
+        var fbLoginSuccess = function (data) {
             alert("Success! " + data.authResponse.userID);
-            if (data.status == 'connected'){
-                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location",["public_profile","email"], function(profileData) {
-                    alert('Successful login for: ' + JSON.stringify(profileData));
+            if (data.status == 'connected') {
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
+                  //  alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
                     var fullname = profileData.name;
-                    var fbid=profileData.id;
+                    var birthday = profileData.birthday;
+                    var gender = profileData.gender;
+                    var location = profileData.location;
+                    var picture = profileData.picture;
+              //      funxxxx(email,fullname)
                 });
             }
         }
 
-        function login_fb(){
-            facebookConnectPlugin.login(["public_profile","email"],
+        function login_fb() {
+            facebookConnectPlugin.login(["public_profile", "email"],
                 fbLoginSuccess,
                 function (error) { alert("err in login" + JSON.stringify(error)); }
             );
         }
-<!--  FB SDK  -->
+
+//  FB SDK
