@@ -79,19 +79,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -283,71 +283,93 @@ setTimeout(function(){  swal("You must agree to terms of use"); },50);
 
 
 //picture//
-$(document).ready(function(){
-
-  // take picture from camera
-  $('#but_take').click(function(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
-      destinationType: Camera.DestinationType.FILE_URL
-    });
-  });
-
-  // upload select
-  $("#but_select").click(function(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit: true,
-      destinationType: Camera.DestinationType.FILE_URI
-    });
-  });
-
-  // Change image source and upload photo to server
-  function onSuccess(imageURI) {
-    //loading
-    pageIsLoading();
-
-    // Set image source
-    var image = document.getElementById('img');
-    image.src = imageURI  + '?' + Math.random();
+var deviceReady = false;
 
 
+   /**
+    * Take picture with camera
+    */
+   function takePicture() {
+       navigator.camera.getPicture(
+           function(uri) {
+               var img = document.getElementById('img');
+               img.style.visibility = "visible";
+               img.style.display = "block";
+               img.src = uri;
+            //   document.getElementById('camera_status').innerHTML = "Success";
+           },
+           function(e) {
+               console.log("Error getting picture: " + e);
+               setTimeout(function(){  swal("Error getting picture"); },50);
+              // document.getElementById('camera_status').innerHTML = "Error getting picture.";
+           },
+           { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
+   };
+   /**
+    * Select picture from library
+    */
+   function selectPicture() {
+       navigator.camera.getPicture(
+           function(uri) {
+               var img = document.getElementById('img');
+               img.style.visibility = "visible";
+               img.style.display = "block";
+               img.src = uri;
+        //       document.getElementById('camera_status').innerHTML = "Success";
+           },
+           function(e) {
 
-    // Set image source
-    var image = document.getElementById('img');
-    image.src = imageURI  + '?' + Math.random();
+               console.log("Error getting picture: " + e);
+                 setTimeout(function(){  swal("Error getting picture"); },50);
+            //   document.getElementById('camera_status').innerHTML = "Error getting picture.";
+           },
+           { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
+   };
 
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
+   /**
+    * Upload current picture
+    */
+   function uploadPicture() {
 
-    var params = {};
-    params.value1 = "test";
-    params.value2 = "param";
+     // Get URI of picture to upload
+       var img = document.getElementById('img');
+       var imageURI = img.src;
+       if (!imageURI || (img.style.display == "none")) {
+            setTimeout(function(){  swal("Take picture or select picture from library first"); },50);
+        //   document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+           return;
+       }
 
-    options.params = params;
-    options.chunkedMode = false;
+       // Verify server has been entered
+       server = "http://35.205.20.238/gameonphp/upload.php";
+       if (server) {
 
-    var ft = new FileTransfer();
-    ft = new FileTransfer();
+           // Specify transfer options
+           var options = new FileUploadOptions();
+           options.fileKey="file";
+           options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+           options.mimeType="image/jpeg";
+           options.chunkedMode = false;
+           // Transfer picture to server
+           var ft = new FileTransfer();
+           ft.upload(imageURI, server, function(r) {
+               imageAddress=r.response;
+               //document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";
+           }, function(error) {
+               setTimeout(function(){  swal("Upload failed: file size is greater than 2 MB"); },50);
+              // document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;
+           }, options);
+       }
+   }
 
-    ft.upload(imageURI, "http://23.251.139.146/gameonphp/upload.php", function(result){
-      // swal('successfully uploaded ' + result.response);
-      imageAddress=result.response;
-
-      hideLoading();
-    }, function(error){
-      swal('error : ' + JSON.stringify(error));
-      hideLoading();
-    }, options);
-
-  }
-  function onFail(message) {
-    swal('Failed because: ' + message);
-    hideLoading();
-  }
-
-});
+   function init() {
+       document.addEventListener("deviceready", function() {deviceReady = true;}, false);
+       window.setTimeout(function() {
+           if (!deviceReady) {
+               alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+           }
+       },2000);
+   }
 
 /* for rotate profile pic */
 function Rotate() {
@@ -435,7 +457,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://localhost/gameonphp/upload/game.png',
+  imageUrl: 'http://35.205.20.238/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',

@@ -7,6 +7,7 @@
   <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
   <!--<script type="text/javascript" src="PushNotification.js"></script>-->
@@ -15,6 +16,7 @@
   <script src="AjaxCalls2.js"></script>
   <script src="AjaxCalls3.js"></script>
 
+  <script src="other2.js"></script>
   <script src="other-js.js"></script>
   <script src="game-js.js"></script>
   <script src="team-js.js"></script>
@@ -52,6 +54,8 @@
         <br><br>
 
           <a href="#sign-up" style="text-shadow:none; color:white; font-size:15px" id="signup"><center>Click here to sign-up</center></a>
+
+          <a href="#setting2-page" style="text-shadow:none; color:white; font-size:15px"><center>Click here to upload pic</center></a>
 
       </div>
     </div>
@@ -1322,14 +1326,7 @@
                                           <h1 style="font-size:120%">Sign-up</h1>
                                         </div>
                                         <div role="main" class="ui-content" >
-                                          <!--picture-->
-                                          <!--  <div align="center">  <img src="img/user.png" style=" width:25%;"></img> </div><br>
 
-                                          <form method="POST" action="uploadGame2.php" enctype="multipart/form-data">
-
-                                          <input type="file" name="image">
-                                          <input type="submit" name="submit_image" value="Upload">
-                                        </form>-->
                                         <div style="margin:0 auto; width:30%!important;text-align: center;">
                                           <img src="img/user.png" id='img'class="normal" style="width: 100px; height: 100px;"></div>
                                           <table style="border:none" align="center">
@@ -1344,14 +1341,15 @@
                                           </table>
 
                                           <div style="width:100%; text-align:center; padding:10px;">
-                                            <button id='but_take' class="	fa fa-camera" style="background-color:#3d3d5c">  Take photo</button>
-                                            <button id='but_select' class="fa fa-file-photo-o" style="background-color:#666699">  Select from Gallery</button>
+
+                                            <button id='but_take'  onclick="takePicture();" class="	fa fa-camera" style="background-color:#3d3d5c">  Take photo</button>
+                                            <button id='but_select' onclick="selectPicture();" class="fa fa-file-photo-o" style="background-color:#666699">  Select from Gallery</button>
                                           </div>
                                           <table  style="border:none" align="center">
                                             <tr>
                                               <td>
                                                 <!--User Name-->
-                                                <label for="txt-user-sign-in">User Name</label>
+                                                <label for="txt-user-">User Name</label>
                                               </td>
                                               <td>
                                                 <input type="text" name="txt-user-sign-in" id="txt-user-sign-in" value="" data-clear-btn="true">
@@ -1444,6 +1442,7 @@
 
 
                                     <a href="#dlg-pwd-reset-sent" data-rel="popup" data-role="button" data-transition="pop" data-position-to="window" id="sign-in-btn" name="sign-in-btn" style="background-color:#a6a6a6" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+                                      <a href="#" data-rel="popup" data-role="button" onclick="uploadPicture();" data-transition="pop" data-position-to="window" id="up-in-btn" name="up-in-btn" style="background-color:#a6a6a6" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Upload</a>
                                     <!-- <div data-role="popup" id="dlg-pwd-reset-sent" data-dismissible="false" style="max-width:400px;">
                                     <div data-role="header">
                                     <h1>Password Reset</h1>
@@ -1456,35 +1455,6 @@
 
                               </div><!-- /content -->
                             </div><!-- /page -->
-
-
-                            <!-- password-message Page -->
-                            <div data-role="page" data-dialog="true" id="password-page">
-                              <div data-role="popup"  data-dismissible="false" style="max-width:400px;">
-                                <div data-role="header">
-                                  <h1>Error!</h1>
-                                </div>
-                                <div role="main" class="ui-content">
-                                  <p>Please fill in the password field</p>
-                                  <a href="#category-page"><center>OK</center></a>
-                                </div>
-                              </div>
-                            </div>
-
-
-                            <!-- user-message Page -->
-                            <div data-role="page" data-dialog="true" id="user-page">
-                              <div data-role="header">
-                                <h1 align="center">Error!</h1>
-                              </div>
-                              <div role="main" class="ui-content">
-                                <p align="center">Please fill in the user-name field</p>
-                                <a href="#category-page"><center>OK</center></a>
-                              </div>
-                            </div>
-
-
-
 
                             <!-- map page-->
                             <div data-role="page" id="map-page" data-theme="b" data-url="map-page">
@@ -1572,9 +1542,9 @@
 
                                           <center>
                                             <video id="video" autobuffer height="240" width="320" controls autoplay>
-<source src="http://localhost/gameonphp/upload/movie.mp4" type="video/mp4">
-<source src="http://localhost/gameonphp/upload/movie.mp4.webm" type="video/webm">
-<source src="http://localhost/gameonphp/upload/movie.mp4.ogv" type="video/ogg">
+<source src="http://35.205.20.238/gameonphp/upload/movie.mp4" type="video/mp4">
+<source src="http://35.205.20.238/gameonphp/upload/movie.mp4.webm" type="video/webm">
+<source src="http://35.205.20.238/gameonphp/upload/movie.mp4.ogv" type="video/ogg">
 </video>
 
 
@@ -2106,29 +2076,53 @@
                                           </div>
                                         </div>
 
-                                        <!--page 19- Alex-->
-                                        <div data-role="page" id="setting-page" data-theme="b" >
 
-                                          <div data-role="header" data-position="inline">
-                                            <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
-                                            <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
-                                            <h1 style="font-size:120%"> Notifications </h1>
-                                          </div>
+                                    <!--page 20- Alex-->
+                                    <div data-role="page" id="setting2-page" data-theme="b" onload="init();">
 
-                                    <div data-role="content">
-                                    <center>
-                                    <img style="width: 60px; height: 60px" id="test_img" src="" />
-                                    </center>
+                                      <div data-role="header" data-position="inline">
+                                        <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                                        <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                                        <h1 style="font-size:120%"> PhoneGap Camera Upload Demo </h1>
+                                      </div>
 
-                                    <button onclick="getPicture()">From Camera</button>
+                                  <div data-role="content">
 
-                                    <button onclick="getPicture(PictureSourceType.PHOTO_LIBRARY)">From
-                                    Photo Library</button>
-                                    <button onclick="uploadPhoto()">Upload Photo</button>
+                                       <div>
+                                           <h3>Server URL for upload.php:</h3>
+                                           <input id="serverUrl" type="text" value="http://35.205.20.238/gameonphp/upload.php" />
+                                       </div>
+                                       <br/>
 
+                                   	<!-- Camera -->
+                                   	<div>
+                                   		<h3>Camera:</h3>
+                                   		<b>Status:</b> <span id="camera_status"></span><br>
+                                           <b>Image:</b> <img style="width:120px;visibility:hidden;display:none;" id="camera_image" src="" />
+                                   	</div>
 
-                                    </div>
-                                    </div>
+                                       <!-- Actions -->
+                                       <div>
+                                           <input type="button" onclick="takePicture();" value="Take Picture" /><br/>
+                                           <input type="button" onclick="selectPicture();" value="Select Picture from Library" /><br/>
+                                           <input type="button" onclick="uploadPicture();" value="Upload Picture" />
+                                       </div>
+                                       <br/>
+
+                                       <!-- Server pictures -->
+                                       <div>
+                                           <h3>Server:</h3>
+                                           <b>Images on server:</b>
+                                           <div id="server_images"></div>
+                                       </div>
+
+                                       <!-- Actions -->
+                                       <div>
+                                           <input type="button" onclick="viewUploadedPictures();" value="View Uploaded Pictures" />
+                                       </div>
+
+                                  </div>
+                                  </div>
 
 
                                         <script type="text/javascript" src="cordova.js"></script>
