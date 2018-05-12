@@ -507,7 +507,7 @@ function termsOfUse()
         var fbLoginSuccess = function (data) {
             alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
-                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,city,picture", ["public_profile", "email"], function (profileData) {
                     alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
                     var fullname = profileData.name;
