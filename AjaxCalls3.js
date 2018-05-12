@@ -344,6 +344,8 @@ function   updateRanking(playerId){
 
 function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbpic){
   var bool;
+  alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
+
   $.ajax({
     url: "http://localhost/gameonphp/addUserFromFB.php",
     type: "post",
@@ -359,7 +361,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
 
       },
       error:function(data)
-      {swal("Error! User name is already exists!");
+      {swal("Error!");
       hideLoading();
       $('#sign-in-btn').removeClass('ui-disabled');
     }
