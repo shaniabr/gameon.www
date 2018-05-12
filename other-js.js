@@ -3,7 +3,6 @@ imageAddress=null;
 
 
 $(document).on('vclick', '#submit', function () {
-  //  document.getElementById("submit").disabled=true;
 
   pageIsLoading();
   if($("#uname").val()=="" )
@@ -17,24 +16,19 @@ $(document).on('vclick', '#submit', function () {
     {
       hideLoading();
         setTimeout(function(){    swal("Please fill in the password field"); },50);
-
     }
+
     else {
-
-
       uname=checkingLogin($("#uname").val(),$("#pass").val());
       if(uname!=null){
-
         setTimeout(goToMenu, 700);
-        //document.getElementById("submit").disabled=false;
       }
+
       else {
         hideLoading();
-        //  document.getElementById("submit").disabled=false;
       }
     }
   }
-
 });
 
 $( document ).ready(function() {
@@ -79,19 +73,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -159,14 +153,14 @@ function changeToRankedBall(myImage) {
 
 // Sign in-checking the values
 $(document).on('vclick', '#sign-in-btn', function () {
+
   flag=true;
   str="";
   $('#sign-in-btn').addClass('ui-disabled');
-
+//check user name
   if($("#txt-user-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the user-name field"); },50);
-
     flag=false;
   }
   var user=$("#txt-user-sign-in").val()
@@ -176,6 +170,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     flag=false;
   }
 
+//check first name
   if(flag && $("#txt-first-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the first-name field"); },50);
@@ -187,13 +182,13 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("First name must contain at least 2 characters"); },50);
     flag=false;
   }
-
   if(flag && !/^[a-zA-Z]+$/.test($("#txt-first-sign-in").val()))
   {
     setTimeout(function(){  swal("First name should contains only letters"); },50);
     flag=false;
   }
 
+//check last name
   if(flag && $("#txt-last-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the last-name field"); },50);
@@ -204,6 +199,8 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Last name should contains only letters"); },50);
     flag=false;
   }
+
+  //check password
   if(flag && $("#txt-password-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the password field"); },50);
@@ -215,6 +212,8 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Password must contain at least 6 characters"); },50);
     flag=false;
   }
+
+  //check email
   if(flag && $("#txt-email-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the email field"); },50);
@@ -229,12 +228,13 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Email is illegal"); },50);
     flag=false;
   }
+
+  //check birth of date
   if(flag && $("#date-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the date of birth field"); },50);
     flag=false;
   }
-
   var now= new Date();
   var cgame=new Date($("#date-sign-in").val());
   if(flag && now<cgame)
@@ -242,14 +242,12 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Please select a relevant date"); },50);
     flag=false;
   }
-
   if(flag &&  document.getElementById("checkbox-enhanced").checked==false)
   {
 setTimeout(function(){  swal("You must agree to terms of use"); },50);
     flag=false;
   }
-
-
+  //check if user name exists
   if(flag && !functionCheckUserName($("#txt-user-sign-in").val())){
     setTimeout(function(){  swal("User name Exists, please choose another user name"); },50);
     flag=false;
@@ -261,21 +259,13 @@ setTimeout(function(){  swal("You must agree to terms of use"); },50);
     str2 = str2.replace('-','/');
   }
 
-  if(imageAddress==''|| imageAddress==null){
-    imageAddress='user.png';
-  }
-
-
-  if(flag)
-  {
-    pageIsLoading();
-    //document.getElementById("sign-in-btn").disabled=true;
-    addUser($("#txt-user-sign-in").val(),$("#txt-first-sign-in").val(),$("#txt-last-sign-in").val(),
-    $("#txt-password-sign-in").val(),$("#txt-email-sign-in").val(),str2
-    ,$( "#city-sign-in option:selected" ).text(),$( "#foot-sign-in option:selected" ).text(),imageAddress);
-
-  }
-  else{
+// upload picture
+    if(flag){
+      pageIsLoading();
+     uploadPicture();
+    }
+//Making a button available
+ if(!flag){
     $('#sign-in-btn').removeClass('ui-disabled');
   }
 
@@ -284,8 +274,6 @@ setTimeout(function(){  swal("You must agree to terms of use"); },50);
 
 //picture//
 var deviceReady = false;
-
-
    /**
     * Take picture with camera
     */
@@ -303,27 +291,42 @@ var deviceReady = false;
                setTimeout(function(){  swal("Error getting picture"); },50);
               // document.getElementById('camera_status').innerHTML = "Error getting picture.";
            },
-           { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
+           { quality: 50,
+             destinationType: navigator.camera.DestinationType.FILE_URI,
+             allowEdit: true,
+             targetWidth: 1000,
+             targetHeight: 1000
+           });
    };
    /**
     * Select picture from library
     */
    function selectPicture() {
+
        navigator.camera.getPicture(
            function(uri) {
+
                var img = document.getElementById('img');
                img.style.visibility = "visible";
                img.style.display = "block";
                img.src = uri;
-        //       document.getElementById('camera_status').innerHTML = "Success";
+               $('imgAddUser').append()
+
            },
            function(e) {
 
                console.log("Error getting picture: " + e);
                  setTimeout(function(){  swal("Error getting picture"); },50);
-            //   document.getElementById('camera_status').innerHTML = "Error getting picture.";
+
            },
-           { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
+           { quality: 50,
+             destinationType: navigator.camera.DestinationType.FILE_URI,
+             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+             allowEdit: true,
+             targetWidth: 1000,
+             targetHeight: 1000
+         });
+
    };
 
    /**
@@ -332,16 +335,18 @@ var deviceReady = false;
    function uploadPicture() {
 
      // Get URI of picture to upload
-       var img = document.getElementById('img');
+     var img = document.getElementById('img');
        var imageURI = img.src;
+
        if (!imageURI || (img.style.display == "none")) {
             setTimeout(function(){  swal("Take picture or select picture from library first"); },50);
         //   document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
            return;
        }
+       if( $('#img').attr('src')!="img/user.png"){
 
        // Verify server has been entered
-       server = "http://35.205.20.238/gameonphp/upload.php";
+       server = "http://35.233.105.130/gameonphp/upload.php";
        if (server) {
 
            // Specify transfer options
@@ -354,12 +359,29 @@ var deviceReady = false;
            var ft = new FileTransfer();
            ft.upload(imageURI, server, function(r) {
                imageAddress=r.response;
-               //document.getElementById('camera_status').innerHTML = "Upload successful: "+r.bytesSent+" bytes uploaded.";
+               // If no image is selected
+               if(imageAddress==''|| imageAddress==null){
+                 imageAddress='user.png';
+               }
+               //add user
+               addUser($("#txt-user-sign-in").val(),$("#txt-first-sign-in").val(),$("#txt-last-sign-in").val(),
+               $("#txt-password-sign-in").val(),$("#txt-email-sign-in").val(),str2
+               ,$( "#city-sign-in option:selected" ).text(),$( "#foot-sign-in option:selected" ).text(),imageAddress);
+
            }, function(error) {
-               setTimeout(function(){  swal("Upload failed: file size is greater than 2 MB"); },50);
+               setTimeout(function(){  swal("Upload failed: file size is greater than 4 MB"); },50);
               // document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;
            }, options);
        }
+     }
+     else{
+
+       //add user
+       addUser($("#txt-user-sign-in").val(),$("#txt-first-sign-in").val(),$("#txt-last-sign-in").val(),
+       $("#txt-password-sign-in").val(),$("#txt-email-sign-in").val(),str2
+       ,$( "#city-sign-in option:selected" ).text(),$( "#foot-sign-in option:selected" ).text(),"user.png");
+
+     }
    }
 
    function init() {
@@ -457,7 +479,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://35.205.20.238/gameonphp/upload/game.png',
+  imageUrl: 'http://35.233.105.130/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
