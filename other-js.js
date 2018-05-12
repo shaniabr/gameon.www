@@ -73,19 +73,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -341,7 +341,7 @@ var deviceReady = false;
        if( $('#img').attr('src')!="img/user.png"){
 
        // Verify server has been entered
-       server = "http://35.233.105.130/gameonphp/upload.php";
+       server = "http://localhost/gameonphp/upload.php";
        if (server) {
 
            // Specify transfer options
@@ -474,7 +474,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://35.233.105.130/gameonphp/upload/game.png',
+  imageUrl: 'http://localhost/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
@@ -516,8 +516,18 @@ function termsOfUse()
                     var location = profileData.location;
                     var picture = profileData.picture;
                     var fbpic=picture.data.url;
-                    alert("email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
+                    var fbid=profileData.id;
+                    alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
+                      if(!functionCheckUserName(fbid))
+                    addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbpic);
+                    else{
+                      localStorage.getItem("fbid");
+                      var first=localStorage.getItem("firstName");
+                      var last=localStorage.getItem("lastName");
+                      var user_image=localStorage.getItem("fbpic");
+                      loginLocalStorage();
 
+                      }
                 });
             }
         }
