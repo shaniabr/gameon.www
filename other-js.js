@@ -514,7 +514,7 @@ function termsOfUse()
                     var birthday = profileData.birthday;
                     var gender = profileData.gender;
                     var location = profileData.location;
-                    var picture = JSON.stringify(profileData.picture);
+                    var picture = profileData.picture.URL;
                     alert("email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +picture  );
 
                 });
