@@ -286,7 +286,7 @@ $(document).on('vclick', '#gamebutton-my-games', function () {
 
 //user clicked the 'profile' category
 $(document).on('vclick', '#profile-Button', function () {
-pageIsLoading();
+
  //get the user deatils from DB
   profileDeatils(uname);
 });

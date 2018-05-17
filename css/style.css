@@ -345,6 +345,7 @@ input.list-with-checkbox, input.list-with-checkbox.ui-radio {
 }
 
 /* for rotate profile pic */
+/*
 .rotate {
    -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
@@ -370,7 +371,7 @@ input.list-with-checkbox, input.list-with-checkbox.ui-radio {
      transform: rotate(0deg);
 }
 
-
+*/
 #assistNumbers{
   &::-webkit-inner-spin-button{
     opacity:1; // magic!

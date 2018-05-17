@@ -399,6 +399,7 @@ var deviceReady = false;
    }
 
 /* for rotate profile pic */
+/*
 function Rotate() {
   var element = document.getElementById('img');
 
@@ -415,7 +416,7 @@ function Rotate() {
     element.className = 'normal';
   }
 }
-
+*/
 /* to delete profile pic */
 function deletePhoto() {
   var y = document.getElementById("img");
