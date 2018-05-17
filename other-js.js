@@ -79,19 +79,19 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
-    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+user_image);
 
   }
   else {
 
     //picture in menu
-    x.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.20.238/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.233.105.130/gameonphp/upload/user.png");
   }
   //go to main menu
 goToMenu();
@@ -323,7 +323,11 @@ var deviceReady = false;
                  setTimeout(function(){  swal("Error getting picture"); },50);
             //   document.getElementById('camera_status').innerHTML = "Error getting picture.";
            },
-           { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY});
+           { quality: 50,
+             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+             allowEdit: true,
+             destinationType: Camera.DestinationType.FILE_URI
+           });
    };
 
    /**
@@ -341,7 +345,7 @@ var deviceReady = false;
        }
 
        // Verify server has been entered
-       server = "http://35.205.20.238/gameonphp/upload.php";
+       server = "http://35.233.105.130/gameonphp/upload.php";
        if (server) {
 
            // Specify transfer options
@@ -457,7 +461,7 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
-  imageUrl: 'http://35.205.20.238/gameonphp/upload/game.png',
+  imageUrl: 'http://35.233.105.130/gameonphp/upload/game.png',
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
