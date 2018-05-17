@@ -511,6 +511,7 @@ function termsOfUse()
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //  FB SDK
     /*    var fbLoginSuccess = function (data) {
             //alert("Success! " + data.authResponse.userID);
@@ -552,6 +553,17 @@ var fbLoginSuccess = function (data) {
                     var fullname = profileData.name;
                     var fbid=profileData.id;
 >>>>>>> parent of dfbf976... movie
+=======
+<!--  FB SDK  -->
+var fbLoginSuccess = function (data) {
+            alert("Success! " + data.authResponse.userID);
+            if (data.status == 'connected'){
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location",["public_profile","email"], function(profileData) {
+                    alert('Successful login for: ' + JSON.stringify(profileData));
+                    var email = profileData.email;
+                    var fullname = profileData.name;
+                    var fbid=profileData.id;
+>>>>>>> parent of dfbf976... movie
                 });
             }
         }
@@ -562,9 +574,14 @@ var fbLoginSuccess = function (data) {
                 function (error) { alert("err in login" + JSON.stringify(error)); }
             );
 <<<<<<< HEAD
+<<<<<<< HEAD
         }*/
 
 //  FB SDK
+=======
+        }
+<!--  FB SDK  -->
+>>>>>>> parent of dfbf976... movie
 =======
         }
 <!--  FB SDK  -->
