@@ -5,7 +5,9 @@
 
            function addInvation(game_id,u_id){
            $.ajax({
-                  url: "http://35.233.105.130/gameonphp/add_game_invation.php",
+
+                  url: "http://localhost/gameonphp/add_game_invation.php",
+
                   type: "post",
                     data:{game_id: game_id,u_id: u_id},
                   success: function(data){
@@ -24,7 +26,9 @@
 
                       function addInvationForGameCreator(game_id,u_id){
                       $.ajax({
-                             url: "http://35.233.105.130/gameonphp/add_game_invation_for_creator.php",
+
+                             url: "http://localhost/gameonphp/add_game_invation_for_creator.php",
+
                              type: "post",
                                data:{game_id: game_id,u_id: u_id},
                              success: function(data){
@@ -40,7 +44,10 @@
            //selecting all users but this user
            function selectAllUsers(uname){
           $.ajax({
-                  url: "http://35.233.105.130/gameonphp/allusersButYou.php",
+
+
+                  url: "http://localhost/gameonphp/allusersButYou.php",
+
                   type: "post",
                   data:{uname:uname},
                   success: function(data){
@@ -65,7 +72,10 @@ $('#addPlayersToGame').listview('refresh');
               function lastGame(picked_Users){
                 var g_id;
                $.ajax({
-                       url: "http://35.233.105.130/gameonphp/selectLastGameId.php",
+
+
+                       url: "http://localhost/gameonphp/selectLastGameId.php",
+
                        type: "get",
                        success: function(data){
                        $.each(data,function(i,item){
@@ -86,7 +96,9 @@ $('#addPlayersToGame').listview('refresh');
                     function lastGameForGameCreator(picked_Users){
                       var g_id;
                      $.ajax({
-                             url: "http://35.233.105.130/gameonphp/selectLastGameId.php",
+
+                             url: "http://localhost/gameonphp/selectLastGameId.php",
+
                              type: "get",
                              success: function(data){
                              $.each(data,function(i,item){
@@ -106,7 +118,9 @@ $('#addPlayersToGame').listview('refresh');
                     function updateGameAccess(game_id, ball, pump, water, net){
                       pageIsLoading();
                      $.ajax({
-                             url: "http://35.233.105.130/gameonphp/updateGameAccessories.php",
+
+                             url: "http://localhost/gameonphp/updateGameAccessories.php",
+
                              type: "post",
                                data:{game_id:game_id,ball:ball,pump:pump,water:water,net:net},
                              success: function(data){
@@ -125,7 +139,9 @@ $('#addPlayersToGame').listview('refresh');
                         function functionCheckUserName(uname){
                           var exsist=false;
                            $.ajax({
-                                   url: "http://35.233.105.130/gameonphp/connection.php",
+
+                                   url: "http://localhost/gameonphp/connection.php",
+
                                    type: "post",
                                      data:{uname: uname},
                                    success: function(data){
@@ -143,7 +159,9 @@ $('#addPlayersToGame').listview('refresh');
                                 function selectAllFields(){
 
                                  $.ajax({
-                                         url: "http://35.233.105.130/gameonphp/selectAllFields.php",
+
+                                         url: "http://localhost/gameonphp/selectAllFields.php",
+
                                          type: "get",
                                          success: function(data){
                                            //remove the elemnts in the list
@@ -153,7 +171,10 @@ $('#addPlayersToGame').listview('refresh');
 
                   //add the elemnts to the list
 
-                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');"><img src="http://35.233.105.130/gameonphp/upload/'+item.field_img+'"><h1>'+item.field_name+':'+' '+item.city+' </h1><p>'+item.address+'</p></a></li>').listview('refresh');
+\
+                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.field_img+'"><h1>'+item.field_name+':'+' '+item.city+' </h1><p>'+item.address+'</p></a></li>').listview('refresh');
+
+
                             });
                             hideLoading();
                           }, error: function(data){hideLoading();}
@@ -165,7 +186,9 @@ $('#addPlayersToGame').listview('refresh');
                           function fieldsDeatils(field_id){
 
                            $.ajax({
-                                   url: "http://35.233.105.130/gameonphp/field_deatils.php",
+
+                                   url: "http://localhost/gameonphp/field_deatils.php",
+
                                    type: "post",
                                      data:{field_id:field_id},
                                    success: function(data){
@@ -185,7 +208,9 @@ $('#addPlayersToGame').listview('refresh');
                                         var x = document.getElementById("field-img");
 
                                           //picture of the field
-                                          x.setAttribute("src", "http://35.233.105.130/gameonphp/upload/"+item.field_img);
+
+                                          x.setAttribute("src", "http://localhost/gameonphp/upload/"+item.field_img);
+
 
 
                                       });
@@ -205,7 +230,9 @@ $('#addPlayersToGame').listview('refresh');
                                function checkIfInvitationExsist(user_id,  game_id, user_choice){
                                  var bool=true;
                                  $.ajax({
-                                         url: "http://35.233.105.130/gameonphp/check_game_invitation.php",
+
+                                         url: "http://localhost/gameonphp/check_game_invitation.php",
+
                                          type: "post",
                                            data:{game_id:game_id, user_id:user_id},
                                          success: function(data){
@@ -233,7 +260,9 @@ $('#addPlayersToGame').listview('refresh');
                              // create a new invitation for user (public game)
                              function createInvitationjoin(user_id,  game_id){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/add_game_invation_for_creator.php",
+
+                                       url: "http://localhost/gameonphp/add_game_invation_for_creator.php",
+
                                        type: "post",
                                          data:{game_id:game_id, u_id:user_id},
                                        success: function(data){
@@ -253,7 +282,9 @@ $('#addPlayersToGame').listview('refresh');
 // get the last rank in league for the new team's rank
                              function getLastRankLeauge(){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/selectTableLeague.php",
+
+                                       url: "http://localhost/gameonphp/selectTableLeague.php",
+
                                        type: "get",
                                        success: function(data){
 
@@ -269,7 +300,9 @@ $('#addPlayersToGame').listview('refresh');
                              // create a new invitation for user (public game)
                              function checkTeamName(team_name,shirt,symbool,rank,uname){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/team_deatils.php",
+
+                                       url: "http://localhost/gameonphp/team_deatils.php",
+
                                        type: "post",
                                          data:{team_name: team_name},
                                        success: function(data){
@@ -297,7 +330,9 @@ $('#addPlayersToGame').listview('refresh');
                              // add team
                              function addTeam(team_name,shirt,symbool,rank,uname){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/add_team.php",
+
+                                       url: "http://localhost/gameonphp/add_team.php",
+
                                        type: "post",
                                          data:{team_name:team_name, uname:uname,uname:uname},
                                        success: function(data){
@@ -320,7 +355,9 @@ $('#addPlayersToGame').listview('refresh');
                              // add team
                              function addTeamToLeague(team_name,rank){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/insert_teamToLeague.php",
+
+                                       url: "http://localhost/gameonphp/insert_teamToLeague.php",
+
                                        type: "post",
                                          data:{team_name:team_name,rank:rank},
                                        success: function(data){
@@ -333,7 +370,9 @@ $('#addPlayersToGame').listview('refresh');
                             //updating user game_deatils-team's field
                              function updateUserTeam(uname,team_name){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/update_user_team.php",
+
+                                       url: "http://localhost/gameonphp/update_user_team.php",
+
                                        type: "post",
                                          data:{team_name:team_name,uname:uname},
                                        success: function(data){
@@ -346,7 +385,9 @@ $('#addPlayersToGame').listview('refresh');
                              // the function checks if the user belong to team
                              function getUserTeam(uname){
                                $.ajax({
-                                       url: "http://35.233.105.130/gameonphp/team_deatils_of_player.php",
+
+                                       url: "http://localhost/gameonphp/team_deatils_of_player.php",
+
                                        type: "post",
                                          data:{uname: uname},
                                        success: function(data){
@@ -373,7 +414,9 @@ $('#addPlayersToGame').listview('refresh');
                                                      function getTeamDeatilsToPlayer(team_name){
 
                                                       $.ajax({
-                                                              url: "http://35.233.105.130/gameonphp/team_deatils.php",
+
+                                                              url: "http://localhost/gameonphp/team_deatils.php",
+
                                                               type: "post",
                                                                 data:{team_name:team_name},
                                                               success: function(data){

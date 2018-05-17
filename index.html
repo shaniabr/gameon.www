@@ -53,9 +53,9 @@
         </form>
         <br><br>
 
-          <a href="#sign-up" style="text-shadow:none; color:white; font-size:15px" id="signup"><center>Click here to sign-up</center></a>
+          <a href="#sign-up" style="text-shadow:none; color:white; font-size:17px" id="signup"><center>Click here to sign-up</center></a>
 
-          <a href="#setting2-page" style="text-shadow:none; color:white; font-size:15px"><center>Click here to upload pic</center></a>
+    <!--      <a href="#setting2-page" style="text-shadow:none; color:white; font-size:15px"><center>Click here to upload pic</center></a> -->
 
       </div>
     </div>
@@ -1327,8 +1327,8 @@
                                         </div>
                                         <div role="main" class="ui-content" >
 
-                                        <div style="margin:0 auto; width:30%!important;text-align: center;">
-                                          <img src="img/user.png" id='img'class="normal" style="width: 100px; height: 100px;"></div>
+                                        <div style="margin:0 auto; width:30% !important;text-align: center;" id="imgAddUser">
+                                          <img src="img/user.png" id="img" class="normal" style="width: 100px; height: 100px;"></div>
                                           <table style="border:none" align="center">
                                             <tr>
                                               <td>
@@ -1442,7 +1442,7 @@
 
 
                                     <a href="#dlg-pwd-reset-sent" data-rel="popup" data-role="button" data-transition="pop" data-position-to="window" id="sign-in-btn" name="sign-in-btn" style="background-color:#a6a6a6" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
-                                      <a href="#" data-rel="popup" data-role="button" onclick="uploadPicture();" data-transition="pop" data-position-to="window" id="up-in-btn" name="up-in-btn" style="background-color:#a6a6a6" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Upload</a>
+                                    <!--  <a href="#" data-rel="popup" data-role="button" onclick="" data-transition="pop" data-position-to="window" id="up-in-btn" name="up-in-btn" style="background-color:#a6a6a6" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Upload</a>-->
                                     <!-- <div data-role="popup" id="dlg-pwd-reset-sent" data-dismissible="false" style="max-width:400px;">
                                     <div data-role="header">
                                     <h1>Password Reset</h1>
@@ -1542,10 +1542,12 @@
 
                                           <center>
                                             <video id="video" autobuffer height="240" width="320" controls autoplay>
-<source src="http://35.233.105.130/gameonphp/upload/movie.mp4" type="video/mp4">
-<source src="http://35.233.105.130/gameonphp/upload/movie.mp4.webm" type="video/webm">
-<source src="http://35.233.105.130/gameonphp/upload/movie.mp4.ogv" type="video/ogg">
-</video>
+
+                                              <source src="http://localhost/gameonphp/upload/movie.mp4" type="video/mp4">
+                                          <!--      <source src="http://localhost/gameonphp/upload/movie.mp4.webm" type="video/webm">
+                                                  <source src="http://localhost/gameonphp/upload/movie.mp4.ogv" type="video/ogg">-->
+                                                  </video>
+
 
 
 
@@ -2090,7 +2092,9 @@
 
                                        <div>
                                            <h3>Server URL for upload.php:</h3>
-                                           <input id="serverUrl" type="text" value="http://35.233.105.130/gameonphp/upload.php" />
+
+                                           <input id="serverUrl" type="text" value="http://localhost/gameonphp/upload.php" />
+
                                        </div>
                                        <br/>
 
