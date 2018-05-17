@@ -518,8 +518,11 @@ function termsOfUse()
                     var email = profileData.email;
                     var fullname = profileData.name.split(' ');
                     var firstName=fullname[0];
-
+                    if(fullname.length>2)
+                      var lastName=fullname[fullname.length-2 +" "+ fullname.length - 1];
+                    else
                     var lastName=fullname[fullname.length - 1];
+
                     var birthday = profileData.birthday;
                     var gender = profileData.gender;
                     var location = profileData.location;
