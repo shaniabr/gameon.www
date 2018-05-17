@@ -76,10 +76,10 @@ function loginLocalStorage(){
 
     //picture in profile page
 
-    x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
 
 
   }
@@ -89,10 +89,10 @@ function loginLocalStorage(){
 
     //picture in profile page
 
-    x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
 
   }
   //go to main menu
@@ -350,7 +350,7 @@ var deviceReady = false;
 
        // Verify server has been entered
 
-       server = "http://35.205.155.184/gameonphp/upload.php";
+       server = "http://localhost/gameonphp/upload.php";
 
        if (server) {
 

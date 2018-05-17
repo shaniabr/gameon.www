@@ -3,7 +3,7 @@
 function selectPlayersNotInvited(gameid){
 
   $.ajax({
-    url: "http://35.205.155.184/gameonphp/selectAllPlayersNotInvited.php",
+    url: "http://localhost/gameonphp/selectAllPlayersNotInvited.php",
     type: "post",
     data:{gameid:gameid},
     success: function(data){
@@ -37,7 +37,7 @@ function checkPassedGames(uname){
   var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
   $.ajax({
-    url: "http://35.205.155.184/gameonphp/selectGamesThatOver.php",
+    url: "http://localhost/gameonphp/selectGamesThatOver.php",
     type: "post",
     data:{uname:uname,hourTime:hourTime,now:now,today:today},
 
@@ -73,7 +73,7 @@ hideLoading();
 //selecting user's deatils- for ranking
 function   profileDeatilsForRanking(username){
   $.ajax({
-    url: "http://35.205.155.184/gameonphp/connection.php",
+    url: "http://localhost/gameonphp/connection.php",
     type: "post",
     data:{uname:username},
     success: function(data){
@@ -98,13 +98,13 @@ function   profileDeatilsForRanking(username){
         if(item.profile_picture!=null  && item.profile_picture!="")
         {
           //picture in profile page
-          y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+item.profile_picture);
+          y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
 
         }
         else {
 
           //picture in menu
-          y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
+          y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
         }
 
       });
@@ -142,7 +142,7 @@ function   updateRanking(playerId){
     var fairness= parseInt(document.getElementById("rank-user-Fairness").innerHTML);
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/update_rank_user.php",
+      url: "http://localhost/gameonphp/update_rank_user.php",
       type: "post",
       data:{playerId:playerId,
         goals:goals,assits:assits,
@@ -176,7 +176,7 @@ function   updateRanking(playerId){
     var user_choice="joined";
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/show_players_list.php",
+      url: "http://localhost/gameonphp/show_players_list.php",
       type: "post",
       data:{game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -198,7 +198,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/selectAllNoti.php",
+      url: "http://localhost/gameonphp/selectAllNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
@@ -226,7 +226,7 @@ function   updateRanking(playerId){
   function updateGameNoti(noti_id,game_id){
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/update_noti.php",
+      url: "http://localhost/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -245,7 +245,7 @@ function   updateRanking(playerId){
   function updateNoti(noti_id){
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/update_noti.php",
+      url: "http://localhost/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -265,7 +265,7 @@ function   updateRanking(playerId){
   function addGameNoti(g_id,uname,picked_Users){
     var notiType="game_invitation_mes";
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/add_noti.php",
+      url: "http://localhost/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -279,7 +279,7 @@ function   updateRanking(playerId){
     var notiType="ranking";
     g_id=null;
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/add_noti.php",
+      url: "http://localhost/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -291,7 +291,7 @@ function   updateRanking(playerId){
   function selectAlluserd(){
     pageIsLoading();
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/selectAllUsers.php",
+      url: "http://localhost/gameonphp/selectAllUsers.php",
       type: "get",
       success: function(data){
         //remove the elemnts in the list
@@ -301,7 +301,7 @@ function   updateRanking(playerId){
 
           //add the elemnts to the list
 
-          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.205.155.184/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
         });
         hideLoading();
       }, error: function(data){hideLoading();}
@@ -313,7 +313,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://35.205.155.184/gameonphp/calculateNumNoti.php",
+      url: "http://localhost/gameonphp/calculateNumNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
