@@ -12,7 +12,7 @@ function checkingLogin(uname,pass){
     type: "post",
     data:{uname: uname, pass:pass},
     success: function(data){
-      if(data.length==0 || pass)
+      if(data.length==0)
       setTimeout(function(){ swal("User isn't registered!"); }, 50);
       else{
         $.each(data,function(i,item){
