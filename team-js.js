@@ -11,6 +11,7 @@ function optionCusChanged() {
     changeToPic1();
   }
 }
+
   // Change the image
 function changeToPic2() {
       document.getElementById("myImg").src="img/shirt2.png";
