@@ -6,9 +6,7 @@ max=0;
 function checkingLogin(uname,pass){
   uname1=null;
   $.ajax({
-
-    url: "http://35.205.155.184/gameonphp/login.php",
-
+    url: "http://localhost/gameonphp/login.php",
     type: "post",
     data:{uname: uname, pass:pass},
     success: function(data){
@@ -40,26 +38,19 @@ function checkingLogin(uname,pass){
           {
 
             //picture in menu
+            x.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
 
             //picture in profile page
-
-            x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+item.profile_picture);
-
-            //picture in profile page
-            y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+item.profile_picture);
-
+            y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
 
           }
           else {
 
             //picture in menu
+            x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
 
             //picture in profile page
-            x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
-
-            //picture in profile page
-            y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
-
+            y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
           }
           //saving the user id
           uname1=item.user_id;
@@ -85,9 +76,7 @@ function checkingLogin(uname,pass){
 function addUser(uname,firstname,lastname,pass,email,birthdate,city,foot,imageAddress){
   var bool;
   $.ajax({
-
-    url: "http://35.205.155.184/gameonphp/addUser.php",
-
+    url: "http://localhost/gameonphp/addUser.php",
     type: "post",
     data:{uname:uname, firstname:firstname, lastname:lastname,
       pass:pass, email:email, birthdate:birthdate, city:city, foot:foot,imageAddress:imageAddress},
@@ -115,9 +104,7 @@ function addUser(uname,firstname,lastname,pass,email,birthdate,city,foot,imageAd
 
 function addGame(game_date,game_location,start_time,end_time,min_players,max_players,permanent,ball,pump,water,net,public_game,uname,end_date,sent){
   $.ajax({
-
-    url: "http://35.205.155.184/gameonphp/addGame.php",
-
+    url: "http://localhost/gameonphp/addGame.php",
     type: "post",
     data:{game_date: game_date,game_location: game_location,start_time: start_time,
       end_time:end_time, min_players: min_players, max_players:max_players,permanent:permanent,ball:ball
@@ -150,9 +137,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
     var time=today.getHours()+":"+today.getMinutes();
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/selectGames.php",
-
+      url: "http://localhost/gameonphp/selectGames.php",
       type: "post",
       data:{date: date, time:time, uname:uname},
       success: function(data){
@@ -173,9 +158,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
     var date=today.getFullYear()+"/"+(parseInt(today.getMonth())+1)+"/"+today.getDate();
     var time=today.getHours()+":"+today.getMinutes();
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/selectGamesForYou.php",
-
+      url: "http://localhost/gameonphp/selectGamesForYou.php",
       type: "post",
       data:{uname: uname, time:time, date:date},
       success: function(data){
@@ -203,9 +186,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   //selecting user's deatils- the functions adds the deatils from db and puts it on 'profile' page
   function profileDeatils(username){
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/connection.php",
-
+      url: "http://localhost/gameonphp/connection.php",
       type: "post",
       data:{uname:username},
       success: function(data){
@@ -236,17 +217,13 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
           if(item.profile_picture!=null  && item.profile_picture!="")
           {
             //picture in profile page
-
-            y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+item.profile_picture);
-
+            y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
 
           }
           else {
 
             //picture in menu
-
-            y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
-
+            y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
           }
 
         });
@@ -265,9 +242,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function gamesDeatils(game_id){
     //  pageIsLoading();
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/game_deatils.php",
-
+      url: "http://localhost/gameonphp/game_deatils.php",
       type: "post",
       data:{game_id:game_id},
       success: function(data){
@@ -306,9 +281,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   //selecting field's deatils for create game
   function fieldsNamesToGameToAjax(){
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/selectAllFields.php",
-
+      url: "http://localhost/gameonphp/selectAllFields.php",
       type: "get",
       success: function(data){
         $.each(data,function(i,item){
@@ -328,9 +301,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
 
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/show_players_list.php",
-
+      url: "http://localhost/gameonphp/show_players_list.php",
       type: "post",
       data:{game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -360,9 +331,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function joinInvitationToAjax(user_id,game_id,user_choice){
     //swal(game_id);
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/update_game_invation.php",
-
+      url: "http://localhost/gameonphp/update_game_invation.php",
       type: "post",
       data:{user_id:user_id, game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -388,9 +357,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function cancelInvitationToAjax(user_id,game_id,user_choice){
     //swal(game_id);
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/update_game_invation.php",
-
+      url: "http://localhost/gameonphp/update_game_invation.php",
       type: "post",
       data:{user_id:user_id, game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -423,9 +390,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
     var time=today.getHours()+":"+today.getMinutes();
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/selectGamesUserCreated.php",
-
+      url: "http://localhost/gameonphp/selectGamesUserCreated.php",
       type: "post",
       data:{date: date, time:time, uname:uname},
       success: function(data){
@@ -444,9 +409,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function gamesDeatilsForEdit(game_id){
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/game_deatils.php",
-
+      url: "http://localhost/gameonphp/game_deatils.php",
       type: "post",
       data:{game_id:game_id},
       success: function(data){
@@ -504,9 +467,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function deleteGame(game_id){
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/delete_game.php",
-
+      url: "http://localhost/gameonphp/delete_game.php",
       type: "post",
       data:{game_id:game_id},
       success: function(data){
@@ -535,9 +496,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
   function updateGame(game_id,game_date,game_location,start_time,end_time,max_players,permanent,public_game,end_date){
 
     $.ajax({
-
-      url: "http://35.205.155.184/gameonphp/update_game.php",
-
+      url: "http://localhost/gameonphp/update_game.php",
       type: "post",
       data:{game_id:game_id, game_date:game_date, game_location:game_location,
         start_time:start_time, end_time:end_time, max_players:max_players,
@@ -574,9 +533,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
       $("#edit-water-game").find('option').remove();
 
       $.ajax({
-
-        url: "http://35.205.155.184/gameonphp/game_deatils.php",
-
+        url: "http://localhost/gameonphp/game_deatils.php",
         type: "post",
         data:{game_id:game_id},
         success: function(data){
@@ -595,9 +552,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
               // If another user brings a ball
               else{
                 $.ajax({
-
-                  url: "http://35.205.155.184/gameonphp/user_deatils.php",
-
+                  url: "http://localhost/gameonphp/user_deatils.php",
                   type: "post",
                   data:{user:item.ball},
                   success: function(data){
@@ -619,9 +574,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
               // If another user brings a pump
               else{
                 $.ajax({
-
-                  url: "http://35.205.155.184/gameonphp/user_deatils.php",
-
+                  url: "http://localhost/gameonphp/user_deatils.php",
                   type: "post",
                   data:{user:item.pump},
                   success: function(data){
@@ -643,9 +596,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
               // If another user brings a water
               else{
                 $.ajax({
-
-                  url: "http://35.205.155.184/gameonphp/user_deatils.php",
-
+                  url: "http://localhost/gameonphp/user_deatils.php",
                   type: "post",
                   data:{user:item.water},
                   success: function(data){
@@ -667,9 +618,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
               // If another user brings a ball
               else{
                 $.ajax({
-
-                  url: "http://35.205.155.184/gameonphp/user_deatils.php",
-
+                  url: "http://localhost/gameonphp/user_deatils.php",
                   type: "post",
                   data:{user:item.net},
                   success: function(data){
