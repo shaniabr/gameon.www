@@ -486,10 +486,10 @@ function termsOfUse()
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
 
-  imageUrl: 'http://35.205.155.184/gameonphp/upload/game.png',
-
+  imageUrl: 'img/game.png',
+background: '#DCDCDC',
   imageWidth: 400,
-  imageHeight: 140,
+  imageHeight: 120,
   //type: 'info',
   html:
     'The Gameon app will not be responsible '+
@@ -499,7 +499,7 @@ function termsOfUse()
         'A user who does not '+
      'comply with what is said here will be suspended from '+
       'the app and may be permanently removed from it.',
-  showCloseButton: true,
+  showCloseButton: false,
   showCancelButton: false,
   focusConfirm: false,
   confirmButtonText:
