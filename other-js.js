@@ -510,6 +510,7 @@ function termsOfUse()
 }); },50);
 }
 
+<<<<<<< HEAD
 //  FB SDK
     /*    var fbLoginSuccess = function (data) {
             //alert("Success! " + data.authResponse.userID);
@@ -540,15 +541,31 @@ function termsOfUse()
                       loginLocalStorage();
 
                       }
+=======
+<!--  FB SDK  -->
+var fbLoginSuccess = function (data) {
+            alert("Success! " + data.authResponse.userID);
+            if (data.status == 'connected'){
+                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location",["public_profile","email"], function(profileData) {
+                    alert('Successful login for: ' + JSON.stringify(profileData));
+                    var email = profileData.email;
+                    var fullname = profileData.name;
+                    var fbid=profileData.id;
+>>>>>>> parent of dfbf976... movie
                 });
             }
         }
 
-        function login_fb() {
-            facebookConnectPlugin.login(["public_profile", "email"],
+        function login_fb(){
+            facebookConnectPlugin.login(["public_profile","email"],
                 fbLoginSuccess,
                 function (error) { alert("err in login" + JSON.stringify(error)); }
             );
+<<<<<<< HEAD
         }*/
 
 //  FB SDK
+=======
+        }
+<!--  FB SDK  -->
+>>>>>>> parent of dfbf976... movie
