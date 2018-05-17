@@ -6,7 +6,7 @@
            function addInvation(game_id,u_id){
            $.ajax({
 
-                  url: "http://localhost/gameonphp/add_game_invation.php",
+                  url: "http://loclhost/gameonphp/add_game_invation.php",
 
                   type: "post",
                     data:{game_id: game_id,u_id: u_id},
@@ -27,7 +27,7 @@
                       function addInvationForGameCreator(game_id,u_id){
                       $.ajax({
 
-                             url: "http://localhost/gameonphp/add_game_invation_for_creator.php",
+                             url: "http://loclhost/gameonphp/add_game_invation_for_creator.php",
 
                              type: "post",
                                data:{game_id: game_id,u_id: u_id},
@@ -46,7 +46,7 @@
           $.ajax({
 
 
-                  url: "http://localhost/gameonphp/allusersButYou.php",
+                  url: "http://loclhost/gameonphp/allusersButYou.php",
 
                   type: "post",
                   data:{uname:uname},
@@ -74,7 +74,7 @@ $('#addPlayersToGame').listview('refresh');
                $.ajax({
 
 
-                       url: "http://localhost/gameonphp/selectLastGameId.php",
+                       url: "http://loclhost/gameonphp/selectLastGameId.php",
 
                        type: "get",
                        success: function(data){
@@ -97,7 +97,7 @@ $('#addPlayersToGame').listview('refresh');
                       var g_id;
                      $.ajax({
 
-                             url: "http://localhost/gameonphp/selectLastGameId.php",
+                             url: "http://loclhost/gameonphp/selectLastGameId.php",
 
                              type: "get",
                              success: function(data){
@@ -119,7 +119,7 @@ $('#addPlayersToGame').listview('refresh');
                       pageIsLoading();
                      $.ajax({
 
-                             url: "http://localhost/gameonphp/updateGameAccessories.php",
+                             url: "http://loclhost/gameonphp/updateGameAccessories.php",
 
                              type: "post",
                                data:{game_id:game_id,ball:ball,pump:pump,water:water,net:net},
@@ -140,7 +140,7 @@ $('#addPlayersToGame').listview('refresh');
                           var exsist=false;
                            $.ajax({
 
-                                   url: "http://localhost/gameonphp/connection.php",
+                                   url: "http://loclhost/gameonphp/connection.php",
 
                                    type: "post",
                                      data:{uname: uname},
@@ -160,7 +160,7 @@ $('#addPlayersToGame').listview('refresh');
 
                                  $.ajax({
 
-                                         url: "http://localhost/gameonphp/selectAllFields.php",
+                                         url: "http://loclhost/gameonphp/selectAllFields.php",
 
                                          type: "get",
                                          success: function(data){
@@ -171,8 +171,8 @@ $('#addPlayersToGame').listview('refresh');
 
                   //add the elemnts to the list
 
-\
-                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.field_img+'"><h1>'+item.field_name+':'+' '+item.city+' </h1><p>'+item.address+'</p></a></li>').listview('refresh');
+
+                  $('#fields-list').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="fieldsDeatils(\'' +item.field_id+ '\');"><img src="http://loclhost/gameonphp/upload/'+item.field_img+'"><h1>'+item.field_name+':'+' '+item.city+' </h1><p>'+item.address+'</p></a></li>').listview('refresh');
 
 
                             });
@@ -187,7 +187,7 @@ $('#addPlayersToGame').listview('refresh');
 
                            $.ajax({
 
-                                   url: "http://localhost/gameonphp/field_deatils.php",
+                                   url: "http://loclhost/gameonphp/field_deatils.php",
 
                                    type: "post",
                                      data:{field_id:field_id},
@@ -209,7 +209,7 @@ $('#addPlayersToGame').listview('refresh');
 
                                           //picture of the field
 
-                                          x.setAttribute("src", "http://localhost/gameonphp/upload/"+item.field_img);
+                                          x.setAttribute("src", "http://loclhost/gameonphp/upload/"+item.field_img);
 
 
 
@@ -231,7 +231,7 @@ $('#addPlayersToGame').listview('refresh');
                                  var bool=true;
                                  $.ajax({
 
-                                         url: "http://localhost/gameonphp/check_game_invitation.php",
+                                         url: "http://loclhost/gameonphp/check_game_invitation.php",
 
                                          type: "post",
                                            data:{game_id:game_id, user_id:user_id},
@@ -261,7 +261,7 @@ $('#addPlayersToGame').listview('refresh');
                              function createInvitationjoin(user_id,  game_id){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/add_game_invation_for_creator.php",
+                                       url: "http://loclhost/gameonphp/add_game_invation_for_creator.php",
 
                                        type: "post",
                                          data:{game_id:game_id, u_id:user_id},
@@ -283,7 +283,7 @@ $('#addPlayersToGame').listview('refresh');
                              function getLastRankLeauge(){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/selectTableLeague.php",
+                                       url: "http://loclhost/gameonphp/selectTableLeague.php",
 
                                        type: "get",
                                        success: function(data){
@@ -301,7 +301,7 @@ $('#addPlayersToGame').listview('refresh');
                              function checkTeamName(team_name,shirt,symbool,rank,uname){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/team_deatils.php",
+                                       url: "http://loclhost/gameonphp/team_deatils.php",
 
                                        type: "post",
                                          data:{team_name: team_name},
@@ -331,7 +331,7 @@ $('#addPlayersToGame').listview('refresh');
                              function addTeam(team_name,shirt,symbool,rank,uname){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/add_team.php",
+                                       url: "http://loclhost/gameonphp/add_team.php",
 
                                        type: "post",
                                          data:{team_name:team_name, uname:uname,uname:uname},
@@ -356,7 +356,7 @@ $('#addPlayersToGame').listview('refresh');
                              function addTeamToLeague(team_name,rank){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/insert_teamToLeague.php",
+                                       url: "http://loclhost/gameonphp/insert_teamToLeague.php",
 
                                        type: "post",
                                          data:{team_name:team_name,rank:rank},
@@ -371,7 +371,7 @@ $('#addPlayersToGame').listview('refresh');
                              function updateUserTeam(uname,team_name){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/update_user_team.php",
+                                       url: "http://loclhost/gameonphp/update_user_team.php",
 
                                        type: "post",
                                          data:{team_name:team_name,uname:uname},
@@ -386,7 +386,7 @@ $('#addPlayersToGame').listview('refresh');
                              function getUserTeam(uname){
                                $.ajax({
 
-                                       url: "http://localhost/gameonphp/team_deatils_of_player.php",
+                                       url: "http://loclhost/gameonphp/team_deatils_of_player.php",
 
                                        type: "post",
                                          data:{uname: uname},
@@ -415,7 +415,7 @@ $('#addPlayersToGame').listview('refresh');
 
                                                       $.ajax({
 
-                                                              url: "http://localhost/gameonphp/team_deatils.php",
+                                                              url: "http://loclhost/gameonphp/team_deatils.php",
 
                                                               type: "post",
                                                                 data:{team_name:team_name},

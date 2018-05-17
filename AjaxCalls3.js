@@ -4,7 +4,7 @@ function selectPlayersNotInvited(gameid){
 
   $.ajax({
 
-    url: "http://localhost/gameonphp/selectAllPlayersNotInvited.php",
+    url: "http://loclhost/gameonphp/selectAllPlayersNotInvited.php",
     type: "post",
     data:{gameid:gameid},
     success: function(data){
@@ -39,7 +39,7 @@ function checkPassedGames(uname){
 
   $.ajax({
 
-    url: "http://localhost/gameonphp/selectGamesThatOver.php",
+    url: "http://loclhost/gameonphp/selectGamesThatOver.php",
 
     type: "post",
     data:{uname:uname,hourTime:hourTime,now:now,today:today},
@@ -77,7 +77,7 @@ hideLoading();
 function   profileDeatilsForRanking(username){
   $.ajax({
 
-    url: "http://localhost/gameonphp/connection.php",
+    url: "http://loclhost/gameonphp/connection.php",
 
     type: "post",
     data:{uname:username},
@@ -104,14 +104,14 @@ function   profileDeatilsForRanking(username){
         {
           //picture in profile page
 
-          y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
+          y.setAttribute("src", "http://loclhost/gameonphp/upload/"+item.profile_picture);
 
         }
         else {
 
           //picture in menu
 
-          y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+          y.setAttribute("src", "http://loclhost/gameonphp/upload/user.png");
         }
 
       });
@@ -150,7 +150,7 @@ function   updateRanking(playerId){
 
     $.ajax({
 
-      url: "http://localhost/gameonphp/update_rank_user.php",
+      url: "http://loclhost/gameonphp/update_rank_user.php",
       type: "post",
       data:{playerId:playerId,
         goals:goals,assits:assits,
@@ -184,7 +184,7 @@ function   updateRanking(playerId){
     var user_choice="joined";
 
     $.ajax({
-      url: "http://localhost/gameonphp/show_players_list.php",
+      url: "http://loclhost/gameonphp/show_players_list.php",
 
       type: "post",
       data:{game_id:game_id, user_choice:user_choice},
@@ -208,7 +208,7 @@ function   updateRanking(playerId){
 
     $.ajax({
 
-      url: "http://localhost/gameonphp/selectAllNoti.php",
+      url: "http://loclhost/gameonphp/selectAllNoti.php",
 
       type: "post",
       data:{uname: uname},
@@ -238,7 +238,7 @@ function   updateRanking(playerId){
 
     $.ajax({
 
-      url: "http://localhost/gameonphp/update_noti.php",
+      url: "http://loclhost/gameonphp/update_noti.php",
 
       type: "post",
       data:{noti_id: noti_id},
@@ -259,7 +259,7 @@ function   updateRanking(playerId){
 
     $.ajax({
 
-      url: "http://localhost/gameonphp/update_noti.php",
+      url: "http://loclhost/gameonphp/update_noti.php",
 
       type: "post",
       data:{noti_id: noti_id},
@@ -281,7 +281,7 @@ function   updateRanking(playerId){
     var notiType="game_invitation_mes";
     $.ajax({
 
-      url: "http://localhost/gameonphp/add_noti.php",
+      url: "http://loclhost/gameonphp/add_noti.php",
 
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
@@ -297,7 +297,7 @@ function   updateRanking(playerId){
     g_id=null;
     $.ajax({
 
-      url: "http://localhost/gameonphp/add_noti.php",
+      url: "http://loclhost/gameonphp/add_noti.php",
 
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
@@ -311,7 +311,7 @@ function   updateRanking(playerId){
     pageIsLoading();
     $.ajax({
 
-      url: "http://localhost/gameonphp/selectAllUsers.php",
+      url: "http://loclhost/gameonphp/selectAllUsers.php",
 
       type: "get",
       success: function(data){
@@ -322,7 +322,7 @@ function   updateRanking(playerId){
 
           //add the elemnts to the list
 
-          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://loclhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
 
         });
         hideLoading();
@@ -336,7 +336,7 @@ function   updateRanking(playerId){
 
     $.ajax({
 
-      url: "http://localhost/gameonphp/calculateNumNoti.php",
+      url: "http://loclhost/gameonphp/calculateNumNoti.php",
 
       type: "post",
       data:{uname: uname},
@@ -371,7 +371,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
-    url: "http://localhost/gameonphp/addUserFromFB.php",
+    url: "http://loclhost/gameonphp/addUserFromFB.php",
     type: "post",
     data:{fbid:fbid, email:email, firstName:firstName, lastName:lastName, birthday:birthday, location:location, fbpic:fbpic},
       success: function(data){
