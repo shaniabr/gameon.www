@@ -73,19 +73,27 @@ function loginLocalStorage(){
   if(user_image!="null"  && user_image!="")
   {
     //picture in menu
+
+    //picture in profile page
+
     x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+user_image);
 
     //picture in profile page
     y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/"+user_image);
 
+
   }
   else {
 
     //picture in menu
+
+    //picture in profile page
+
     x.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
 
     //picture in profile page
     y.setAttribute("src", "http://35.205.155.184/gameonphp/upload/user.png");
+
   }
   //go to main menu
 goToMenu();
@@ -268,71 +276,127 @@ setTimeout(function(){  swal("You must agree to terms of use"); },50);
 
 
 //picture//
-$(document).ready(function(){
+var deviceReady = false;
+   /**
+    * Take picture with camera
+    */
+   function takePicture() {
+       navigator.camera.getPicture(
+           function(uri) {
+               var img = document.getElementById('img');
+               img.style.visibility = "visible";
+               img.style.display = "block";
+               img.src = uri;
+            //   document.getElementById('camera_status').innerHTML = "Success";
+           },
+           function(e) {
+               console.log("Error getting picture: " + e);
+               setTimeout(function(){  swal("Error getting picture"); },50);
+              // document.getElementById('camera_status').innerHTML = "Error getting picture.";
+           },
+           { quality: 50,
+             destinationType: navigator.camera.DestinationType.FILE_URI,
+             allowEdit: true,
+             targetWidth: 1000,
+             targetHeight: 1000
+           });
+   };
+   /**
+    * Select picture from library
+    */
+   function selectPicture() {
 
-  // take picture from camera
-  $('#but_take').click(function(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
-      destinationType: Camera.DestinationType.FILE_URL
-    });
-  });
+       navigator.camera.getPicture(
+           function(uri) {
 
-  // upload select
-  $("#but_select").click(function(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit: true,
-      destinationType: Camera.DestinationType.FILE_URI
-    });
-  });
+               var img = document.getElementById('img');
+               img.style.visibility = "visible";
+               img.style.display = "block";
+               img.src = uri;
+               $('imgAddUser').append()
 
-  // Change image source and upload photo to server
-  function onSuccess(imageURI) {
-    //loading
-    pageIsLoading();
+           },
+           function(e) {
 
-    // Set image source
-    var image = document.getElementById('img');
-    image.src = imageURI  + '?' + Math.random();
+               console.log("Error getting picture: " + e);
+                 setTimeout(function(){  swal("Error getting picture"); },50);
 
+           },
+           { quality: 50,
+             destinationType: navigator.camera.DestinationType.FILE_URI,
+             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+             allowEdit: true,
+             targetWidth: 1000,
+             targetHeight: 1000
+         });
 
+   };
 
-    // Set image source
-    var image = document.getElementById('img');
-    image.src = imageURI  + '?' + Math.random();
+   /**
+    * Upload current picture
+    */
+   function uploadPicture() {
 
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
+     // Get URI of picture to upload
+     var img = document.getElementById('img');
+       var imageURI = img.src;
 
-    var params = {};
-    params.value1 = "test";
-    params.value2 = "param";
+       if (!imageURI || (img.style.display == "none")) {
+            setTimeout(function(){  swal("Take picture or select picture from library first"); },50);
+        //   document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+           return;
+       }
+       if( $('#img').attr('src')!="img/user.png"){
 
-    options.params = params;
-    options.chunkedMode = false;
+       // Verify server has been entered
 
-    var ft = new FileTransfer();
-    ft = new FileTransfer();
+       server = "http://35.205.155.184/gameonphp/upload.php";
 
-    ft.upload(imageURI, "http://35.205.155.184/gameonphp/upload.php", function(result){
-      // swal('successfully uploaded ' + result.response);
-      imageAddress=result.response;
+       if (server) {
 
-      hideLoading();
-    }, function(error){
-      swal('error : ' + JSON.stringify(error));
-      hideLoading();
-    }, options);
+           // Specify transfer options
+           var options = new FileUploadOptions();
+           options.fileKey="file";
+           options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+           options.mimeType="image/jpeg";
+           options.chunkedMode = false;
+           // Transfer picture to server
+           var ft = new FileTransfer();
+           ft.upload(imageURI, server, function(r) {
+               imageAddress=r.response;
+               // If no image is selected
+               if(imageAddress==''|| imageAddress==null){
+                 imageAddress='user.png';
+               }
+               //add user
+               addUser($("#txt-user-sign-in").val(),$("#txt-first-sign-in").val(),$("#txt-last-sign-in").val(),
+               $("#txt-password-sign-in").val(),$("#txt-email-sign-in").val(),str2
+               ,$( "#city-sign-in option:selected" ).text(),$( "#foot-sign-in option:selected" ).text(),imageAddress);
 
-  }
-  function onFail(message) {
-    swal('Failed because: ' + message);
-    hideLoading();
-  }
+           }, function(error) {
+               setTimeout(function(){  swal("Upload failed: file size is greater than 4 MB"); },50);
+              // document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;
+           }, options);
+       }
+     }
+     else{
 
-});
+       //add user
+       addUser($("#txt-user-sign-in").val(),$("#txt-first-sign-in").val(),$("#txt-last-sign-in").val(),
+       $("#txt-password-sign-in").val(),$("#txt-email-sign-in").val(),str2
+       ,$( "#city-sign-in option:selected" ).text(),$( "#foot-sign-in option:selected" ).text(),"user.png");
+
+     }
+   }
+
+   function init() {
+       document.addEventListener("deviceready", function() {deviceReady = true;}, false);
+       window.setTimeout(function() {
+           if (!deviceReady) {
+               alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+           }
+       },2000);
+   }
 
 /* for rotate profile pic */
 function Rotate() {
@@ -420,7 +484,9 @@ function termsOfUse()
   setTimeout(function(){  swal({
 //  title: 'Terms Of Use',
   text: 'Modal with a custom image.',
+
   imageUrl: 'http://35.205.155.184/gameonphp/upload/game.png',
+
   imageWidth: 400,
   imageHeight: 140,
   //type: 'info',
