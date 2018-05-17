@@ -6,11 +6,13 @@ max=0;
 function checkingLogin(uname,pass){
   uname1=null;
   $.ajax({
-    url: "http://35.233.105.130/gameonphp/login.php",
+
+    url: "http://localhost/gameonphp/login.php",
 
     type: "post",
     data:{uname: uname, pass:pass},
     success: function(data){
+      if(data.length==0 || pass)
       setTimeout(function(){ swal("User isn't registered!"); }, 50);
       else{
         $.each(data,function(i,item){
@@ -42,6 +44,10 @@ function checkingLogin(uname,pass){
             //picture in profile page
 
             x.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
+
+            //picture in profile page
+            y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
+
 
           }
           else {
