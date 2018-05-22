@@ -343,7 +343,7 @@ function   updateRanking(playerId){
 /*the function add the user's deatils from facebook*/
 
 function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbpic){
-  var bool;
+  //var bool;
   alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
@@ -353,11 +353,11 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
       success: function(data){
         swal("User was Added!","", "success");
 
-          uname=localStorage.getItem("fbid");
+    /*      uname=localStorage.getItem("fbid");
           var first=localStorage.getItem("firstName");
           var last=localStorage.getItem("lastName");
           var user_image=localStorage.getItem("fbpic");
-          loginLocalStorage();
+          loginLocalStorage();*/
 
       },
       error:function(data)

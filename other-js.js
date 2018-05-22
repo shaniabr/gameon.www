@@ -527,19 +527,20 @@ background: '#DCDCDC',
                     var lastname = profileData.last_name;
 
                     var birthday = profileData.birthday;
-                    if(birthday=="undefined")
-                      birthday=new Date();
-                   alert("birthday: "+birthday);
+                    if(birthday==undefined)
+                  {    birthday=new Date();
+                   alert("birthday: "+birthday);}
 
                     var location = profileData.location;
-                      if(location=="undefined")
+                      if(location==null)
                       location="";
-                    alert("location: "+location);
+//alert("location: "+location);
                     var picture = profileData.picture.data.url;
                     var fbid=profileData.id;
-                      alert("id: "+fbid);
 
-                    addUserfromfb(fbid, email, firstName, lastName, birthday, location, picture);
+
+                    addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
+                      alert("ok id: "+fbid);
                 });
             }
         }
