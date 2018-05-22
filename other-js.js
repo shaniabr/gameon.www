@@ -518,16 +518,19 @@ background: '#DCDCDC',
 
         //-- ---------------------------------------------- FB SDK -------------------------------------------------------- --
         var fbLoginSuccess = function (data) {
-            alert("Success! " + data.authResponse.userID);
+          //  alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
                 facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
-                    alert('Successful login for: ' + JSON.stringify(profileData));
+                  //  alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
-                    var fullname = profileData.name;
+                    var firstname = profileData.first_name;
+                    var lastname = profileData.last_name;
                     var birthday = profileData.birthday;
                     var gender = profileData.gender;
                     var location = profileData.location;
                     var picture = profileData.data.url;
+
+                    alert("email: "+email+ "birthday: "+birthday);
 
                 });
             }
