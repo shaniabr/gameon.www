@@ -521,16 +521,21 @@ background: '#DCDCDC',
           //  alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
                 facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
-                  //  alert('Successful login for: ' + JSON.stringify(profileData));
+                    alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
+                      alert("email: "+email);
                     var firstname = profileData.first_name;
+                      alert("firstname: "+firstname);
                     var lastname = profileData.last_name;
+                    alert("lastname: "+lastname);
                     var birthday = profileData.birthday;
+                    alert("birthday: "+birthday);
                     var gender = profileData.gender;
+                    alert("gender: "+gender);
                     var location = profileData.location;
+                    alert("location: "+location);
                     var picture = profileData.data.url;
-
-                    alert("email: "+email+ "birthday: "+birthday);
+                    alert("picture: "+picture);
 
                 });
             }
