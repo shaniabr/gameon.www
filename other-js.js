@@ -534,7 +534,7 @@ background: '#DCDCDC',
                     alert("gender: "+gender);
                     var location = profileData.location;
                     alert("location: "+location);
-                    var picture = profileData.data.url;
+                    var picture = profileData.picture.data.url;
                     alert("picture: "+picture);
 
                 });
