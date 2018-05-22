@@ -517,6 +517,7 @@ background: '#DCDCDC',
 }
 
         //-- ---------------------------------------------- FB SDK -------------------------------------------------------- --
+
         var fbLoginSuccess = function (data) {
           //  alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
@@ -528,11 +529,12 @@ background: '#DCDCDC',
 
                     var birthday = profileData.birthday;
                     if(birthday==undefined)
-                  {    birthday=new Date();
+                  {   var today=new Date();
+                      birthday=today.getFullYear()+"/"+(parseInt(today.getMonth())+1)+"/"+today.getDate();
                    alert("birthday: "+birthday);}
 
                     var location = profileData.location;
-                      if(location==null)
+                      if(location==undefined)
                       location="";
 //alert("location: "+location);
                     var picture = profileData.picture.data.url;
