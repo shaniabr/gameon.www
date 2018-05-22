@@ -347,7 +347,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
-    url: "http:///gameonphp/addUserFromFB.php",
+    url: "http://104.155.36.52/gameonphp/addUserFromFB.php",
     type: "post",
     data:{fbid:fbid, email:email, firstName:firstName, lastName:lastName, birthday:birthday, location:location, fbpic:fbpic},
       success: function(data){
