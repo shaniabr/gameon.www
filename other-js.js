@@ -521,22 +521,25 @@ background: '#DCDCDC',
           //  alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
                 facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
-                    alert('Successful login for: ' + JSON.stringify(profileData));
+                  //  alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
-                      alert("email: "+email);
                     var firstname = profileData.first_name;
-                      alert("firstname: "+firstname);
                     var lastname = profileData.last_name;
-                    alert("lastname: "+lastname);
+
                     var birthday = profileData.birthday;
-                    alert("birthday: "+birthday);
-                    var gender = profileData.gender;
-                    alert("gender: "+gender);
+                    if(birthday=="undefined")
+                      birthday=new Date();
+                   alert("birthday: "+birthday);
+
                     var location = profileData.location;
+                      if(location=="undefined")
+                      location="";
                     alert("location: "+location);
                     var picture = profileData.picture.data.url;
-                    alert("picture: "+picture);
+                    var fbid=profileData.id;
+                      alert("id: "+fbid);
 
+                    addUserfromfb(fbid, email, firstName, lastName, birthday, location, picture);
                 });
             }
         }
