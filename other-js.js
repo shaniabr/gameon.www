@@ -542,8 +542,17 @@ background: '#DCDCDC',
 
                     if(functionCheckUserName(fbid))
                     addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
+
                     else {
-                      alert("exists");
+                      uname=checkingLogin(fbid,fbid);
+                      if(uname!=null){
+                        setTimeout(goToMenu, 700);
+                      }
+
+                      else {
+                        hideLoading();
+                      }
+
                     }
                   //    alert("ok id: "+fbid);
                 });

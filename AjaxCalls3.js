@@ -353,6 +353,14 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
       success: function(data){
         swal("User was Added!","", "success");
 
+        uname=checkingLogin(fbid,fbid);
+        if(uname!=null){
+          setTimeout(goToMenu, 700);
+        }
+
+        else {
+          hideLoading();
+        }
     /*      uname=localStorage.getItem("fbid");
           var first=localStorage.getItem("firstName");
           var last=localStorage.getItem("lastName");
