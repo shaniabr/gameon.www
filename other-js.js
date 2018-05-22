@@ -190,7 +190,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("First name must contain at least 2 characters"); },50);
     flag=false;
   }
-  if(flag && !/^[a-zA-Z]+$/.test($("#txt-first-sign-in").val()))
+  if(flag && !/^[a-z][a-z\s]*$/.test($("#txt-first-sign-in").val()))
   {
     setTimeout(function(){  swal("First name should contains only letters"); },50);
     flag=false;
@@ -200,6 +200,11 @@ $(document).on('vclick', '#sign-in-btn', function () {
   if(flag && $("#txt-last-sign-in").val()=="" )
   {
     setTimeout(function(){  swal("Please fill in the last-name field"); },50);
+    flag=false;
+  }
+  if(flag && !/^[a-z][a-z\s]*$/.test($("#txt-last-sign-in").val()))
+  {
+    setTimeout(function(){  swal("Last name should contains only letters"); },50);
     flag=false;
   }
 
@@ -509,20 +514,21 @@ background: '#DCDCDC',
   '<i class="fa fa-thumbs-down"></i>',
   cancelButtonAriaLabel: 'Thumbs down',
 }); },50);
-} 
+}
 
         //-- ---------------------------------------------- FB SDK -------------------------------------------------------- --
         var fbLoginSuccess = function (data) {
             alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
-                facebookConnectPlugin.api("/me?fields=email,name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
+                facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture", ["public_profile", "email"], function (profileData) {
                     alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
                     var fullname = profileData.name;
                     var birthday = profileData.birthday;
                     var gender = profileData.gender;
                     var location = profileData.location;
-                    var picture = profileData.picture;
+                    var picture = profileData.data.url;
+
                 });
             }
         }
