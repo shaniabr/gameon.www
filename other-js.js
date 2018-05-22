@@ -76,10 +76,10 @@ function loginLocalStorage(){
 
     //picture in profile page
 
-    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://104.155.36.52/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://104.155.36.52/gameonphp/upload/"+user_image);
 
 
   }
@@ -89,10 +89,10 @@ function loginLocalStorage(){
 
     //picture in profile page
 
-    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://104.155.36.52/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://104.155.36.52/gameonphp/upload/user.png");
 
   }
   //go to main menu
@@ -355,7 +355,7 @@ var deviceReady = false;
 
        // Verify server has been entered
 
-       server = "http://localhost/gameonphp/upload.php";
+       server = "http://104.155.36.52/gameonphp/upload.php";
 
        if (server) {
 
@@ -531,8 +531,8 @@ background: '#DCDCDC',
                     if(birthday==undefined)
                   {   var today=new Date();
                       birthday=today.getFullYear()+"/"+(parseInt(today.getMonth())+1)+"/"+today.getDate();
-                   alert("birthday: "+birthday);}
-
+                //   alert("birthday: "+birthday);
+}
                     var location = profileData.location;
                       if(location==undefined)
                       location="";
@@ -542,7 +542,7 @@ background: '#DCDCDC',
 
 
                     addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
-                      alert("ok id: "+fbid);
+                  //    alert("ok id: "+fbid);
                 });
             }
         }
