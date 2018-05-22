@@ -540,7 +540,7 @@ background: '#DCDCDC',
                     var picture = profileData.picture.data.url;
                     var fbid=profileData.id;
 
-                    if(!functionCheckUserName(fbid))
+                    if(functionCheckUserName(fbid))
                     addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
                     else {
                       alert("exists");
