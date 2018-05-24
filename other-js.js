@@ -569,7 +569,7 @@ background: '#DCDCDC',
 
 //upload profile picture
         function uploadPictureFB(fbid, email, firstname, lastname, birthday, location, imageURI) {
-
+alert("fbid: "+fbid+ "imageURI: "+imageURI);
           // Get URI of picture to upload
 
             if (!imageURI || (img.style.display == "none")) {
@@ -609,13 +609,13 @@ background: '#DCDCDC',
 
         }
 
-    /*    function init() {
+        function init() {
             document.addEventListener("deviceready", function() {deviceReady = true;}, false);
             window.setTimeout(function() {
                 if (!deviceReady) {
                     alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
                 }
             },2000);
-        }*/
+        }
 
         // ---------------------------------------------- FB SDK ---------------------------------------------------- -
