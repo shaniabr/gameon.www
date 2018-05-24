@@ -245,7 +245,7 @@ input {
     filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-#players,#wins,#place,#players2,#wins2,#place2,#team-name2{
+#team-create-players,#team-create-wins,#team-create-place,#players,#wins,#place,#players2,#wins2,#place2,#team-name2{
   background-color:  #0d0d0d;
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */
