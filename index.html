@@ -410,7 +410,7 @@
       </table>
       <div class="custom-footer">
         <a  href="#create-team" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-create" >Create team</a>
-        <a href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-my-team" >My team</a>
+        <a href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="teambutton-my-team" >My team</a>
         <a href="#tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-tour" >Tournament</a>
 
       </div>
@@ -653,43 +653,43 @@
                     <div data-role="content">
                       <table  style="border:none" width="100%">
                         <tr>
-                          <td>
-                            <a href="#">
+                          <td align="center" style="width: 111px;">
+                            <a href="#"></a>
                               <img src="img/barak.jpg" alt="Barak Osmo"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                               <center>Barak Osmo</center>
                             </td>
-                            <td>
-                              <a href="#">
+                            <td align="center">
+                              <a href="#"></a>
                                 <img src="img/ron.jpg" alt="Ron Ocheri" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                 <center> Ron Ocheri</center>
                               </td>
-                              <td>
-                                <a href="#">
+                              <td align="center">
+                                <a href="#"></a>
                                   <img src="img/ido.jpg" alt="Ido Kabala"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                   <center>Ido Kabala</center>
                                 </td>
                               </tr>
                               <tr>
-                                <td>
-                                  <a href="#">
+                                <td align="center">
+                                  <a href="#"></a>
                                     <img src="img/adir.jpg" alt="Adir Pano"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                     <center>Adir Pano</center>
                                   </td>
-                                  <td>
-                                    <a href="#">
+                                  <td align="center">
+                                    <a href="#"></a>
                                       <img src="img/yoav.jpg" alt="Yoav Harel" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                       <center>Yoav Harel</center>
                                     </td>
-                                    <td>
-                                      <a href="#">
+                                    <td align="center">
+                                      <a href="#"></a>
                                         <img src="img/abiel.jpg" alt="Abiel Karadi" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                         <center>Abiel Karadi</center>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                        <a href="#">
-
+                                      <td align="center">
+                                        <a href="#"></a>
+  <img src="img/ronny.jpg" alt="Roni Kalmanovich" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
                                           <center>Roni Kalmanovich</center>
                                         </td>
                                       </tr>
@@ -722,7 +722,7 @@
                                       </tr>
                                     </table>
                                     <div class="custom-footer">
-                                      <a  href="#creat-tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="create-tour" >Create tournament</a>
+                                      <a  href="#creat-tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="create-tour" onclick="clearTour()">Create tournament</a>
                                       <a href="#join-tournament-page" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="join-tour" >Join tournament</a>
                                     </div>
 
@@ -736,7 +736,7 @@
                                   <div data-role="header">
                                     <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
                                     <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
-                                    <h1 style="font-size:120%" align="center">Create tournament</h1>
+                                    <h1 style="font-size:120%" align="center">Create</h1>
                                   </div>
 
                                   <div data-role="content">
@@ -748,28 +748,19 @@
                                           <label for="date">Date:</label>
                                         </td>
                                         <td>
-                                          <input type="date" name="date" id="date" value=""  />
+                                          <input type="date" name="tour-date" id="tour-date" value="" style="text-align:center;" />
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                           <!--Location-->
                                           <fieldset class="ui-field-contain">
-                                            <label for="city">Location</label>
+                                            <label for="city">Field</label>
                                           </td>
                                           <td>
                                             <select name="city" id="city">
                                               <optgroup label="North">
-                                                <option value="1">Nahariya</option>
-                                                <option value="2">Haifa</option>
-                                                <option value="3">Nesher</option>
-                                              </optgroup>
-                                              <optgroup label="Center">
-                                                <option value="4">Nataniya</option>
-                                                <option value="5">Tel-Aviv</option>
-                                              </optgroup>
-                                              <optgroup label="South">
-                                                <option value="6">Ashdod</option>
+                                              
                                               </optgroup>
                                             </select>
                                           </fieldset>
@@ -781,7 +772,7 @@
                                           <label for="start-time">Start time</label>
                                         </td>
                                         <td>
-                                          <input type="text" name="start-time" id="start-time" value="" data-clear-btn="true" >
+                                          <input  type="time"  name="start-time-tour" id="start-time-tour" value="" data-clear-btn="true" style="text-align:center;" >
                                         </td>
                                       </tr>
                                       <tr>
@@ -790,7 +781,7 @@
                                           <label for="end-time">End time</label>
                                         </td>
                                         <td>
-                                          <input type="text" name="end-time" id="end-time" value="" data-clear-btn="true" >
+                                          <input  type="time" name="end-time-tour" id="end-time-tour" value="" data-clear-btn="true" style="text-align:center;" >
                                         </td>
                                       </tr>
                                       <tr>
@@ -1568,9 +1559,9 @@
 
                                           <center>
                                             <video id="video" autobuffer height="240" width="320" controls autoplay>
-<source src="http://localhost/gameonphp/upload/movie2.mp4" type="video/mp4">
-<source src="http://localhost/gameonphp/upload/movie2.mp4.webm" type="video/webm">
-<source src="http://localhost/gameonphp/upload/movie2.mp4.ogv" type="video/ogg">
+<source src="http://35.233.58.223/gameonphp/upload/movie2.mp4" type="video/mp4">
+<source src="http://35.233.58.223/gameonphp/upload/movie2.mp4.webm" type="video/webm">
+<source src="http://35.233.58.223/gameonphp/upload/movie2.mp4.ogv" type="video/ogg">
 </video>
 
                                           </center>

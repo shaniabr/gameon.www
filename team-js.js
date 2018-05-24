@@ -46,7 +46,7 @@ document.getElementById("myImg2").src="img/symbool1.png";
 // Checking the team name is filled-create team
 $(document).on('vclick', '#create-team-done', function () {
 if($("#team-create-name").val()=="" )
-          alert("Please fill in the team name field");
+  setTimeout(function(){   swal("Please fill in the team name field");},50);
 else {
 
   checkTeamName($("#team-create-name").val(),
@@ -96,9 +96,9 @@ document.getElementById("myImg4").src="img/symbool2.png";
 // Checking the team name is filled-manage team
 $(document).on('vclick', '#done2', function () {
 if($("#team-name2").val()=="" )
-          alert("Please fill in the team name field");
+setTimeout(function(){   swal("Please fill in the team name field");},50);
 else {
-    alert("Information was updated!");
+  setTimeout(function(){   swal("Information was updated!");},50);
           $.mobile.changePage("#team-page", {
               transition: "slide", changeHase: false
           });
@@ -136,3 +136,17 @@ getLastRankLeauge();
     //call the ajax function
   getUserTeam(uname);
     });
+
+
+    //clear tour deatils
+     function clearTour() {
+      //today's date
+      var now = new Date();
+
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+
+    $('#tour-date').val(today);
+  }
