@@ -541,7 +541,7 @@ background: '#DCDCDC',
                     var fbid=profileData.id;
 
                     if(functionCheckUserName(fbid))
-                    addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
+                    uploadPictureFB(fbid, email, firstname, lastname, birthday, location, picture);
 
                     else {
                       uname=checkingLogin(fbid,fbid);
@@ -565,5 +565,57 @@ background: '#DCDCDC',
                 function (error) { alert("err in login" + JSON.stringify(error)); }
             );
         }
+
+
+//upload profile picture
+        function uploadPictureFB(fbid, email, firstname, lastname, birthday, location, imageURI) {
+
+          // Get URI of picture to upload
+
+            if (!imageURI || (img.style.display == "none")) {
+                 setTimeout(function(){  swal("no picture"); },50);
+             //   document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+                return;
+            }
+
+            // Verify server has been entered
+            server = "http://localhost/gameonphp/upload.php";
+
+            if (server) {
+
+                // Specify transfer options
+                var options = new FileUploadOptions();
+                options.fileKey="file";
+                options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+                options.mimeType="image/jpeg";
+                options.chunkedMode = false;
+                // Transfer picture to server
+                var ft = new FileTransfer();
+                ft.upload(imageURI, server, function(r) {
+                    imageAddress=r.response;
+                    // If no image is selected
+                    if(imageAddress==''|| imageAddress==null){
+                      imageAddress='user.png';
+                    }
+                    addUserfromfb(fbid, email, firstname, lastname, birthday, location, imageAddress);
+
+
+                }, function(error) {
+                    setTimeout(function(){  swal("Upload failed: file size is greater than 4 MB"); },50);
+                   // document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;
+                }, options);
+            }
+
+
+        }
+
+    /*    function init() {
+            document.addEventListener("deviceready", function() {deviceReady = true;}, false);
+            window.setTimeout(function() {
+                if (!deviceReady) {
+                    alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+                }
+            },2000);
+        }*/
 
         // ---------------------------------------------- FB SDK ---------------------------------------------------- -
