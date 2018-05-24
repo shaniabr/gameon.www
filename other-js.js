@@ -592,7 +592,9 @@ alert("fbid: "+fbid+ "imageURI: "+imageURI);
                 // Transfer picture to server
                 var ft = new FileTransfer();
                 ft.upload(imageURI, server, function(r) {
+                  alert("shani");
                     imageAddress=r.response;
+                    alert("imageAddress: "+ imageAddress);
                     // If no image is selected
                     if(imageAddress==''|| imageAddress==null){
                       imageAddress='user.png';
