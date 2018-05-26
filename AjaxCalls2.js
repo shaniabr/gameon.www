@@ -65,7 +65,7 @@ $('#addPlayersToGame').listview('refresh');
 
            //selecting the last games
               function lastGame(picked_Users){
-              
+
                 var g_id;
                $.ajax({
                        url: "http://35.233.41.110/gameonphp/selectLastGameId.php",
@@ -363,13 +363,14 @@ $('#addPlayersToGame').listview('refresh');
                                           }
                                           else {
                                              setTimeout(function(){   swal    ("You aren't belong to any team"); }, 50);
-
+                                             hideLoading();
                                           }
 
                                         }
                                         ,
                                               error:function(data)
                                               {   setTimeout(function(){   swal    ("You aren't belong to a team"); }, 50);
+                                               hideLoading();
                                                 }
                                    });
                              }

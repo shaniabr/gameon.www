@@ -640,6 +640,8 @@ $("#edit-start-time-game-info").val(),endTime ,$("#edit-max-players-game-info").
                         res = str.substring(5, str.length);
                         //send invitation
                      addInvation(document.getElementById("edit-game-id-info").value,res);
+                     //sending notification
+                     addGameNoti(document.getElementById("edit-game-id-info").value,uname,res);
                 }
                 else if (type=="checkbox") {
                 }

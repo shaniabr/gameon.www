@@ -190,7 +190,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("First name must contain at least 2 characters"); },50);
     flag=false;
   }
-  if(flag && !/^[a-z][a-z\s]*$/.test($("#txt-first-sign-in").val()))
+  if(flag && !/^[a-zA-Z][a-zA-Z\s]*$/.test($("#txt-first-sign-in").val()))
   {
     setTimeout(function(){  swal("First name should contains only letters"); },50);
     flag=false;
@@ -202,7 +202,7 @@ $(document).on('vclick', '#sign-in-btn', function () {
     setTimeout(function(){  swal("Please fill in the last-name field"); },50);
     flag=false;
   }
-  if(flag && !/^[a-z][a-z\s]*$/.test($("#txt-last-sign-in").val()))
+  if(flag && !/^[a-zA-Z][a-zA-Z\s]*$/.test($("#txt-last-sign-in").val()))
   {
     setTimeout(function(){  swal("Last name should contains only letters"); },50);
     flag=false;
@@ -494,7 +494,7 @@ function termsOfUse()
   imageUrl: 'img/game.png',
 background: '#DCDCDC',
   imageWidth: 400,
-  imageHeight: 120,
+  imageHeight: 140,
   //type: 'info',
   html:
     'The Gameon app will not be responsible '+
@@ -542,7 +542,7 @@ background: '#DCDCDC',
 
                     if(functionCheckUserName(fbid))
         //            uploadPictureFB(fbid, email, firstname, lastname, birthday, location, picture);
-addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
+addUserfromfb(fbid, email, firstname, lastname, birthday, location, 'user.png');
 
                     else {
                       uname=checkingLogin(fbid,fbid);
