@@ -115,15 +115,16 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
         setTimeout(function(){ swal("Game was created!"); }, 500);
         //creating invitation for game's creator//
         lastGameForGameCreator(uname);
-
         //adding players to game
         $.mobile.changePage("#add-playersToGame", {
 
           transition: "slide", changeHase: false
         });
+hideLoading();
       },
       error:function(data)
-      {swal("Error! Game wasn't created!");},
+      {swal("Error! Game wasn't created!");
+    hideLoading();},
 
       async:false
     });
@@ -398,7 +399,7 @@ function addGame(game_date,game_location,start_time,end_time,min_players,max_pla
         if(data.length!=0)
         $.each(data,function(i,item){
 
-          $('#edit-game-deatils').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="gamesDeatils(\'' +item.game_id+ '\');" style="padding-top: 0px; padding-bottom: 0px;"><h1 style="color:#8bb7f0;">Date: '+item.game_date+'   '+item.start_time+'</h1> <p style="font-size: 14px;">Location: '+item.field_name+', '+item.city+'</p></a></li>').listview('refresh');
+          $('#edit-game-deatils').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="gamesDeatilsForEdit(\'' +item.game_id+ '\');" style="padding-top: 0px; padding-bottom: 0px;"><h1 style="color:#8bb7f0;">Date: '+item.game_date+'   '+item.start_time+'</h1> <p style="font-size: 14px;">Location: '+item.field_name+', '+item.city+'</p></a></li>').listview('refresh');
         });
         hideLoading();
       }

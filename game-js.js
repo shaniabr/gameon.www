@@ -128,8 +128,6 @@ if(flag && $("#start-time-game-creat").val()=="" )
           }
         }
       }
-
-
         if(flag)
     {
       $.mobile.changePage("#create-game-part2", {
@@ -140,15 +138,11 @@ if(flag && $("#start-time-game-creat").val()=="" )
 });
 
 
-
-
-
 // Create Game-part2
 $(document).on('vclick', '#next2-game-creat', function () {
   //show loading
 pageIsLoading();
-
-
+//$('#next2-game-creat').addClass('ui-disabled');
 
 var startTime=document.getElementById("start-time-game-creat").value;
 var startdatetemp=new Date($("#date-game-creat").val());
@@ -174,8 +168,7 @@ else {
 var endTime=fullEndDate.getHours()+":"+fullEndDate.getMinutes();
 var endDate=fullEndDate.getFullYear()+"-"+(fullEndDate.getMonth()+1)+"-"+fullEndDate.getDate();
 
-alert("uname: "+uname);
-alert("local: "+ localStorage.getItem("userId"))
+
 // calling to php code and insert game to DB
 addGame($("#date-game-creat").val(),$("#city-game-creat").val(),document.getElementById("start-time-game-creat").value,endTime,$("#min-players-game-creat").val(),
 $("#maximum-players-game-creat").val(),$("#flip-select-game-creat option:selected").text(),$("#ball-game-creat" ).val(),$("#pump-game-creat" ).val()
@@ -251,6 +244,13 @@ $('#date-game-creat').val(today);
     $('#water-game-creat').val('').change();
     $('#pump-game-creat').val('').change();
     $('#net-game-creat').val('').change();
+ document.getElementById("min-players-game-creat").value="";
+ document.getElementById("maximum-players-game-creat").value="";
+   $('#duration').val('1').change();
+   $('#city-game-creat').val('1').change();
+document.getElementById("start-time-game-creat").value="";
+
+
 //ball
  document.getElementById("ball-game-creat").innerHTML+='<option value='+""+'></option>'
   document.getElementById("ball-game-creat").innerHTML+='<option value='+localStorage.getItem("userId")+'>'+localStorage.getItem("userFirstName")+' '+localStorage.getItem("userlastName")+'</option>'
@@ -451,7 +451,12 @@ $(document).on('vclick', '#canceled-my', function () {
 waiting_bool="canceled";
 });
 
-//class="ui-btn-active ui-state-persist"
+
+//user clicked on 'back' in 'Search Games'
+$(document).on('vclick', '#approve-game', function () {
+  changeActive();
+  });
+
 //user clicked on 'back' in 'My Games'
 $(document).on('vclick', '#gamebutton-my-games', function () {
   changeActive();
