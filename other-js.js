@@ -541,7 +541,8 @@ background: '#DCDCDC',
                     var fbid=profileData.id;
 
                     if(functionCheckUserName(fbid))
-                    uploadPictureFB(fbid, email, firstname, lastname, birthday, location, picture);
+        //            uploadPictureFB(fbid, email, firstname, lastname, birthday, location, picture);
+addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
 
                     else {
                       uname=checkingLogin(fbid,fbid);
@@ -568,7 +569,7 @@ background: '#DCDCDC',
 
 
 //upload profile picture
-        function uploadPictureFB(fbid, email, firstname, lastname, birthday, location, imageURI) {
+    /*    function uploadPictureFB(fbid, email, firstname, lastname, birthday, location, imageURI) {
 alert("fbid: "+fbid+ "imageURI: "+imageURI);
           // Get URI of picture to upload
 
@@ -618,6 +619,6 @@ alert("fbid: "+fbid+ "imageURI: "+imageURI);
                     alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
                 }
             },2000);
-        }
+        }*/
 
         // ---------------------------------------------- FB SDK ---------------------------------------------------- -

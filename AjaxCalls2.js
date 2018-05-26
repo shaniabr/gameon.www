@@ -90,6 +90,7 @@ $('#addPlayersToGame').listview('refresh');
                      $.ajax({
                              url: "http://35.233.41.110/gameonphp/selectLastGameId.php",
                              type: "get",
+                              data:{picked_Users:picked_Users},
                              success: function(data){
                              $.each(data,function(i,item){
 
