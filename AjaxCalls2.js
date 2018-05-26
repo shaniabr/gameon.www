@@ -65,10 +65,12 @@ $('#addPlayersToGame').listview('refresh');
 
            //selecting the last games
               function lastGame(picked_Users){
+              
                 var g_id;
                $.ajax({
                        url: "http://35.233.41.110/gameonphp/selectLastGameId.php",
-                       type: "get",
+                       type: "post",
+                         data:{uname:uname},
                        success: function(data){
                        $.each(data,function(i,item){
 
@@ -85,19 +87,19 @@ $('#addPlayersToGame').listview('refresh');
                  }
 
                  //selecting the last games for Game creator
-                    function lastGameForGameCreator(picked_Users){
+                    function lastGameForGameCreator(uname){
                       var g_id;
                      $.ajax({
                              url: "http://35.233.41.110/gameonphp/selectLastGameId.php",
-                             type: "get",
-                              data:{picked_Users:picked_Users},
+                             type: "post",
+                              data:{uname:uname},
                              success: function(data){
                              $.each(data,function(i,item){
 
                                    g_id=item.game_id;
 
                                    //add invitation DB
-                                   addInvationForGameCreator(g_id,picked_Users);
+                                   addInvationForGameCreator(g_id,uname);
 
                          });
                          }

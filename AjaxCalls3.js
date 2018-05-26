@@ -344,7 +344,7 @@ function   updateRanking(playerId){
 
 function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbpic){
   //var bool;
-  alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
+//  alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
     url: "http://35.233.41.110/gameonphp/addUserFromFB.php",
