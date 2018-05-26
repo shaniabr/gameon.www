@@ -212,7 +212,7 @@ input {
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */
 }
-#infobutton-league,#infobutton-fields{
+#help-button,#infobutton-fields,#creatGame-help-button,#features-button{
     background-image: url("../img/newsColor.png");
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */
