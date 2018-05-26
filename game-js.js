@@ -174,7 +174,8 @@ else {
 var endTime=fullEndDate.getHours()+":"+fullEndDate.getMinutes();
 var endDate=fullEndDate.getFullYear()+"-"+(fullEndDate.getMonth()+1)+"-"+fullEndDate.getDate();
 
-
+alert("uname: "+uname);
+alert("local: "+ localStorage.getItem("userId"))
 // calling to php code and insert game to DB
 addGame($("#date-game-creat").val(),$("#city-game-creat").val(),document.getElementById("start-time-game-creat").value,endTime,$("#min-players-game-creat").val(),
 $("#maximum-players-game-creat").val(),$("#flip-select-game-creat option:selected").text(),$("#ball-game-creat" ).val(),$("#pump-game-creat" ).val()
