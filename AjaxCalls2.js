@@ -375,6 +375,36 @@ $('#addPlayersToGame').listview('refresh');
                                    });
                              }
 
+                             // the function checks if the user belong to team
+                             function getUserTeamForCreate(uname){
+                               $.ajax({
+                                       url: "http://35.233.51.212/gameonphp/team_deatils_of_player.php",
+                                       type: "post",
+                                         data:{uname: uname},
+                                       success: function(data){
+                                          if(data.length!=0)
+                                          {
+                                            setTimeout(function(){   swal    ("You can't be apart of 2 teams"); }, 50);
+                                            hideLoading();
+                                          }
+                                          else {
+
+                                            $.mobile.changePage("#create-team", {
+
+                                                transition: "slide", changeHase: false
+                                            });
+
+                                             hideLoading();
+                                          }
+
+                                        }
+                                        ,
+                                              error:function(data)
+                                              {   setTimeout(function(){   swal    ("You can't be apart of 2 teams"); }, 50);
+                                               hideLoading();
+                                                }
+                                   });
+                             }
                              //add the deatils for a field
                                                      function getTeamDeatilsToPlayer(team_name){
 

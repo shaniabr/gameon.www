@@ -137,6 +137,11 @@ getLastRankLeauge();
   getUserTeam(uname);
     });
 
+    //user clicked the 'create-team' category
+    $(document).on('vclick', '#teambutton-create', function () {
+      //call the ajax function
+    getUserTeamForCreate(uname);
+      });
 
     //clear tour deatils
      function clearTour() {
