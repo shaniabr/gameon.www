@@ -45,8 +45,8 @@ function checkingLogin(uname,pass){
             y.setAttribute("src", "http://35.233.51.212/gameonphp/upload/"+item.profile_picture);
 }
 else {
-  x.setAttribute("src", user_image);
-  y.setAttribute("src",user_image);
+  x.setAttribute("src", item.profile_picture);
+  y.setAttribute("src",item.profile_picture);
 }
           }
 
@@ -229,7 +229,7 @@ hideLoading();
             y.setAttribute("src", "http://35.233.51.212/gameonphp/upload/"+item.profile_picture);
           }
           else {
-            y.setAttribute("src",user_image);
+            y.setAttribute("src"item.profile_picture);
           }
           }
           else {
