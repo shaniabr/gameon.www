@@ -528,7 +528,7 @@ background: '#DCDCDC',
         var fbLoginSuccess = function (data) {
           //  alert("Success! " + data.authResponse.userID);
             if (data.status == 'connected') {
-                facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture?large&height=300&width=300", ["public_profile", "email"], function (profileData) {
+                facebookConnectPlugin.api("/me?fields=email,first_name,last_name,birthday,gender,location,picture?width=1024&height=1024", ["public_profile", "email"], function (profileData) {
                   //  alert('Successful login for: ' + JSON.stringify(profileData));
                     var email = profileData.email;
                     var firstname = profileData.first_name;
