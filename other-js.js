@@ -77,10 +77,10 @@ function loginLocalStorage(){
     //picture in profile page-Not from facebook
 if(user_image.indexOf("http")==-1)
 {
-    x.setAttribute("src", "http://35.233.51.212/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://35.240.115.18/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.51.212/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://35.240.115.18/gameonphp/upload/"+user_image);
   }
   //from facebook//
   else {
@@ -96,10 +96,10 @@ if(user_image.indexOf("http")==-1)
 
     //picture in profile page
 
-    x.setAttribute("src", "http://35.233.51.212/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://35.240.115.18/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://35.233.51.212/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://35.240.115.18/gameonphp/upload/user.png");
 
   }
   //go to main menu
@@ -362,7 +362,7 @@ var deviceReady = false;
 
        // Verify server has been entered
 
-       server = "http://35.233.51.212/gameonphp/upload.php";
+       server = "http://35.240.115.18/gameonphp/upload.php";
 
        if (server) {
 
@@ -588,7 +588,7 @@ alert("fbid: "+fbid+ "imageURI: "+imageURI);
             }
 
             // Verify server has been entered
-            server = "http://35.233.51.212/gameonphp/upload.php";
+            server = "http://35.240.115.18/gameonphp/upload.php";
 
             if (server) {
 
