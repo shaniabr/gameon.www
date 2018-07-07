@@ -51,6 +51,7 @@ else {
 
   checkTeamName($("#team-create-name").val(),
   $("#shirt-picker option:selected").text(),$("#symbol-picker option:selected").text(),$("#team-create-place").val(),uname);
+
 }
 
 });
@@ -154,4 +155,35 @@ getLastRankLeauge();
     var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
     $('#tour-date').val(today);
+  }
+
+  //checks who was invited and send him an invitation-team
+  function CheckTeamboxes(){
+
+      var elLength = document.MyFormTeam.elements.length;
+    var str;
+    var res;
+      for (i=0; i<elLength; i++)
+      {
+          var type = MyFormTeam.elements[i].type;
+          if (type=="checkbox" && MyFormTeam.elements[i].checked){
+              //taking the user id
+               str = ""+MyFormTeam.elements[i].id;
+                  res = str.substring(3, str.length);
+                  //send invitation
+              addTeamNoti(document.getElementById("team-create-place").value,res);
+          }
+          else if (type=="checkbox") {
+          }
+          else {
+          }
+      }
+
+      swal("Invitations were sent");
+                    //back to game's page
+      $.mobile.changePage("#game-page", {
+
+          transition: "slide", changeHase: false
+      });
+      emptyList();
   }

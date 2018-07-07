@@ -313,7 +313,7 @@ $('#addPlayersToGame').listview('refresh');
                                          //updating user game_deatils
                                          updateUserTeam(uname,team_name);
 
-                                         $.mobile.changePage("#team-page", {
+                                         $.mobile.changePage("#add-playersToTeam", {
 
                                              transition: "slide", changeHase: false
                                          });

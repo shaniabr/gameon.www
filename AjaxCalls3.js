@@ -387,3 +387,29 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   });
 
 }
+
+
+  //creating notification of team invitation to user
+  function addTeamInvitation(t_id,picked_Users){
+    $.ajax({
+      url: "http://35.240.115.18/gameonphp/add_noti.php",
+      type: "post",
+      data:{t_id: t_id,picked_Users:picked_Users},
+      success: function(data){
+      }
+    });
+  }
+
+
+
+  //creating notification of team invitation to user
+  function addTeamNoti(t_id,picked_Users){
+    var notiType="Team_invitation_mes";
+    $.ajax({
+      url: "http://35.240.115.18/gameonphp/add_noti.php",
+      type: "post",
+      data:{g_id: t_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
+      success: function(data){
+      }
+    });
+  }
