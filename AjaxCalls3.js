@@ -97,10 +97,16 @@ function   profileDeatilsForRanking(username){
         //only if the user has a picture//
         if(item.profile_picture!=null  && item.profile_picture!="")
         {
+            if(item.profile_picture.indexOf("http")==-1){
           //picture in profile page
           y.setAttribute("src", "http://35.240.115.18/gameonphp/upload/"+item.profile_picture);
 
+        }else {
+          x.setAttribute("src", item.profile_picture);
+          y.setAttribute("src",item.profile_picture);
         }
+      }
+
         else {
 
           //picture in menu
@@ -300,8 +306,13 @@ function   updateRanking(playerId){
         $.each(data,function(i,item){
 
           //add the elemnts to the list
-
+          if(item.profile_picture.indexOf("http")==-1)
           $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.240.115.18/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+
+          else {
+            $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+
+          }
         });
         hideLoading();
       }, error: function(data){hideLoading();}
