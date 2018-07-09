@@ -171,7 +171,8 @@ getLastRankLeauge();
                str = ""+MyFormTeam.elements[i].id;
                   res = str.substring(3, str.length);
                   //send invitation
-              addTeamNoti(document.getElementById("team-create-place").value,res);
+              addTeamNoti(document.getElementById("team-create-name").value,res);
+              addTeamInvitation(document.getElementById("team-create-name").value,res);
           }
           else if (type=="checkbox") {
           }
@@ -181,7 +182,7 @@ getLastRankLeauge();
 
       swal("Invitations were sent");
                     //back to game's page
-      $.mobile.changePage("#game-page", {
+      $.mobile.changePage("#team-page", {
 
           transition: "slide", changeHase: false
       });

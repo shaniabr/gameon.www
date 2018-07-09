@@ -335,6 +335,12 @@ function emptyList() {
   $("#addPlayersToGame").find('li').remove();
 }
 
+//empty team players list
+function emptyList2() {
+  //empty the list
+  $("#addPlayersToTeam").find('li').remove();
+}
+
 //updating the user invitation to-"joined"- sending the varibels to ajax
 function joinInvitation()
 {
@@ -593,6 +599,36 @@ $("#edit-start-time-game-info").val(),endTime ,$("#edit-max-players-game-info").
 
 
         });
+        //checks who was invited and send him an invitation
+function CheckCheckboxes(){
+
+    var elLength = document.MyFormGame.elements.length;
+  var str;
+  var res;
+    for (i=0; i<elLength; i++)
+    {
+        var type = MyFormGame.elements[i].type;
+        if (type=="checkbox" && MyFormGame.elements[i].checked){
+            //taking the user id
+             str = ""+MyFormGame.elements[i].id;
+                res = str.substring(3, str.length);
+                //send invitation
+            lastGame(res);
+        }
+        else if (type=="checkbox") {
+        }
+        else {
+        }
+    }
+
+    swal("Invitations were sent");
+                  //back to game's page
+    $.mobile.changePage("#game-page", {
+
+        transition: "slide", changeHase: false
+    });
+    emptyList();
+}
 
         //checks who was invited and send him an invitation-Edit add more players
         function CheckCheckboxesForEdit(){
