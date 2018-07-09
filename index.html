@@ -2181,7 +2181,55 @@
                                     </div>
 
 
-                                        <script type="text/javascript" src="cordova.js"></script>
+    <!--page 20- team-invitation page-->
+    <div data-role="page" id="team-invitation" data-theme="b" >
 
-                                      </body>
-                                      </html>
+    <div data-role="header">
+          <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+          <a href="#main-page" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+          <h1 style="font-size:120%" align="center"> Team info </h1>
+      </div>
+
+        <div data-role="content">
+        <table  style="border:none" width="100%">
+          <tr>
+          <td>
+          <!--Game's Creator-->
+            <label for="team-captain-id">Team's Captain</label>
+            </td>
+            <td>
+            <input name="team-captain-id" id="team-captain-id" value=""  readonly style="text-align:center;"/>
+
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Game id-->
+        <label for="team-name">Team Name</label>
+      </td>
+      <td>
+        <input name="team-name" id="team-name" value=""  readonly style="text-align:center;"/>
+
+      </td>
+      </tr>
+  </table>
+          <div class="custom-footer">
+            <table  style="border:none" width="100%">
+              <tr>
+            <td width="50%">
+        <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check" data-role="button"  onclick="joinInvitationTeam()" id="approve-team" >Join</a>
+          </td>
+        <td width="50%">
+          <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" data-role="button"  onclick="cancelInvitationTeam()" id="cancel-team" >Cancel</a>
+            </td>
+          </tr>
+          </table>
+      </div>
+      </div>
+        </div>
+
+
+      <script type="text/javascript" src="cordova.js"></script>
+
+        </body>
+        </html>

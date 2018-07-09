@@ -228,7 +228,7 @@ input {
     filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-#next,#next-game-creat,#next2-game-creat,#approve-game,#edit-update-game{
+#next,#next-game-creat,#next2-game-creat,#approve-game,#edit-update-game,#approve-team{
   background-color:  #669900;
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */
@@ -251,7 +251,7 @@ input {
     filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-#cancel-game, #edit-delete-game{
+#cancel-game, #edit-delete-game, #cancel-team{
   background-color:  #8B0000;
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */

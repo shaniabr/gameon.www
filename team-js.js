@@ -188,3 +188,30 @@ getLastRankLeauge();
       });
       emptyList();
   }
+
+
+  //updating the user invitation to-"joined"- sending the varibels to ajax
+  function joinInvitationTeam()
+  {
+    if(document.getElementById("num-players-game-info").value==0)
+  {swal("The game is full");}
+
+  else{
+    // If the flag is true, the invitation has been successful, if the flag is false, the invitation was exist (need updating)
+  var flag= checkIfInvitationExsist(uname,  document.getElementById("game-id-info").value,"joined");
+
+  if(!flag)
+  joinInvitationToAjax(uname,  document.getElementById("game-id-info").value,"joined");
+  }
+  }
+
+
+  //updating the user invitation to-"canceled"- sending the varibels to ajax
+  function cancelInvitation()
+  {
+    // If the flag is true, the invitation has been successful, if the flag is false, the invitation was exist (need updating)
+  var flag= checkIfInvitationExsist(uname,  document.getElementById("game-id-info").value,"canceled");
+  if(!flag)
+  cancelInvitationToAjax(uname,  document.getElementById("game-id-info").value,"canceled");
+
+  }

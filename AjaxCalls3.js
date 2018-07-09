@@ -216,6 +216,11 @@ function   updateRanking(playerId){
 
           $('#ulNoti').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="updateGameNoti(\'' +item.noti_id + '\',\'' +item.game_id+ '\');">Game invitation from '+item.first_name+" "+item.last_name+'</a></li>').listview('refresh');
 
+          //team invitation noti//
+          else if(item.text=="Team_invitation_mes")
+
+          $('#ulNoti').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="updateTeamNoti(\'' +item.noti_id + '\',\'' +item.team_name+ '\');">Team invitation from '+item.first_name+" "+item.last_name+'</a></li>').listview('refresh');
+
           //ranking noti//
           else {
             $('#ulNoti').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="updateNoti(\'' +item.noti_id+ '\');">You were ranked by'+' '+item.first_name+" "+item.last_name+'</a></li>').listview('refresh');
@@ -246,6 +251,23 @@ function   updateRanking(playerId){
     });
   }
 
+    //updating notifications to 'read' and calling game deatils function
+    function updateTeamNoti(noti_id,team_name){
+
+      $.ajax({
+        url: "http://localhost/gameonphp/update_noti.php",
+        type: "post",
+        data:{noti_id: noti_id},
+        success: function(data){
+          if(data.length!=0)
+          //   $.each(data,function(i,item){
+
+          teamDeatils(team_name);
+          //   });
+          hideLoading();
+        }
+      });
+    }
 
   //updating notifications to 'read' and calling profile deatils function
   function updateNoti(noti_id){
@@ -413,3 +435,31 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
       }
     });
   }
+
+
+
+    //selecting team's deatils
+    function teamDeatils(team_name){
+      $.ajax({
+        url: "http://localhost/gameonphp/team_deatils_invitation.php",
+        type: "post",
+        data:{team_name:team_name},
+        success: function(data){
+
+          $.each(data,function(i,item){
+  
+              document.getElementById("team-captain-id").value=item.first_name+" "+item.last_name;
+              document.getElementById("team-name").value=item.team_name;
+
+          });
+          hideLoading();
+        },
+        error:function(data){hideLoading();},
+        async:false
+      });
+      $.mobile.changePage("#team-invitation", {
+
+        transition: "slide", changeHase: false
+      });
+
+    }
