@@ -190,28 +190,23 @@ getLastRankLeauge();
   }
 
 
-  //updating the user invitation to-"joined"- sending the varibels to ajax
+  //add user to team
   function joinInvitationTeam()
   {
-    if(document.getElementById("num-players-game-info").value==0)
-  {swal("The game is full");}
+    if(getUserTeamForJoin(uname)){
+      alert(uname+" "+document.getElementById("team-name").value);
+   JCPlayersToTeam(uname,  document.getElementById("team-name").value,"YES");
+   
 
-  else{
-    // If the flag is true, the invitation has been successful, if the flag is false, the invitation was exist (need updating)
-  var flag= checkIfInvitationExsist(uname,  document.getElementById("game-id-info").value,"joined");
-
-  if(!flag)
-  joinInvitationToAjax(uname,  document.getElementById("game-id-info").value,"joined");
   }
   }
 
 
   //updating the user invitation to-"canceled"- sending the varibels to ajax
-  function cancelInvitation()
+  function cancelInvitationTeam()
   {
-    // If the flag is true, the invitation has been successful, if the flag is false, the invitation was exist (need updating)
-  var flag= checkIfInvitationExsist(uname,  document.getElementById("game-id-info").value,"canceled");
-  if(!flag)
-  cancelInvitationToAjax(uname,  document.getElementById("game-id-info").value,"canceled");
+    if(getUserTeamForJoin(uname)){
+   JCPlayersToTeam(uname, document.getElementById("team-name").value,"NO");
 
   }
+}

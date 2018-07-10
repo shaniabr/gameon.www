@@ -259,6 +259,43 @@ $('#addPlayersToGame').listview('refresh');
                                return bool;
                                }
 
+                               // join or cancel players to team
+                                 function JCPlayersToTeam(user_id, team_name, user_choice){
+
+                                   $.ajax({
+                                           url: "http://localhost/gameonphp/answer_team_invitation.php",
+                                           type: "post",
+                                             data:{team_name:team_name, user_id:user_id, user_choice:user_choice},
+                                           success: function(data){
+                                                $.each(data,function(i,item){
+                                             hideLoading();
+                                             if((user_choice=="YES")&& (updateUserTeam(user_id,team_name))){
+                                             setTimeout(function(){   swal("Welcome to "+team_name+"!"); }, 50);
+                                           }
+                                               else {
+                                                   setTimeout(function(){   swal("See you in another team"); }, 50);
+                                               }
+                                               //go to main page
+                                             $.mobile.changePage("#main-page", {
+                                             transition: "slide", changeHase: false
+                                             });
+                                           });
+
+                                       },  error: function(data){
+                                         hideLoading();
+                                         setTimeout(function(){   swal("Failed! an error occurred"); }, 50);
+
+                                         //go to main page
+                                        $.mobile.changePage("#main-page", {
+                                        transition: "slide", changeHase: false
+                                        });
+                                       },
+                                         async:false
+                                       });
+                                 }
+
+
+
                              // create a new invitation for user (public game)
                              function createInvitationjoin(user_id,  game_id){
                                $.ajax({
@@ -404,7 +441,7 @@ $('#addPlayersToGame').listview('refresh');
                              // the function checks if the user belong to team
                                                         function getUserTeamForCreate(uname){
                                                           $.ajax({
-                                                                  url: "http://localhost/gameonphp/team_deatils_of_player.php",
+                                                                  url: "http://localhost/gameonphp/team_deatil_of_player.php",
                                                                   type: "post",
                                                                     data:{uname: uname},
                                                                   success: function(data){
@@ -431,6 +468,36 @@ $('#addPlayersToGame').listview('refresh');
                                                                            }
                                                               });
                                                         }
+                                                        // the function checks if the user belong to team
+                                                                                   function getUserTeamForJoin(uname){
+                                                                                     var bool=false;
+                                                                                     $.ajax({
+                                                                                             url: "http://localhost/gameonphp/team_of_player.php",
+                                                                                             type: "post",
+                                                                                               data:{uname: uname},
+                                                                                             success: function(data){
+                                                                                               $.each(data,function(i,item){
+
+                                                                                                if(item.team!=null)
+                                                                                                {
+                                                                                                  setTimeout(function(){   swal    ("You can't be apart of 2 teams"); }, 50);
+                                                                                                  hideLoading();
+
+                                                                                                }
+                                                                                                else{
+                                                                                                   hideLoading();
+                                                                                                   bool=true;
+                                                                                                }
+                                                                                              });
+                                                                                              },
+                                                                                                    error:function(data)
+                                                                                                    {   setTimeout(function(){   swal    ("You can't be apart of 2 teams"); }, 50);
+                                                                                                     hideLoading();
+                                                                                                      },
+                                                                                                        async:false
+                                                                                         });
+                                                                                         return bool;
+                                                                                   }
                              //add the deatils for a field
                                                      function getTeamDeatilsToPlayer(team_name){
 

@@ -447,7 +447,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
         success: function(data){
 
           $.each(data,function(i,item){
-  
+
               document.getElementById("team-captain-id").value=item.first_name+" "+item.last_name;
               document.getElementById("team-name").value=item.team_name;
 
