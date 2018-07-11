@@ -194,9 +194,8 @@ getLastRankLeauge();
   function joinInvitationTeam()
   {
     if(getUserTeamForJoin(uname)){
-      alert(uname+" "+document.getElementById("team-name").value);
    JCPlayersToTeam(uname,  document.getElementById("team-name").value,"YES");
-   
+
 
   }
   }
@@ -205,8 +204,13 @@ getLastRankLeauge();
   //updating the user invitation to-"canceled"- sending the varibels to ajax
   function cancelInvitationTeam()
   {
-    if(getUserTeamForJoin(uname)){
    JCPlayersToTeam(uname, document.getElementById("team-name").value,"NO");
 
   }
+
+
+function showTeamPlayersList()
+{
+ showTeamPlayersListToAjax(document.getElementById("team-name2").value);
+
 }

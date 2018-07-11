@@ -322,16 +322,6 @@ hideLoading();
         $.each(data,function(i,item){
           $('#players-list-info').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" style="padding-top: 8px; padding-bottom: 8px;" onclick="profileDeatils(\'' +item.user_id+ '\');">'+item.first_name+' '+item.last_name+'</a></li>').listview('refresh');
 
-
-
-          /*
-          $('#players-list-info').append('<li ><a><div>'+
-          '<label class="list-with-checkbox">'+item.first_name+' '+item.last_name+'</label>'+
-          '</div></a>'+
-          '<a href="#" class="ui-btn-icon-right ui-icon-myicon2" onclick="profileDeatils(\'' +item.user_id+ '\');"></a></li>');
-          //$("[type=checkbox]").checkboxradio();
-          $('#players-list-info').listview('refresh');
-          */
         });
       }
     });
@@ -340,6 +330,7 @@ hideLoading();
       transition: "slide", changeHase: false
     });
   }
+
   //updating the user invitation to-"joined"
   function joinInvitationToAjax(user_id,game_id,user_choice){
     //swal(game_id);

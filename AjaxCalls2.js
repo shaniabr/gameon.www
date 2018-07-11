@@ -267,11 +267,15 @@ $('#addPlayersToGame').listview('refresh');
                                            type: "post",
                                              data:{team_name:team_name, user_id:user_id, user_choice:user_choice},
                                            success: function(data){
-                                                $.each(data,function(i,item){
                                              hideLoading();
-                                             if((user_choice=="YES")&& (updateUserTeam(user_id,team_name))){
+                                             if(user_choice=="YES"){
+                                              if(updateUserTeam2(user_id,team_name)){
                                              setTimeout(function(){   swal("Welcome to "+team_name+"!"); }, 50);
                                            }
+                                           else
+                                           setTimeout(function(){   swal("fashla"); }, 50);
+
+                                         }
                                                else {
                                                    setTimeout(function(){   swal("See you in another team"); }, 50);
                                                }
@@ -279,7 +283,6 @@ $('#addPlayersToGame').listview('refresh');
                                              $.mobile.changePage("#main-page", {
                                              transition: "slide", changeHase: false
                                              });
-                                           });
 
                                        },  error: function(data){
                                          hideLoading();
@@ -409,7 +412,21 @@ $('#addPlayersToGame').listview('refresh');
                                    }
                                    });
                              }
+                             //updating user game_deatils-team's field
+                              function updateUserTeam2(uname,team_name){
+                                var bool=false;
+                                $.ajax({
+                                        url: "http://localhost/gameonphp/update_user_team.php",
+                                        type: "post",
+                                          data:{team_name:team_name,uname:uname},
+                                        success: function(data){
+                                          bool=true;
+                                    },
+                                   async:false
 
+                                    });
+                                    return bool;
+                              }
 
                              // the function checks if the user belong to team
                              function getUserTeam(uname){

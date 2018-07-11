@@ -410,7 +410,7 @@
       </table>
       <div class="custom-footer">
         <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-create" >Create team</a>
-        <a href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="teambutton-my-team" >My team</a>
+        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="teambutton-my-team" >My team</a>
         <a href="#tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-tour" >Tournament</a>
 
       </div>
@@ -562,7 +562,7 @@
                   <td>
                   </td>
                   <td>
-                    <a  href="#players-info" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2" data-role="button" id="playerInfo" >Players Information</a>
+                    <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2" data-role="button" id="playerInfo" onclick="showTeamPlayersList()" >Players Information</a>
                   </td>
                 </tr>
                 <tr>
@@ -672,55 +672,10 @@
                     </div>
 
                     <div data-role="content">
-                      <table  style="border:none" width="100%">
-                        <tr>
-                          <td align="center" style="width: 111px;">
-                            <a href="#"></a>
-                              <img src="img/barak.jpg" alt="Barak Osmo"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                              <center>Barak Osmo</center>
-                            </td>
-                            <td align="center">
-                              <a href="#"></a>
-                                <img src="img/ron.jpg" alt="Ron Ocheri" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                <center> Ron Ocheri</center>
-                              </td>
-                              <td align="center">
-                                <a href="#"></a>
-                                  <img src="img/ido.jpg" alt="Ido Kabala"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                  <center>Ido Kabala</center>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="center">
-                                  <a href="#"></a>
-                                    <img src="img/adir.jpg" alt="Adir Pano"  width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                    <center>Adir Pano</center>
-                                  </td>
-                                  <td align="center">
-                                    <a href="#"></a>
-                                      <img src="img/yoav.jpg" alt="Yoav Harel" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                      <center>Yoav Harel</center>
-                                    </td>
-                                    <td align="center">
-                                      <a href="#"></a>
-                                        <img src="img/abiel.jpg" alt="Abiel Karadi" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                        <center>Abiel Karadi</center>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td align="center">
-                                        <a href="#"></a>
-  <img src="img/ronny.jpg" alt="Roni Kalmanovich" width="99.4px" height="103px"  style="border:2px solid #b8b8b8;"></a>
-                                          <center>Roni Kalmanovich</center>
-                                        </td>
-                                      </tr>
-                                    </table>
+                      <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search..." id="teamAllplayers">
 
-                                    <div class="custom-footer">
-
-                                    </div>
-
-                                  </div>
+                      </ul>
+                          </div>
                                 </div>
 
 

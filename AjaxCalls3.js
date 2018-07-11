@@ -463,3 +463,31 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
       });
 
     }
+
+    //show the list of the team's players
+    function showTeamPlayersListToAjax(team_name){
+
+      $.ajax({
+        url: "http://localhost/gameonphp/players_from_team.php",
+        type: "post",
+        data:{team_name:team_name},
+        success: function(data){
+          $("#teamAllplayers").find('li').remove();
+          $.each(data,function(i,item){
+
+            //add the elemnts to the list
+            if(item.profile_picture.indexOf("http")==-1)
+            $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
+
+            else {
+              $('#ateamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
+
+            }
+          });
+        }
+            });
+
+      $.mobile.changePage("#players-info", {
+        transition: "slide", changeHase: false
+      });
+    }
