@@ -264,7 +264,7 @@ input {
    filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-#edit-addPlayers{
+#edit-addPlayers,#team-addPlayers{
   background-color:    #3c5d5d;
 
  opacity: 0.75;

@@ -179,6 +179,38 @@ getLastRankLeauge();
           else {
           }
       }
+      swal("Invitations were sent");
+                    //back to game's page
+      $.mobile.changePage("#team-page", {
+
+          transition: "slide", changeHase: false
+      });
+      $("#done-team-creat").find('li').remove();
+  }
+
+
+        //checks who was invited and send him an invitation-team
+        function CheckTeamboxes2(){
+
+            var elLength = document.MyFormTeam2.elements.length;
+          var str;
+          var res;
+            for (i=0; i<elLength; i++)
+            {
+                var type = MyFormTeam2.elements[i].type;
+                if (type=="checkbox" && MyFormTeam2.elements[i].checked){
+                    //taking the user id
+                     str = ""+MyFormTeam2.elements[i].id;
+                        res = str.substring(3, str.length);
+                        //send invitation
+                    addTeamNoti(document.getElementById("team-name2").value,res);
+                    addTeamInvitation(document.getElementById("team-name2").value,res);
+                }
+                else if (type=="checkbox") {
+                }
+                else {
+                }
+            }
 
       swal("Invitations were sent");
                     //back to game's page
@@ -186,7 +218,7 @@ getLastRankLeauge();
 
           transition: "slide", changeHase: false
       });
-      emptyList();
+      $("#done-team-creat2").find('li').remove();
   }
 
 
@@ -199,6 +231,14 @@ getLastRankLeauge();
 
   }
   }
+
+
+  //user chose to add players
+  $(document).on('vclick', '#team-addPlayers', function () {
+    $.mobile.changePage("#add-playersToTeam2", {
+        transition: "slide", changeHase: false
+    });
+    selectAllUsersNotFromTheTeam(document.getElementById("team-name2").value); });
 
 
   //updating the user invitation to-"canceled"- sending the varibels to ajax

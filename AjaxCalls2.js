@@ -87,6 +87,30 @@ $('#addPlayersToGame').listview('refresh');
                          hideLoading();
                        }
 
+                       //selecting all users but this user
+                       function selectAllUsersNotFromTheTeam(team_name){
+                      $.ajax({
+                              url: "http://localhost/gameonphp/allusersButYou.php",
+                              type: "post",
+                              data:{team_name:team_name},
+                              success: function(data){
+                                $("#addPlayersToTeam2").find('li').remove();
+
+                              $.each(data,function(i,item){
+
+                    $('#addPlayersToTeam2').append('<li class="list-with-checkbox ui-li-has-alt ui-first-child"><a class="ui-btn"><div class="ui-checkbox">'+
+                    '<label for="te2-'+item.user_id+'" class="list-with-checkbox ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off">'+item.first_name+' '+item.last_name+'</label>'+
+                    '<input data-iconpos="left" name="te2-'+item.user_id+'" id="te2-'+item.user_id+'" type="checkbox" data-cacheval="true" class="list-with-checkbox" value="true"/></div></a>'+
+                    '<a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"></a></li>');
+                    $("[type=checkbox]").checkboxradio();
+                    $('#addPlayersToTeam2').listview('refresh');
+
+                               });
+                             },async:false
+                               });
+
+                               hideLoading();
+                             }
            //selecting the last games
               function lastGame(picked_Users){
 

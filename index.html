@@ -410,7 +410,7 @@
       </table>
       <div class="custom-footer">
         <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-create" >Create team</a>
-        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="teambutton-my-team" >My team</a>
+        <a href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon loadinfo" data-role="button" id="teambutton-my-team" >My team</a>
         <a href="#tournament" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon" data-role="button" id="teambutton-tour" >Tournament</a>
 
       </div>
@@ -625,6 +625,14 @@
                             <input type="text" name="players2" id="players2" value="7"  readonly style="text-align:center;">
                           </td>
                         </tr>
+                        <tr>
+                          <td>
+                          </td>
+                          <td>
+                            <a  href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon3" data-role="button"   id="team-addPlayers" >Add Players</a>
+                          </td>
+
+                          </tr>
                         <tr>
                           <td>
                             <!--Wins-->
@@ -2182,6 +2190,29 @@
       </div>
       </div>
         </div>
+
+
+                    <!--page 21- add players to team -->
+                    <div data-role="page" id="add-playersToTeam2" data-theme="b" >
+
+                      <div data-role="header">
+                        <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                        <a  href="#team-page" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                        <h1 style="font-size:120%"> Add Players </h1>
+                      </div>
+
+                      <div data-role="content">
+                        <form method="POST" name="MyFormTeam2">
+                          <ul data-role="listview" data-inset="true"  data-filter="true" data-filter-placeholder="Search..." class="list-with-checkbox" id="addPlayersToTeam2">
+
+                          </ul>
+                        </form>
+                        <div class="custom-footer">
+                          <a  href="" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon " data-role="button" id="done-team-creat2" data-rel="popup" data-transition="pop" data-position-to="window" onclick="CheckTeamboxes2()">Done</a>
+
+                        </div>
+                      </div>
+                    </div>
 
 
       <script type="text/javascript" src="cordova.js"></script>
