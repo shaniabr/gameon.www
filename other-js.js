@@ -679,7 +679,7 @@ addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
               //update User
               updateUser(uname,$("#txt-first-sign-in2").val(),$("#txt-last-sign-in2").val(),
               $("#txt-password-sign-in2").val(),$("#txt-email-sign-in2").val(),str3
-              ,$( "#city-sign-in2 option:selected" ).text(),$( "#foot-sign-in2 option:selected" ).text(),document.getElementById("img2").src);*/
+              ,$( "#city-sign-in2 option:selected" ).text(),$( "#foot-sign-in2 option:selected" ).text(),document.getElementById("img2").src);
           //   uploadPicture2();
             }
         //Making a button available
