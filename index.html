@@ -64,7 +64,7 @@
     <a href="#" class="btn-primary" data-role="button" id="notiButton" data-icon="mail" onclick="showNotiPage()">Notifications <div id="notiDiv" class="ui-li-count" ><span id="noti-span">0</span></div></a>
     <a href="#" class="btn-primary" data-role="button" id="gamebutton-join-game-manu" data-icon="search" >Search Games</a>
     <a href="#about-us" class="btn-primary" data-role="button" data-icon="info" >About Us</a>
-    <a href="#" data-role="button" class="btn-primary rate-btn" data-icon="gear" rel="external"  onclick="changeToRankPage()" >Settings</a>
+    <a href="#" data-role="button" class="btn-primary rate-btn" data-icon="edit" onclick="editUserToAjax()" >Edit</a>
     <a href="#category-page" class="btn-primary" data-role="button" data-icon="power" onclick="logoutLocalStorage()">Logout</a>
     <a href="#menu-panel" data-role="button" class="close" data-icon="minus">Close Menu</a>
   </div>
@@ -87,7 +87,7 @@
           </td>
           <td><a href="#team-page" id="team-page-select"><img src="img/teamCategory.png" style=" width:105%;"></img></a>
           </td>
-          <td><a href="#table-page"><img src="img/infoCategory.png" style=" width:105%;"></img></a>
+          <td id="table-leauge" ><a href="#" ><img src="img/infoCategory.png" style=" width:105%;"></img></a>
           </td>
         </tr>
 
@@ -944,7 +944,7 @@
                                         </div>
 
                                         <div data-role="content">
-                                          <table id="table1" summary="This table lists all the JetBlue flights.">
+                                          <table id="table1" summary="This table lists all the the teams in the app.">
                                             <thead>
                                               <tr style="background:#999;">
                                                 <th scope="col" >Rank</th>
@@ -952,44 +952,13 @@
                                                 <th scope="col" >Points</th>
                                                 <th scope="col">Games</th>
                                                 <th scope="col">W</th>
-                                                <th scope="col">T</th>
+                                                <th scope="col">D</th>
                                                 <th scope="col">L</th>
 
                                               </tr>
                                             </thead>
 
-                                            <tbody>
-                                              <tr>
-                                                <th>1</th>
-                                                <td>Park Gil</td>
-                                                <td>9</td>
-                                                <td>3</td>
-                                                <td>3</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                              </tr>
-
-                                              <tr>
-                                                <th>2</th>
-                                                <td>Hapoel</td>
-                                                <td>6</td>
-                                                <td>3</td>
-                                                <td>2</td>
-                                                <td>0</td>
-                                                <td>1</td>
-
-                                              </tr>
-
-                                              <tr>
-                                                <th>3</th>
-                                                <td>Maccabi</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>3</td>
-
-                                              </tr>
+                                            <tbody id="tbl1-teams">
 
                                             </tbody>
                                           </table>
@@ -1183,9 +1152,9 @@
                                 <div data-role="content">
                                   <center>
                                    <video id="creatgame-help" autobuffer height="460" width="320" controls autoplay>
-                               <source src="http://localhost/gameonphp/upload/creat_game.mp4" type="video/mp4">
-                               <source src="http://localhost/gameonphp/upload/creat_game.mp4.webm" type="video/webm">
-                               <source src="http://localhost/gameonphp/upload/creat_game.mp4.ogv" type="video/ogg">
+                               <source src="http://104.199.46.141/gameonphp/upload/creat_game.mp4" type="video/mp4">
+                               <source src="http://104.199.46.141/gameonphp/upload/creat_game.mp4.webm" type="video/webm">
+                               <source src="http://104.199.46.141/gameonphp/upload/creat_game.mp4.ogv" type="video/ogg">
                                </video>
 
                                  </center>
@@ -1588,9 +1557,9 @@
 
                                           <center>
                                             <video id="video" autobuffer height="240" width="320" controls autoplay>
-<source src="http://localhost/gameonphp/upload/movie2.mp4" type="video/mp4">
-<source src="http://localhost/gameonphp/upload/movie2.mp4.webm" type="video/webm">
-<source src="http://localhost/gameonphp/upload/movie2.mp4.ogv" type="video/ogg">
+<source src="http://104.199.46.141/gameonphp/upload/movie2.mp4" type="video/mp4">
+<source src="http://104.199.46.141/gameonphp/upload/movie2.mp4.webm" type="video/webm">
+<source src="http://104.199.46.141/gameonphp/upload/movie2.mp4.ogv" type="video/ogg">
 </video>
 
                                           </center>
@@ -2197,7 +2166,7 @@
 
                       <div data-role="header">
                         <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
-                        <a  href="#team-page" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
+                        <a  href="#manage-team" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext"></a>
                         <h1 style="font-size:120%"> Add Players </h1>
                       </div>
 
@@ -2213,6 +2182,142 @@
                         </div>
                       </div>
                     </div>
+
+                    <!--page 22- edit-profile page-->
+
+                    <div data-role="page" id="edit-profile" data-theme="b">
+                      <div data-role="header">
+
+    <a href="#menu-panel" data-iconpos="notext" data-shadow="false" data-iconshadow="true" class="menu" data-icon="bars"></a>
+                        <a data-rel="back" data-icon="back"  class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-right ui-btn-icon-notext"  ></a>
+                        <h1 style="font-size:120%">Edit Profile</h1>
+                      </div>
+                      <div role="main" class="ui-content" >
+                        <!--picture-->
+
+                      <div style="margin:0 auto; width:30%!important;text-align: center;">
+                        <img src="img/user.png" id='img2'class="normal" style="width: 100px; height: 100px;"></div>
+                        <table style="border:none" align="center">
+                          <tr>
+                            <td>
+                              <button onclick="deletePhoto2()">Delete</button>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <div style="width:100%; text-align: center;">
+                        <button id='but_take2' onclick="takePicture2();" class="	fa fa-camera" style="background-color:#3d3d5c">  Take photo</button>
+                          <button id='but_select2' onclick="selectPicture2();" class="fa fa-file-photo-o" style="background-color:#666699">  Select from Gallery</button>
+                      </div>
+                        <table  style="border:none" align="center">
+
+                          <tr><td>
+
+                            <!--First Name-->
+                            <label for="txt-first-sign-in2">First Name</label>
+                          </td>
+                          <td>
+                            <input type="text" name="txt-first-sign-in2" id="txt-first-sign-in2" value="" data-clear-btn="true">
+                          </td>
+                        </tr>
+                        <tr><td>
+                          <!--Last Name-->
+                          <label for="txt-last-sign-in2">Last Name</label>
+                        </td>
+                        <td>
+                          <input type="text" name="txt-last-sign-in2" id="txt-last-sign-in2" value="" data-clear-btn="true">
+                        </td>
+                      </tr>
+                      <tr><td>
+                        <!--password-->
+                        <label for="txt-password-sign-in2">Password</label>
+                      </td>
+                      <td>
+                        <input type="password" name="txt-password-sign-in2" id="txt-password-sign-in2" value="" data-clear-btn="true">
+                      </td>
+                    </tr>
+                    <tr><td>
+                      <!--E-mail-->
+                      <label for="txt-email-sign-in2">Email</label>   </td> <td>
+                        <input type="text" name="txt-email-sign-in2" id="txt-email-sign-in2" value="" data-clear-btn="true">
+                      </td>
+                    </tr>
+                    <tr><td>
+                      <!--City-->
+                      <fieldset class="ui-field-contain">
+                        <label for="city-sign-in2">City</label>  </td> <td>
+                          <select name="city-sign-in2" id="city-sign-in2">
+                            <optgroup label="North">
+                              <option value="Nahariya">Nahariya</option>
+                              <option value="Haifa">Haifa</option>
+                              <option value="Nesher">Nesher</option>
+                            </optgroup>
+                            <optgroup label="Center">
+                              <option value="Nataniya">Nataniya</option>
+                              <option value="Tel-Aviv">Tel-Aviv</option>
+                            </optgroup>
+                            <optgroup label="South">
+                              <option value="Ashdod">Ashdod</option>
+                            </optgroup>
+                          </select>
+                        </fieldset>
+                      </td>
+                    </tr>
+                    <tr><td>
+                      <!--Date of birt-->
+                      <label for="date-sign-in2">Date of birth:</label>  </td> <td>
+                        <input type="date" name="date-sign-in2" id="date-sign-in2" value=""  />
+                      </td>
+                    </tr>
+
+                    <!--Foot-->
+                    <tr><td>
+                      <label for="foot-sign-in2">Strong foot</label>
+                      <td>
+                        <select id="foot-sign-in2" name="foot-sign-in2" data-role="flipswitch" >
+
+                          <option selected="">L</option>
+                          <option >R</option>
+                        </select>
+                      </td>
+                    </tr>
+
+            </tr>
+                  </table>
+
+
+
+                  <a href=""  data-role="button" data-transition="pop" data-position-to="window" id="sign-in-btn2" name="sign-in-btn2" style="background-color:#a6a6a6" onclick="" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+
+            </div><!-- /content -->
+          </div><!-- /page -->
+
+
+          <!-- password-message Page -->
+          <div data-role="page" data-dialog="true" id="password-page">
+            <div data-role="popup"  data-dismissible="false" style="max-width:400px;">
+              <div data-role="header">
+                <h1>Error!</h1>
+              </div>
+              <div role="main" class="ui-content">
+                <p>Please fill in the password field</p>
+                <a href="#category-page"><center>OK</center></a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- user-message Page -->
+          <div data-role="page" data-dialog="true" id="user-page">
+            <div data-role="header">
+              <h1 align="center">Error!</h1>
+            </div>
+            <div role="main" class="ui-content">
+              <p align="center">Please fill in the user-name field</p>
+              <a href="#category-page"><center>OK</center></a>
+            </div>
+          </div>
+
 
 
       <script type="text/javascript" src="cordova.js"></script>

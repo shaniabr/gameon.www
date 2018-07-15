@@ -3,7 +3,7 @@
 function selectPlayersNotInvited(gameid){
 
   $.ajax({
-    url: "http://localhost/gameonphp/selectAllPlayersNotInvited.php",
+    url: "http://104.199.46.141/gameonphp/selectAllPlayersNotInvited.php",
     type: "post",
     data:{gameid:gameid},
     success: function(data){
@@ -37,7 +37,7 @@ function checkPassedGames(uname){
   var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
   $.ajax({
-    url: "http://localhost/gameonphp/selectGamesThatOver.php",
+    url: "http://104.199.46.141/gameonphp/selectGamesThatOver.php",
     type: "post",
     data:{uname:uname,hourTime:hourTime,now:now,today:today},
 
@@ -73,7 +73,7 @@ hideLoading();
 //selecting user's deatils- for ranking
 function   profileDeatilsForRanking(username){
   $.ajax({
-    url: "http://localhost/gameonphp/connection.php",
+    url: "http://104.199.46.141/gameonphp/connection.php",
     type: "post",
     data:{uname:username},
     success: function(data){
@@ -99,7 +99,7 @@ function   profileDeatilsForRanking(username){
         {
             if(item.profile_picture.indexOf("http")==-1){
           //picture in profile page
-          y.setAttribute("src", "http://localhost/gameonphp/upload/"+item.profile_picture);
+          y.setAttribute("src", "http://104.199.46.141/gameonphp/upload/"+item.profile_picture);
 
         }else {
           x.setAttribute("src", item.profile_picture);
@@ -110,7 +110,7 @@ function   profileDeatilsForRanking(username){
         else {
 
           //picture in menu
-          y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+          y.setAttribute("src", "http://104.199.46.141/gameonphp/upload/user.png");
         }
 
       });
@@ -148,7 +148,7 @@ function   updateRanking(playerId){
     var fairness= parseInt(document.getElementById("rank-user-Fairness").innerHTML);
 
     $.ajax({
-      url: "http://localhost/gameonphp/update_rank_user.php",
+      url: "http://104.199.46.141/gameonphp/update_rank_user.php",
       type: "post",
       data:{playerId:playerId,
         goals:goals,assits:assits,
@@ -182,7 +182,7 @@ function   updateRanking(playerId){
     var user_choice="joined";
 
     $.ajax({
-      url: "http://localhost/gameonphp/show_players_list.php",
+      url: "http://104.199.46.141/gameonphp/show_players_list.php",
       type: "post",
       data:{game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -204,7 +204,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://localhost/gameonphp/selectAllNoti.php",
+      url: "http://104.199.46.141/gameonphp/selectAllNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
@@ -237,7 +237,7 @@ function   updateRanking(playerId){
   function updateGameNoti(noti_id,game_id){
 
     $.ajax({
-      url: "http://localhost/gameonphp/update_noti.php",
+      url: "http://104.199.46.141/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -255,7 +255,7 @@ function   updateRanking(playerId){
     function updateTeamNoti(noti_id,team_name){
 
       $.ajax({
-        url: "http://localhost/gameonphp/update_noti.php",
+        url: "http://104.199.46.141/gameonphp/update_noti.php",
         type: "post",
         data:{noti_id: noti_id},
         success: function(data){
@@ -273,7 +273,7 @@ function   updateRanking(playerId){
   function updateNoti(noti_id){
 
     $.ajax({
-      url: "http://localhost/gameonphp/update_noti.php",
+      url: "http://104.199.46.141/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -293,7 +293,7 @@ function   updateRanking(playerId){
   function addGameNoti(g_id,uname,picked_Users){
     var notiType="game_invitation_mes";
     $.ajax({
-      url: "http://localhost/gameonphp/add_noti.php",
+      url: "http://104.199.46.141/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -307,7 +307,7 @@ function   updateRanking(playerId){
     var notiType="ranking";
     g_id=null;
     $.ajax({
-      url: "http://localhost/gameonphp/add_noti.php",
+      url: "http://104.199.46.141/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -319,7 +319,7 @@ function   updateRanking(playerId){
   function selectAlluserd(){
     pageIsLoading();
     $.ajax({
-      url: "http://localhost/gameonphp/selectAllUsers.php",
+      url: "http://104.199.46.141/gameonphp/selectAllUsers.php",
       type: "get",
       success: function(data){
         //remove the elemnts in the list
@@ -329,7 +329,7 @@ function   updateRanking(playerId){
 
           //add the elemnts to the list
           if(item.profile_picture.indexOf("http")==-1)
-          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://104.199.46.141/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
 
           else {
             $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
@@ -346,7 +346,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://localhost/gameonphp/calculateNumNoti.php",
+      url: "http://104.199.46.141/gameonphp/calculateNumNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
@@ -380,7 +380,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
 //  alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
-    url: "http://localhost/gameonphp/addUserFromFB.php",
+    url: "http://104.199.46.141/gameonphp/addUserFromFB.php",
     type: "post",
     data:{fbid:fbid, email:email, firstName:firstName, lastName:lastName, birthday:birthday, location:location, fbpic:fbpic},
       success: function(data){
@@ -414,7 +414,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   //creating notification of team invitation to user
   function addTeamInvitation(t_id,picked_Users){
     $.ajax({
-      url: "http://localhost/gameonphp/add_team_invation.php",
+      url: "http://104.199.46.141/gameonphp/add_team_invation.php",
       type: "post",
       data:{t_id: t_id,picked_Users:picked_Users},
       success: function(data){
@@ -428,7 +428,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   function addTeamNoti(t_id,picked_Users){
     var notiType="Team_invitation_mes";
     $.ajax({
-      url: "http://localhost/gameonphp/add_noti.php",
+      url: "http://104.199.46.141/gameonphp/add_noti.php",
       type: "post",
       data:{t_id: t_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -441,7 +441,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     //selecting team's deatils
     function teamDeatils(team_name){
       $.ajax({
-        url: "http://localhost/gameonphp/team_deatils_invitation.php",
+        url: "http://104.199.46.141/gameonphp/team_deatils_invitation.php",
         type: "post",
         data:{team_name:team_name},
         success: function(data){
@@ -468,7 +468,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     function showTeamPlayersListToAjax(team_name){
 
       $.ajax({
-        url: "http://localhost/gameonphp/players_from_team.php",
+        url: "http://104.199.46.141/gameonphp/players_from_team.php",
         type: "post",
         data:{team_name:team_name},
         success: function(data){
@@ -477,10 +477,10 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
 
             //add the elemnts to the list
             if(item.profile_picture.indexOf("http")==-1)
-            $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://localhost/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
+            $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://104.199.46.141/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
 
             else {
-              $('#ateamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
+              $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
 
             }
           });
@@ -491,3 +491,110 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
         transition: "slide", changeHase: false
       });
     }
+
+    //edit user's details
+    function editDeatils(user_id){
+      //  pageIsLoading();
+      $.ajax({
+        url: "http://104.199.46.141/gameonphp/selectUserDetails.php",
+        type: "post",
+        data:{user_id:user_id},
+        success: function(data){
+
+          $.each(data,function(i,item){
+            if(item.user_id!=null){
+
+              document.getElementById("txt-first-sign-in2").value=item.first_name;
+              document.getElementById("txt-last-sign-in2").value=item.last_name;
+              document.getElementById("txt-password-sign-in2").value=item.password;
+              document.getElementById("txt-email-sign-in2").value=item.email;
+              document.getElementById("date-sign-in2").value=item.date_of_birth;
+              $('#city-sign-in2').val(item.city).change();
+              $('#foot-sign-in2').val(item.foot).change();
+              var x=document.getElementById("img2");
+              if(item.profile_picture.indexOf("http")==-1)
+              {
+                  x.setAttribute("src", "http://104.199.46.141/gameonphp/upload/"+item.profile_picture);
+
+
+                }
+                //from facebook//
+                else {
+                  x.setAttribute("src", item.profile_picture);
+
+                }
+
+            }
+
+          });
+          hideLoading();
+        },
+        error:function(data){hideLoading();},
+        async:false
+      });
+      $.mobile.changePage("#edit-profile", {
+
+        transition: "slide", changeHase: false
+      });
+
+    }
+
+    /*the function checks the user's deatils*/
+
+    function updateUser(uname,firstname,lastname,pass,email,birthdate,city,foot,imageAddress){
+      var bool;
+      $.ajax({
+        url: "http://104.199.46.141/gameonphp/update_user_deatils.php",
+        type: "post",
+        data:{uname:uname, firstname:firstname, lastname:lastname,
+          pass:pass, email:email, birthdate:birthdate, city:city, foot:foot,imageAddress:imageAddress},
+          success: function(data){
+            //this code in here doesn't work
+            swal("User details were updated!","", "success");
+            //document.getElementById("sign-in-btn").disabled=false;
+
+            $.mobile.changePage("#main-page", {
+              transition: "slide", changeHase: false
+            });
+            $('#sign-in-btn2').removeClass('ui-disabled');
+          },
+          error:function(data)
+          {swal("Error!details weren't updated!!");
+          hideLoading();
+          $('#sign-in-btn2').removeClass('ui-disabled');
+        }
+      });
+
+    }
+
+    // get the league from db
+                                 function getLeauge(){
+                                   $.ajax({
+                                           url: "http://104.199.46.141/gameonphp/selectFullTableLeague.php",
+                                           type: "get",
+                                           success: function(data){
+                                               $("#tbl1-teams").find('td').remove();
+                                                $("#tbl1-teams").find('tr').remove();
+                                             $.each(data,function(i,item){
+                                                 $('#tbl1-teams').append('<tr>');
+                                                   $('#tbl1-teams').append('<td>'+item.ranking+' </td>');
+                                              $('#tbl1-teams').append('<td>'+item.team_id+' </td>');
+                                              $('#tbl1-teams').append('<td>'+item.points+' </td>');
+                                              $('#tbl1-teams').append('<td>'+item.games+' </td>');
+                                                $('#tbl1-teams').append('<td>'+item.wins+' </td>');
+                                                  $('#tbl1-teams').append('<td>'+item.draws+' </td>');
+                                                    $('#tbl1-teams').append('<td>'+item.loses+' </td>');
+                                              $('#tbl1-teams').append('</tr>');
+                                             });
+                                             hideLoading();
+                                           },
+                                           error:function(data){hideLoading();
+                                           swal("error");},
+                                           async:false
+                                         });
+                                         $.mobile.changePage("#table-page", {
+
+                                           transition: "slide", changeHase: false
+                                         });
+
+                                       }

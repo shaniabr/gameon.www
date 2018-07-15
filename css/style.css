@@ -239,7 +239,7 @@ input {
     filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
-#players,#wins,#place,#players2,#wins2,#place2,#create-team-done,#done2,#done-game-creat,#team-name2,#update-acc,#edit-update-add-players,#rankPlayersBtn,#done-team-creat{
+#players,#wins,#place,#players2,#wins2,#place2,#create-team-done,#done2,#done-game-creat,#team-name2,#update-acc,#edit-update-add-players,#rankPlayersBtn,#done-team-creat,#done-team-creat2{
   background-color:  #669900;
     opacity: 0.75;
     filter: alpha(opacity=75); /* For IE8 and earlier */

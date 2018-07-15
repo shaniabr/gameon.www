@@ -201,7 +201,7 @@ getLastRankLeauge();
                 if (type=="checkbox" && MyFormTeam2.elements[i].checked){
                     //taking the user id
                      str = ""+MyFormTeam2.elements[i].id;
-                        res = str.substring(3, str.length);
+                        res = str.substring(4, str.length);
                         //send invitation
                     addTeamNoti(document.getElementById("team-name2").value,res);
                     addTeamInvitation(document.getElementById("team-name2").value,res);

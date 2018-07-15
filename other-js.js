@@ -77,10 +77,10 @@ function loginLocalStorage(){
     //picture in profile page-Not from facebook
 if(user_image.indexOf("http")==-1)
 {
-    x.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    x.setAttribute("src", "http://104.199.46.141/gameonphp/upload/"+user_image);
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/"+user_image);
+    y.setAttribute("src", "http://104.199.46.141/gameonphp/upload/"+user_image);
   }
   //from facebook//
   else {
@@ -96,10 +96,10 @@ if(user_image.indexOf("http")==-1)
 
     //picture in profile page
 
-    x.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    x.setAttribute("src", "http://104.199.46.141/gameonphp/upload/user.png");
 
     //picture in profile page
-    y.setAttribute("src", "http://localhost/gameonphp/upload/user.png");
+    y.setAttribute("src", "http://104.199.46.141/gameonphp/upload/user.png");
 
   }
   //go to main menu
@@ -362,7 +362,7 @@ var deviceReady = false;
 
        // Verify server has been entered
 
-       server = "http://localhost/gameonphp/upload.php";
+       server = "http://104.199.46.141/gameonphp/upload.php";
 
        if (server) {
 
@@ -576,6 +576,250 @@ addUserfromfb(fbid, email, firstname, lastname, birthday, location, picture);
         }
 
 
+        /* to edit details */
+        function editUserToAjax() {
+          editDeatils(uname);
+
+        }
+
+        // edit user's details-checking the values
+        $(document).on('vclick', '#sign-in-btn2', function () {
+
+          flag=true;
+          str="";
+          $('#sign-in-btn2').addClass('ui-disabled');
+
+        //check first name
+          if(flag && $("#txt-first-sign-in2").val()=="" )
+          {
+            setTimeout(function(){  swal("Please fill in the first-name field"); },50);
+            flag=false;
+          }
+          var first=$("#txt-first-sign-in2").val()
+          if(flag && first.length<2)
+          {
+            setTimeout(function(){  swal("First name must contain at least 2 characters"); },50);
+            flag=false;
+          }
+          if(flag && !/^[a-zA-Z][a-zA-Z\s]*$/.test($("#txt-first-sign-in2").val()))
+          {
+            setTimeout(function(){  swal("First name should contains only letters"); },50);
+            flag=false;
+          }
+
+        //check last name
+          if(flag && $("#txt-last-sign-in2").val()=="" )
+          {
+            setTimeout(function(){  swal("Please fill in the last-name field"); },50);
+            flag=false;
+          }
+          if(flag && !/^[a-zA-Z][a-zA-Z\s]*$/.test($("#txt-last-sign-in2").val()))
+          {
+            setTimeout(function(){  swal("Last name should contains only letters"); },50);
+            flag=false;
+          }
+
+          //check password
+          if(flag && $("#txt-password-sign-in2").val()=="" )
+          {
+            setTimeout(function(){  swal("Please fill in the password field"); },50);
+            flag=false;
+          }
+          var pass=$("#txt-password-sign-in2").val()
+          if(flag && pass.length<6)
+          {
+            setTimeout(function(){  swal("Password must contain at least 6 characters"); },50);
+            flag=false;
+          }
+
+          //check email
+          if(flag && $("#txt-email-sign-in2").val()=="" )
+          {
+            setTimeout(function(){  swal("Please fill in the email field"); },50);
+            flag=false;
+          }
+          function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+          }
+          if(flag && !validateEmail($("#txt-email-sign-in2").val()) )
+          {
+            setTimeout(function(){  swal("Email is illegal"); },50);
+            flag=false;
+          }
+
+          //check birth of date
+          if(flag && $("#date-sign-in2").val()=="" )
+          {
+            setTimeout(function(){  swal("Please fill in the date of birth field"); },50);
+            flag=false;
+          }
+          var now= new Date();
+          var cgame=new Date($("#date-sign-in2").val());
+          if(flag && now<cgame)
+          {
+            setTimeout(function(){  swal("Please select a relevant date"); },50);
+            flag=false;
+          }
+
+
+          //in case the date was choosen-we will convert it to this date format: yyyy/m/dd
+          else {
+            str1=$("#date-sign-in2").val();
+            str3 = str1.replace('-','/');
+            str3 = str3.replace('-','/');
+          }
+
+        // upload picture
+            if(flag){
+              pageIsLoading();
+          //  alert(document.getElementById("img2").src);
+
+uploadPicture2();
+              //update User
+          /*    updateUser(uname,$("#txt-first-sign-in2").val(),$("#txt-last-sign-in2").val(),
+              $("#txt-password-sign-in2").val(),$("#txt-email-sign-in2").val(),str3
+              ,$( "#city-sign-in2 option:selected" ).text(),$( "#foot-sign-in2 option:selected" ).text(),document.getElementById("img2").src);*/
+          //   uploadPicture2();
+            }
+        //Making a button available
+         if(!flag){
+            $('#sign-in-btn2').removeClass('ui-disabled');
+          }
+
+        });
+
+           /**
+            * Take picture with camera
+            */
+           function takePicture2() {
+               navigator.camera.getPicture(
+                   function(uri) {
+                       var img2 = document.getElementById('img2');
+                       img2.style.visibility = "visible";
+                       img2.style.display = "block";
+                       img2.src = uri;
+                    //   document.getElementById('camera_status').innerHTML = "Success";
+                   },
+                   function(e) {
+                       console.log("Error getting picture: " + e);
+                       setTimeout(function(){  swal("Error getting picture"); },50);
+                      // document.getElementById('camera_status').innerHTML = "Error getting picture.";
+                   },
+                   { quality: 50,
+                     destinationType: navigator.camera.DestinationType.FILE_URI,
+                     allowEdit: true,
+                     targetWidth: 1000,
+                     targetHeight: 1000
+                   });
+           };
+           /**
+            * Select picture from library
+            */
+           function selectPicture2() {
+
+               navigator.camera.getPicture(
+                   function(uri) {
+
+                       var img2 = document.getElementById('img2');
+                       img2.style.visibility = "visible";
+                       img2.style.display = "block";
+                       img2.src = uri;
+                       $('imgAddUser2').append()
+
+                   },
+                   function(e) {
+
+                       console.log("Error getting picture: " + e);
+                         setTimeout(function(){  swal("Error getting picture"); },50);
+
+                   },
+                   { quality: 50,
+                     destinationType: navigator.camera.DestinationType.FILE_URI,
+                     sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+                     allowEdit: true,
+                     targetWidth: 1000,
+                     targetHeight: 1000
+                 });
+
+           };
+
+           /**
+            * Upload current picture
+            */
+           function uploadPicture2() {
+
+             // Get URI of picture to upload
+             var img2 = document.getElementById('img2');
+               var imageURI2 = img2.src;
+
+               if (!imageURI2 || (img2.style.display == "none")) {
+                    setTimeout(function(){  swal("Take picture or select picture from library first"); },50);
+                //   document.getElementById('camera_status').innerHTML = "Take picture or select picture from library first.";
+                   return;
+               }
+               if( $('#img2').attr('src')!="img/user.png"){
+
+               // Verify server has been entered
+
+               server = "http://104.199.46.141/gameonphp/upload.php";
+
+               if (server) {
+
+                   // Specify transfer options
+                   var options = new FileUploadOptions();
+                   options.fileKey="file";
+                   options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+                   options.mimeType="image/jpeg";
+                   options.chunkedMode = false;
+                   // Transfer picture to server
+                   var ft = new FileTransfer();
+                   ft.upload(imageURI, server, function(r) {
+                       imageAddress2=r.response;
+                       // If no image is selected
+                       if(imageAddress2==''|| imageAddress2==null){
+                         imageAddress2='user.png';
+                       }
+                       //update User
+                       updateUser(uname,$("#txt-first-sign-in2").val(),$("#txt-last-sign-in2").val(),
+                       $("#txt-password-sign-in2").val(),$("#txt-email-sign-in2").val(),str3
+                       ,$( "#city-sign-in2 option:selected" ).text(),$( "#foot-sign-in2 option:selected" ).text(),imageAddress2);
+
+                   }, function(error) {
+                       setTimeout(function(){  swal("Upload failed: file size is greater than 4 MB"); },50);
+                      // document.getElementById('camera_status').innerHTML = "Upload failed: Code = "+error.code;
+                   }, options);
+               }
+             }
+             else{
+
+               //update User
+               updateUser(uname,$("#txt-first-sign-in2").val(),$("#txt-last-sign-in2").val(),
+               $("#txt-password-sign-in2").val(),$("#txt-email-sign-in").val(),str3
+               ,$( "#city-sign-in2 option:selected" ).text(),$( "#foot-sign-in2 option:selected" ).text(),"user.png");
+
+             }
+           }
+
+
+        /* to delete profile pic */
+        function deletePhoto2() {
+          var y = document.getElementById("img2");
+          y.setAttribute("src", "img/user.png");
+        }
+
+
+
+
+        //user clicked the 'table league button'
+        $(document).on('vclick', '#table-leauge', function () {
+            pageIsLoading();
+          //summon the function in ajax
+          getLeauge();
+        });
+
+
+
 //upload profile picture
     /*    function uploadPictureFB(fbid, email, firstname, lastname, birthday, location, imageURI) {
 alert("fbid: "+fbid+ "imageURI: "+imageURI);
@@ -588,7 +832,7 @@ alert("fbid: "+fbid+ "imageURI: "+imageURI);
             }
 
             // Verify server has been entered
-            server = "http://localhost/gameonphp/upload.php";
+            server = "http://104.199.46.141/gameonphp/upload.php";
 
             if (server) {
 
