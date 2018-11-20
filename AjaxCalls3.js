@@ -3,7 +3,7 @@
 function selectPlayersNotInvited(gameid){
 
   $.ajax({
-    url: "http://35.205.36.101/gameonphp/selectAllPlayersNotInvited.php",
+    url: "http://35.241.154.54/gameonphp/selectAllPlayersNotInvited.php",
     type: "post",
     data:{gameid:gameid},
     success: function(data){
@@ -37,7 +37,7 @@ function checkPassedGames(uname){
   var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
   $.ajax({
-    url: "http://35.205.36.101/gameonphp/selectGamesThatOver.php",
+    url: "http://35.241.154.54/gameonphp/selectGamesThatOver.php",
     type: "post",
     data:{uname:uname,hourTime:hourTime,now:now,today:today},
 
@@ -73,7 +73,7 @@ hideLoading();
 //selecting user's deatils- for ranking
 function   profileDeatilsForRanking(username){
   $.ajax({
-    url: "http://35.205.36.101/gameonphp/connection.php",
+    url: "http://35.241.154.54/gameonphp/connection.php",
     type: "post",
     data:{uname:username},
     success: function(data){
@@ -99,7 +99,7 @@ function   profileDeatilsForRanking(username){
         {
             if(item.profile_picture.indexOf("http")==-1){
           //picture in profile page
-          y.setAttribute("src", "http://35.205.36.101/gameonphp/upload/"+item.profile_picture);
+          y.setAttribute("src", "http://35.241.154.54/gameonphp/upload/"+item.profile_picture);
 
         }else {
           x.setAttribute("src", item.profile_picture);
@@ -110,7 +110,7 @@ function   profileDeatilsForRanking(username){
         else {
 
           //picture in menu
-          y.setAttribute("src", "http://35.205.36.101/gameonphp/upload/user.png");
+          y.setAttribute("src", "http://35.241.154.54/gameonphp/upload/user.png");
         }
 
       });
@@ -148,7 +148,7 @@ function   updateRanking(playerId){
     var fairness= parseInt(document.getElementById("rank-user-Fairness").innerHTML);
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/update_rank_user.php",
+      url: "http://35.241.154.54/gameonphp/update_rank_user.php",
       type: "post",
       data:{playerId:playerId,
         goals:goals,assits:assits,
@@ -182,7 +182,7 @@ function   updateRanking(playerId){
     var user_choice="joined";
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/show_players_list.php",
+      url: "http://35.241.154.54/gameonphp/show_players_list.php",
       type: "post",
       data:{game_id:game_id, user_choice:user_choice},
       success: function(data){
@@ -204,7 +204,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/selectAllNoti.php",
+      url: "http://35.241.154.54/gameonphp/selectAllNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
@@ -237,7 +237,7 @@ function   updateRanking(playerId){
   function updateGameNoti(noti_id,game_id){
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/update_noti.php",
+      url: "http://35.241.154.54/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -255,7 +255,7 @@ function   updateRanking(playerId){
     function updateTeamNoti(noti_id,team_name){
 
       $.ajax({
-        url: "http://35.205.36.101/gameonphp/update_noti.php",
+        url: "http://35.241.154.54/gameonphp/update_noti.php",
         type: "post",
         data:{noti_id: noti_id},
         success: function(data){
@@ -273,7 +273,7 @@ function   updateRanking(playerId){
   function updateNoti(noti_id){
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/update_noti.php",
+      url: "http://35.241.154.54/gameonphp/update_noti.php",
       type: "post",
       data:{noti_id: noti_id},
       success: function(data){
@@ -293,7 +293,7 @@ function   updateRanking(playerId){
   function addGameNoti(g_id,uname,picked_Users){
     var notiType="game_invitation_mes";
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/add_noti.php",
+      url: "http://35.241.154.54/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -307,7 +307,7 @@ function   updateRanking(playerId){
     var notiType="ranking";
     g_id=null;
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/add_noti.php",
+      url: "http://35.241.154.54/gameonphp/add_noti.php",
       type: "post",
       data:{g_id: g_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -319,7 +319,7 @@ function   updateRanking(playerId){
   function selectAlluserd(){
     pageIsLoading();
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/selectAllUsers.php",
+      url: "http://35.241.154.54/gameonphp/selectAllUsers.php",
       type: "get",
       success: function(data){
         //remove the elemnts in the list
@@ -329,7 +329,7 @@ function   updateRanking(playerId){
 
           //add the elemnts to the list
           if(item.profile_picture.indexOf("http")==-1)
-          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.205.36.101/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
+          $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.241.154.54/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
 
           else {
             $('#allUsers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1><p>'+item.city+'</p></a></li>').listview('refresh');
@@ -346,7 +346,7 @@ function   updateRanking(playerId){
 
 
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/calculateNumNoti.php",
+      url: "http://35.241.154.54/gameonphp/calculateNumNoti.php",
       type: "post",
       data:{uname: uname},
       success: function(data){
@@ -380,7 +380,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
 //  alert("fbid: "+fbid+ " email: "+email+" firstName: "+firstName+" lastName: "+lastName+" birthday: "+ birthday+" location: "+location+" picture: " +fbpic  );
 
   $.ajax({
-    url: "http://35.205.36.101/gameonphp/addUserFromFB.php",
+    url: "http://35.241.154.54/gameonphp/addUserFromFB.php",
     type: "post",
     data:{fbid:fbid, email:email, firstName:firstName, lastName:lastName, birthday:birthday, location:location, fbpic:fbpic},
       success: function(data){
@@ -414,7 +414,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   //creating notification of team invitation to user
   function addTeamInvitation(t_id,picked_Users){
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/add_team_invation.php",
+      url: "http://35.241.154.54/gameonphp/add_team_invation.php",
       type: "post",
       data:{t_id: t_id,picked_Users:picked_Users},
       success: function(data){
@@ -428,7 +428,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
   function addTeamNoti(t_id,picked_Users){
     var notiType="Team_invitation_mes";
     $.ajax({
-      url: "http://35.205.36.101/gameonphp/add_noti.php",
+      url: "http://35.241.154.54/gameonphp/add_noti.php",
       type: "post",
       data:{t_id: t_id,uname:uname,picked_Users:picked_Users,notiType:notiType},
       success: function(data){
@@ -441,7 +441,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     //selecting team's deatils
     function teamDeatils(team_name){
       $.ajax({
-        url: "http://35.205.36.101/gameonphp/team_deatils_invitation.php",
+        url: "http://35.241.154.54/gameonphp/team_deatils_invitation.php",
         type: "post",
         data:{team_name:team_name},
         success: function(data){
@@ -468,7 +468,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     function showTeamPlayersListToAjax(team_name){
 
       $.ajax({
-        url: "http://35.205.36.101/gameonphp/players_from_team.php",
+        url: "http://35.241.154.54/gameonphp/players_from_team.php",
         type: "post",
         data:{team_name:team_name},
         success: function(data){
@@ -477,7 +477,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
 
             //add the elemnts to the list
             if(item.profile_picture.indexOf("http")==-1)
-            $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.205.36.101/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
+            $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="http://35.241.154.54/gameonphp/upload/'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
 
             else {
               $('#teamAllplayers').append('<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-myicon2 loadinfo" onclick="profileDeatils(\'' +item.user_id+ '\');"><img src="'+item.profile_picture+'"><h1>'+item.first_name+' '+item.last_name+' </h1></a></li>').listview('refresh');
@@ -496,7 +496,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     function editDeatils(user_id){
       //  pageIsLoading();
       $.ajax({
-        url: "http://35.205.36.101/gameonphp/selectUserDetails.php",
+        url: "http://35.241.154.54/gameonphp/selectUserDetails.php",
         type: "post",
         data:{user_id:user_id},
         success: function(data){
@@ -514,7 +514,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
               var x=document.getElementById("img2");
               if(item.profile_picture.indexOf("http")==-1)
               {
-                  x.setAttribute("src", "http://35.205.36.101/gameonphp/upload/"+item.profile_picture);
+                  x.setAttribute("src", "http://35.241.154.54/gameonphp/upload/"+item.profile_picture);
 
 
                 }
@@ -544,7 +544,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     function updateUser(uname,firstname,lastname,pass,email,birthdate,city,foot,imageAddress){
       var bool;
       $.ajax({
-        url: "http://35.205.36.101/gameonphp/update_user_deatils.php",
+        url: "http://35.241.154.54/gameonphp/update_user_deatils.php",
         type: "post",
         data:{uname:uname, firstname:firstname, lastname:lastname,
           pass:pass, email:email, birthdate:birthdate, city:city, foot:foot,imageAddress:imageAddress},
@@ -570,7 +570,7 @@ function addUserfromfb(fbid, email, firstName, lastName, birthday, location, fbp
     // get the league from db
                                  function getLeauge(){
                                    $.ajax({
-                                           url: "http://35.205.36.101/gameonphp/selectFullTableLeague.php",
+                                           url: "http://35.241.154.54/gameonphp/selectFullTableLeague.php",
                                            type: "get",
                                            success: function(data){
                                                $("#tbl1-teams").find('td').remove();
